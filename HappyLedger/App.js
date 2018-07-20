@@ -1,14 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
+import { Router, Stack, Scene } from 'react-native-router-flux';
+import Menu from './Navigation/Menu';
+import Connection from './Pages/Connection';
+import Registration from './Pages/Registration';
+import Account from './Pages/Account';
+import Profile from './Pages/Profile';
 
 export default class App extends React.Component {
+  
+  componentDidMount() {
+    StatusBar.setHidden(true);
+  }
+  
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+        <Router navBar = {Menu}>
+          <Stack key="root">
+            <Scene key="Connection" component={Connection} title="Connection"/>
+            <Scene key="Registration" component={Registration} title="Registration"/>
+            <Scene key="Account" component={Account} title="Account Manager"/>
+            <Scene key="Profile" component={Profile} title="Profile Manager"/>
+          </Stack>
+        </Router>
     );
   }
 }
