@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    restart: always
+    networks:
+      - web_mysql_net
+    environment:
+      MYSQL_DATABASE: default_database
+      MYSQL_USER: default_user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    build: ./mysql
+    volumes:
+      - ./data-container/mysql/:/var/lib/mysql
+
+  web:
+    depends_on:
+      - db
+    image: node
+    container_name: web
+    links:
+      - db:db
+    build: ./node-server
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - web_mysql_net
+
+networks:
+  web_mysql_net:
+    driver: bridge
