@@ -8,16 +8,16 @@ import Account from './Pages/Account';
 import Profile from './Pages/Profile';
 
 export default class App extends React.Component {
-  
+
   componentDidMount() {
     StatusBar.setHidden(true);
   }
-  
+
   render() {
     return (
         <Router navBar = {Menu}>
           <Stack key="root">
-            <Scene key="Connection" component={Connection} title="Connection"/>
+            <Scene key="Connection" component={Connection} title="Connection"  hideNavBar={true}/>
             <Scene key="Registration" component={Registration} title="Registration"/>
             <Scene key="Account" component={Account} title="Account Manager"/>
             <Scene key="Profile" component={Profile} title="Profile Manager"/>
