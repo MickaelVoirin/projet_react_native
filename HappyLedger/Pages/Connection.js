@@ -26,20 +26,34 @@ export default class Connection extends React.Component {
           <FormInput
           style={{width:200,height:50}}
           placeholder="Nom d'utilisateur"
+          inputStyle={{fontFamily:'raleway'}}
           onChangeText={(username) => this.setState({username})}
         />
         <FormInput
           style={{width:200,height:50}}
+          secureTextEntry
           placeholder="Mot de Passe"
+          inputStyle={{fontFamily:'raleway'}}
           onChangeText={(text) => this.setState({text})}
         />
-        <Button
-          onPress={(x) => x }
-          rounded
-          title="Se connecter"
-          color='#a936c9'
-          backgroundColor='white'
-        />
+        <View
+          style={styles.connectButton}
+        >
+          <Button
+            onPress={() => Actions.Profile()}
+            rounded
+            title="Se connecter"
+            color='#a936c9'
+            backgroundColor='white'
+            fontFamily = 'raleway'
+          />
+        </View>
+
+        <Text
+          style={styles.forgotPassword}
+        >
+          Mot de passe oublié ?
+        </Text>
         </View>
         <View style={styles.social_auth}>
           <SocialIcon
@@ -70,6 +84,7 @@ export default class Connection extends React.Component {
             title="Créer un compte"
             color='white'
             outline
+            fontFamily = 'raleway'
           />
         </View>
       </View>
@@ -95,6 +110,14 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  connectButton: {
+    marginTop:20,
+  },
+  forgotPassword: {
+    marginTop: 20,
+    fontFamily: 'raleway',
+    color: 'white',
   },
   social_auth: {
     flex: 1,

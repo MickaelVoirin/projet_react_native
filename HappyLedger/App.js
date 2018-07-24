@@ -7,23 +7,58 @@ import Registration from './Pages/Registration';
 import Account from './Pages/Account';
 import Profile from './Pages/Profile';
 
+import { AppLoading, Font } from 'expo';
+
 export default class App extends React.Component {
+
+  state = {
+      fontLoaded: false,
+    };
 
   componentDidMount() {
     StatusBar.setHidden(true);
+    this._loadAssetsAsync();
+  }
+
+  async _loadAssetsAsync() {
+    await Font.loadAsync({
+      'raleway': require('./assets/fonts/Raleway-Regular.ttf'),
+    });
+
+    this.setState({ fontLoaded: true });
   }
 
   render() {
+    if (this.state.fontLoaded) {
     return (
         <Router navBar = {Menu}>
           <Stack key="root">
-            <Scene key="Connection" component={Connection} title="Connection"  hideNavBar={true}/>
-            <Scene key="Registration" component={Registration} title="Registration"/>
-            <Scene key="Account" component={Account} title="Account Manager"/>
-            <Scene key="Profile" component={Profile} title="Profile Manager"/>
+            <Scene
+              key="Connection"
+              component={Connection}
+              title="Connection"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Registration"
+              component={Registration}
+              title="Registration"
+            />
+            <Scene
+              key="Account"
+              component={Account}
+              title="Account Manager"
+            />
+            <Scene
+              key="Profile"
+              component={Profile}
+              title="Profile Manager"
+            />
           </Stack>
         </Router>
-    );
+    );} else {
+      return <AppLoading />;
+}
   }
 }
 
