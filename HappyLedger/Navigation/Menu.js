@@ -12,6 +12,7 @@ export default class MyMenu extends React.Component {
           {title : 'Inscription', color : 'gray', key : 'Registration'},
           {title : 'Compte', color : 'gray', key : 'Account'},
           {title : 'Profil', color : 'gray', key : 'Profile'},
+          {title : 'Formulaire', color : 'gray', key : 'Forms'},
       ]
     };
   }

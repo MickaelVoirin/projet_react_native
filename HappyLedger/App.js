@@ -6,6 +6,7 @@ import Connection from './Pages/Connection';
 import Registration from './Pages/Registration';
 import Account from './Pages/Account';
 import Profile from './Pages/Profile';
+import Forms from './Pages/Forms';
 
 import { AppLoading, Font } from 'expo';
 
@@ -53,6 +54,12 @@ export default class App extends React.Component {
               key="Profile"
               component={Profile}
               title="Profile Manager"
+            />
+            <Scene
+              key="Forms"
+              component={Forms}
+              title="Forms"
+              initial
             />
           </Stack>
         </Router>
