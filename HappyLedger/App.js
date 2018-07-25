@@ -7,6 +7,7 @@ import Registration from './Pages/Registration';
 import Account from './Pages/Account';
 import Profile from './Pages/Profile';
 import Forms from './Pages/Forms';
+import ExchangeSurvey from './Pages/ExchangeSurvey';
 
 import { AppLoading, Font } from 'expo';
 
@@ -59,7 +60,11 @@ export default class App extends React.Component {
               key="Forms"
               component={Forms}
               title="Forms"
-              initial
+            />
+            <Scene
+              key="ExchangeSurvey"
+              component={ExchangeSurvey}
+              title="ExchangeSurvey"
             />
           </Stack>
         </Router>
