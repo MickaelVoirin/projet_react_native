@@ -8,14 +8,15 @@ import Account from './Pages/Account';
 import Profile from './Pages/Profile';
 import Forms from './Pages/Forms';
 import ExchangeSurvey from './Pages/ExchangeSurvey';
+import SendPartnAuth from './Pages/SendPartnAuth';
 
 import { AppLoading, Font } from 'expo';
 
 export default class App extends React.Component {
 
   state = {
-      fontLoaded: false,
-    };
+    fontLoaded: false,
+  };
 
   componentDidMount() {
     StatusBar.setHidden(true);
@@ -32,8 +33,8 @@ export default class App extends React.Component {
 
   render() {
     if (this.state.fontLoaded) {
-    return (
-        <Router navBar = {Menu}>
+      return (
+        <Router navBar={Menu}>
           <Stack key="root">
             <Scene
               key="Connection"
@@ -66,11 +67,17 @@ export default class App extends React.Component {
               component={ExchangeSurvey}
               title="ExchangeSurvey"
             />
+            <Scene
+              key="SendPartnAuth"
+              component={SendPartnAuth}
+              title="SendPartnAuth"
+            />
           </Stack>
         </Router>
-    );} else {
+      );
+    } else {
       return <AppLoading />;
-}
+    }
   }
 }
 
