@@ -15,6 +15,7 @@ export default class MyMenu extends React.Component {
           {title : 'Form', color : 'gray', key : 'Forms'},
           {title : 'FormB', color : 'gray', key : 'FormsBiss'},
           {title : 'ExS', color : 'gray', key : 'ExchangeSurvey'},
+          {title : 'SpA', color : 'gray', key : 'SendPartnAuth'},
       ]
     };
   }
