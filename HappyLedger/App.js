@@ -7,6 +7,7 @@ import Registration from './Pages/Registration';
 import Account from './Pages/Account';
 import Profile from './Pages/Profile';
 import Forms from './Pages/Forms';
+import FormsBiss from './Pages/FormsBiss';
 import ExchangeSurvey from './Pages/ExchangeSurvey';
 
 import { AppLoading, Font } from 'expo';
@@ -25,6 +26,7 @@ export default class App extends React.Component {
   async _loadAssetsAsync() {
     await Font.loadAsync({
       'raleway': require('./assets/fonts/Raleway-Regular.ttf'),
+      'Roboto_medium': require('./assets/fonts/Roboto-Medium.ttf'),
     });
 
     this.setState({ fontLoaded: true });
@@ -60,6 +62,11 @@ export default class App extends React.Component {
               key="Forms"
               component={Forms}
               title="Forms"
+            />
+            <Scene
+              key="FormsBiss"
+              component={FormsBiss}
+              title="FormsB"
             />
             <Scene
               key="ExchangeSurvey"
