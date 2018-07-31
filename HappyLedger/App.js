@@ -19,6 +19,8 @@ import SendPartnAuth from './Pages/SendPartnAuth';
 
 import { AppLoading, Font } from 'expo';
 
+const store = createStore(allReducers);
+
 export default class App extends React.Component {
 
   state = {
@@ -38,8 +40,6 @@ export default class App extends React.Component {
 
     this.setState({ fontLoaded: true });
   }
-
-  store = createStore(allReducers);
 
   render() {
     if (this.state.fontLoaded) {
