@@ -1,6 +1,12 @@
 import React from 'react';
+
 import { StyleSheet, StatusBar } from 'react-native';
 import { Router, Stack, Scene } from 'react-native-router-flux';
+
+import { createStore } from 'redux';
+import {Provider} from 'react-redux';
+import allReducers from './reducers';
+
 import Menu from './Navigation/Menu';
 import Connection from './Pages/Connection';
 import Registration from './Pages/Registration';
@@ -33,9 +39,12 @@ export default class App extends React.Component {
     this.setState({ fontLoaded: true });
   }
 
+  store = createStore(allReducers);
+
   render() {
     if (this.state.fontLoaded) {
       return (
+        <Provider store={store}>
         <Router navBar={Menu}>
           <Stack key="root">
             <Scene
@@ -82,6 +91,7 @@ export default class App extends React.Component {
             />
           </Stack>
         </Router>
+      </Provider>
       );
     } else {
       return <AppLoading />;
