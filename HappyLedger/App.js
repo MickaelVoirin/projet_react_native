@@ -58,6 +58,7 @@ export default class App extends React.Component {
               key="Profile"
               component={Profile}
               title="Profile Manager"
+              hideNavBar={true}
             />
             <Scene
               key="Forms"
@@ -68,7 +69,6 @@ export default class App extends React.Component {
               key="Forms3"
               component={Forms3}
               title="Forms3"
-              initial
             />
             <Scene
               key="ExchangeSurvey"
