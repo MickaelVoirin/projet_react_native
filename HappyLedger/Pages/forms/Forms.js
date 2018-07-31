@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { H1, Content, Input, Item, Text, Label, ListItem, CheckBox, Body, Textarea, Button } from 'native-base'
-//<Container style={styles.container}>
+
+
 
 export default class Account extends React.Component {
   
@@ -21,6 +22,7 @@ export default class Account extends React.Component {
 
   render() {
     return (
+      
       <ScrollView style={styles.container}>
         
         <H1>Form view</H1>
