@@ -6,8 +6,8 @@ import Connection from './Pages/Connection';
 import Registration from './Pages/Registration';
 import Account from './Pages/Account';
 import Profile from './Pages/Profile';
-import Forms from './Pages/Forms';
-import FormsBiss from './Pages/FormsBiss';
+import Forms from './Pages/forms/Forms';
+import Forms3 from './Pages/forms/Forms3';
 import ExchangeSurvey from './Pages/ExchangeSurvey';
 import SendPartnAuth from './Pages/SendPartnAuth';
 
@@ -65,9 +65,10 @@ export default class App extends React.Component {
               title="Forms"
             />
             <Scene
-              key="FormsBiss"
-              component={FormsBiss}
-              title="FormsB"
+              key="Forms3"
+              component={Forms3}
+              title="Forms3"
+              initial
             />
             <Scene
               key="ExchangeSurvey"
