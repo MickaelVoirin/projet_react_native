@@ -1,52 +1,69 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { H1, H2, Button, View, Card, Text, Item, Input, Textarea } from 'native-base';
+import { Container, Left, Right, Icon, Body, Title, Header, H1, H2, Button, View, Card, Text, Item, Input, Textarea } from 'native-base';
 import CheckboxList from './CheckboxList'
 import RadioList from './RadioList'
 import DatePickers from './DatePickers'
 import RangeList from './RangeList'
+import FooterApp from '../FooterApp'
 import { Actions } from 'react-native-router-flux';
 
-const cards = [
+
+const cards1 = [
   {
     id : 1,
-    question: 'Question 1 pour test',
+    question: 'Votre prénom',
     type: 'text'
   },
   {
     id : 2,
-    question: 'Nombre d’années d\'expérience dans une fonction en relation avec les marchés financiers',
+    question: 'Votre adresse',
     type: 'textarea'
   },
   {
+    
     id : 3,
-    question: 'Nombre d’années d\'expésddsfrience dans une fonction en relation avec les marchés financiers',
+    question: 'Votre profession',
     type: 'checkbox',
-    answers: ['Text 1', 'Text 2', 'Text 3', 'Text 4', 'AjoutTest']
+    answers: ["etudiant", "chômeur", "retraité", "fonctionnaire", "indépendant", "salarié", "libéral", "autre"]
   },
   {
     id : 4,
+    question: 'De quand date votre dernier investissement ? ',
+    type: 'radio',
+    answers: ['< 6 mois', '< 1 an', '< 2 ans', '< 5 ans', '< 10 ans']
+  },
+  {
+    id : 5,
+    question: 'Avez vous déjà perdu des investissements lors des trois dernières années ?',
+    type: 'radio',
+    answers: ['Oui', 'Non']
+  },
+];
+const cards2 = [
+  {
+    id : 1,
+    question: 'Votre tranche de revenus par an',
+    minMax : [10000, 300000],
+    type: 'ranges',
+  },
+  {
+    id : 2,
+    question: 'Choisir une date',
+    type: 'date',
+  },
+  {
+    id : 3,
     question: 'Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes',
     type: 'checkbox',
     answers: ['Text 1', 'Text 4', 'AjoutTest']
   },
   {
-    id : 5,
+    id : 4,
     question: 'Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes',
     type: 'radio',
-    answers: ['Youpi', 'Text 1', 'Text 4', 'AjoutTest', 'Text 3', 'Text 6']
+    answers: ['Youpi', 'Text 1', 'Text 3', 'Text 6']
   },
-  {
-    id : 6,
-    question: 'Tranches de revenus par an',
-    minMax : [10000, 300000],
-    type: 'ranges',
-  },
-  {
-    id : 7,
-    question: 'Choisir une date',
-    type: 'date',
-  }
 ];
 
 export default class Form3 extends Component {
@@ -56,11 +73,36 @@ export default class Form3 extends Component {
   }
 
   render() {
+    // Script to update dynamically with form's ids
+    const cards = (this.props.numberform == 1) ? cards1 : cards2;
     const elements = cards.find( (a) => {return a.id === parseFloat(this.props.numberquestion)} );
 
     return (
-      <ScrollView style={styles.container}>
-       
+      <Container> 
+      <Header
+          style={{backgroundColor:'#a936c9'}}
+        >
+          <Left>
+            <Button 
+              transparent
+              onPress={() => Actions.Profile()}
+            >
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Formulaire</Title>
+          </Body>
+          <Right>
+            <Button
+              transparent
+              onPress={() => Actions.Account()}
+            >
+              <Icon type="FontAwesome" name='cog' />
+            </Button>
+          </Right>
+        </Header>
+      <ScrollView style={styles.scrollview}>
         { (!elements) 
           ? <Text style={styles.titleH1} onPress={() => Actions.Forms3 ({numberform: '1', numberquestion: '1'})}>
               Aller au questionnaire numero 1
@@ -114,14 +156,17 @@ export default class Form3 extends Component {
           </View>
           
         }
+      
       </ScrollView>
+      <FooterApp/>
+      </Container>
       
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollview: {
     backgroundColor: '#fff',
     paddingRight:10,
     paddingLeft:10,
@@ -155,22 +200,22 @@ const styles = StyleSheet.create({
   },
   buttonLeft:{
     position:'absolute', 
-    top:30,
+    top:20,
     left:0
   },
   buttonRight:{
     position:'absolute', 
-    top:30,
+    top:20,
     right:0
   },
   viewButtons :{ 
-    minHeight:150,
+    minHeight:80,
     flexDirection: "row", 
     flex: 1, 
     position: "relative", 
     top: 15,  
     justifyContent: 'space-between', 
     padding: 15,
-    marginBottom:15, 
+    marginBottom:20, 
   }, 
 });

@@ -6,7 +6,7 @@ export default class Range extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 50,
+      value: this.props.minmax[0],
     };
   }
 

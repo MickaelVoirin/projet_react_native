@@ -37,6 +37,17 @@ export default class Profile extends React.Component {
               uppercase={false}
             >Formulaire 1</Text>
           </Button>
+          <Button 
+            block
+            info
+            bordered
+            style={{marginTop:10}}
+            onPress={() => Actions.Forms3({numberform: '2', numberquestion: '1'})}
+          >
+            <Text
+              uppercase={false}
+            >Formulaire 2</Text>
+          </Button>
           <Button
             block
             success

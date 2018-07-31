@@ -69,6 +69,7 @@ export default class App extends React.Component {
               key="Forms3"
               component={Forms3}
               title="Forms3"
+              hideNavBar={true}
             />
             <Scene
               key="ExchangeSurvey"
