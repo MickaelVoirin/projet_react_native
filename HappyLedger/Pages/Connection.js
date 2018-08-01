@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { FormInput, SocialIcon, Button } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
-
+import { LinearGradient } from 'expo';
 export default class Connection extends React.Component {
 
   constructor(props) {
@@ -15,7 +15,12 @@ export default class Connection extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <LinearGradient
+        colors={['#3c76eb', '#b330c5']}
+        style={styles.container}
+        start={[0,0]}
+        end={[1,1]}
+      >
         <View style={styles.logo_block}>
           <Image
             source={require('../assets/images/happy-ledger-logo-white.png')}
@@ -87,7 +92,7 @@ export default class Connection extends React.Component {
             fontFamily = 'raleway'
           />
         </View>
-      </View>
+      </LinearGradient>
     );
   }
 }
