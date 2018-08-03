@@ -79,9 +79,9 @@
       "marié": "checkbox",
       "pacs": "checkbox",
       "célibataire": "checkbox",
-      "veuf": "checkout",
-      "divorcé ou séparé": "checkout",
-      "concubin": "checkout"
+      "veuf": "checkbox",
+      "divorcé ou séparé": "checkbox",
+      "concubin": "checkbox"
     }
   },
     "child": {
@@ -133,7 +133,7 @@
       "answerType":
       {
         "< 200 000": "checkbox",
-        "de 200 000 à 500 000": "checkout",
+        "de 200 000 à 500 000": "checkbox",
         "> à 500 000": "checkbox"
     }
   },
