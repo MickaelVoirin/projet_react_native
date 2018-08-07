@@ -19,15 +19,20 @@ import SendPartnAuth from './Pages/SendPartnAuth';
 
 import { AppLoading, Font } from 'expo';
 
+import { Alert, AsyncStorage } from "react-native"
+
+import * as jsonDatas from './JSON/formdatas.json'
+
 const store = createStore(allReducers);
 
 export default class App extends React.Component {
 
   state = {
-    fontLoaded: false,
+    isReady: false,
   };
 
   componentDidMount() {
+    AsyncStorage.clear();
     StatusBar.setHidden(true);
     this._loadAssetsAsync();
   }
@@ -37,12 +42,26 @@ export default class App extends React.Component {
       'raleway': require('./assets/fonts/Raleway-Regular.ttf'),
       'Roboto_medium': require('./assets/fonts/Roboto-Medium.ttf'),
     });
+    try {
+      let listOfForms = [];
+      for (let key in jsonDatas) {
+        if (jsonDatas.hasOwnProperty(key) && key != 'default') {
+          await AsyncStorage.setItem(key, JSON.stringify(jsonDatas[key]));
+          listOfForms.push(key);
+        }
+        
+      };
+      await AsyncStorage.setItem('listOfForms', JSON.stringify(listOfForms));
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+    
 
-    this.setState({ fontLoaded: true });
+    this.setState({ isReady: true });    
   }
 
   render() {
-    if (this.state.fontLoaded) {
+    if (this.state.isReady) {
       return (
         <Provider store={store}>
         <Router navBar={Menu}>
