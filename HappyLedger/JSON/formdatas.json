@@ -7,55 +7,55 @@
       "id": 1,
       "questionText": "your name",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "firstname": {
       "id": 2,
       "questionText": "your firstname",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "birthDate": {
       "id": 3,
       "questionText": "your birthdate",
       "answerType": "date",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "birthPlace": {
       "id": 4,
       "questionText": "your birth place",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "address": {
       "id": 5,
       "questionText": "your address",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "zipCode": {
       "id": 6,
       "questionText": "your zip code",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "city": {
       "id": 7,
       "questionText": "your city",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "email": {
       "id": 8,
       "questionText": "your email",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     },
     "phoneNumber": {
       "id": 9,
       "questionText": "your phone number",
       "answerType": "text",
-      "userAnswer": []
+      "userAnswer": ""
     }
   }
 },
@@ -68,7 +68,7 @@
       "id": 1,
       "questionText": "your profession",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
       "etudiant",
@@ -86,7 +86,7 @@
       "id": 2,
       "questionText": "your family situation",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
       "marié",
@@ -101,7 +101,7 @@
       "id": 3,
       "questionText": "your dependent",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
       "0",
@@ -115,7 +115,7 @@
       "id": 4,
       "questionText": "your monthly wage",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
       "- de 2500 €",
@@ -128,7 +128,7 @@
       "id": 5,
       "questionText": "your financial patrimony",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
         "< 20 000",
@@ -141,7 +141,7 @@
       "id": 6,
       "questionText": "are you owner of your house",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
         "yes",
@@ -152,7 +152,7 @@
       "id": 7,
       "questionText": "your real estate patrimony",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
         "< 200 000",
@@ -175,7 +175,7 @@
       "id": 9,
       "questionText": "have you already invest ?",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
         "yes",
@@ -186,7 +186,7 @@
       "id": 10,
       "questionText": "have you already lost savings in investment ?",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
         "yes",
@@ -212,7 +212,7 @@
       "id": 11,
       "questionText": "your knowlege about products",
       "answerType": "radio",
-      "userAnswer": [],
+      "userAnswer": "",
       "ContentType":
       [
         "faible",
