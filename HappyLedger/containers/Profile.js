@@ -27,7 +27,7 @@ class Profile extends Component {
       block
       info
       bordered
-      onPress={() => Actions.Forms3({numberform: form.id, nameform: form.name, numberquestion: '1'})}
+      onPress={() => Actions.Forms({numberform: form.id, nameform: form.name, numberquestion: '1'})}
     >
       <Text
         uppercase={false}
