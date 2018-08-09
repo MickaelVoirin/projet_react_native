@@ -13,10 +13,15 @@ async function delay() {
 // --------------------------------------
 
 retrieveData = async () => {
-
-  let listOfFormsPromises = await AsyncStorage.getItem('listOfForms');
-  await delay();
-  return listOfFormsPromises;
+  try {
+    let listOfFormsPromises = await AsyncStorage.getItem('listOfForms');
+    await delay();
+    if (listOfFormsPromises != null ) {
+      return listOfFormsPromises;
+    }
+  } catch (error) {
+    return error
+  }
 }
 
 export const getListOfForms = () => {
@@ -24,6 +29,7 @@ export const getListOfForms = () => {
     dispatch(getListOfFormsBegin());
     return retrieveData()
     .then(x => dispatch(getListOfFormsSuccess(JSON.parse(x))))
+    .catch(error => dispatch(getListOfFormsError(error)))
   }
 
 }
@@ -42,6 +48,6 @@ export const getListOfFormsSuccess = listOfForms => ({
 });
 
 export const getListOfFormsError = error => ({
-  type: FETCH_PRODUCTS_FAILURE,
+  type: GET_LIST_OF_FORMS_FAILURE,
   error: error 
 });

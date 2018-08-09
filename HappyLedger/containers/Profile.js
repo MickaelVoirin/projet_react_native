@@ -13,14 +13,27 @@ class Profile extends Component {
   render() {
 
     const { error, loading, listOfForms } = this.props;
+    let rendering = '';
 
     if (error) {
-      return <Text>Error! {error.message}</Text>;
-    }
-  
-    if (loading) {
-      return <Spinner color='#a936c9' />;
-    }
+      rendering =  <Text>Une erreur est survenue dans le traitement de votre demande.</Text>;
+    } else if (loading) {
+      rendering = <Spinner color='#a936c9' />;
+    } else {
+
+      rendering = listOfForms.map(form =>
+      <Button
+      key={form.id}
+      block
+      info
+      bordered
+      onPress={() => Actions.Forms3({numberform: form.id, nameform: form.name, numberquestion: '1'})}
+    >
+      <Text
+        uppercase={false}
+      >{form.title}</Text>
+    </Button>
+    )}
   
     return (
       <Container>
@@ -43,19 +56,7 @@ class Profile extends Component {
         <Content
           style={{padding:10}}
         >
-        {listOfForms.map(form =>
-          <Button
-          key={form.id}
-          block
-          info
-          bordered
-          onPress={() => Actions.Forms3({numberform: form.id, nameform: form.name, numberquestion: '1'})}
-        >
-          <Text
-            uppercase={false}
-          >{form.title}</Text>
-        </Button>
-        )}
+        { rendering }
         </Content>
         <FooterApp/>
       </Container>
