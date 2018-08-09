@@ -19,13 +19,11 @@ import Account from './Pages/Account';
 import ExchangeSurvey from './components/ExchangeSurvey';
 import SendPartnAuth from './components/SendPartnAuth';
 import Camera from './components/camera/Camera';
+import Home from './components/Home';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import CamPicture from './containers/camera/CamPicture';
-import ExchangeSurvey from './components/ExchangeSurvey';
-import SendPartnAuth from './components/SendPartnAuth';
-import Home from './components/Home';
 
 import { AppLoading, Font } from 'expo';
 
