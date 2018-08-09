@@ -45,7 +45,7 @@ export default class Connection extends React.Component {
           style={styles.connectButton}
         >
           <Button
-            onPress={() => Actions.Profile()}
+            onPress={() => Actions.Home()}
             rounded
             title="Se connecter"
             color='#a936c9'

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Container, Left, Right, Icon, Body, Title, Header, H1, H2, Button, View, Card, Text, Item, Input, Textarea } from 'native-base';
-import CheckboxList from './CheckboxList'
-import RadioList from './RadioList'
-import DatePickers from './DatePickers'
-import RangeList from './RangeList'
-import FooterApp from '../FooterApp'
+import CheckboxList from '../components/forms/CheckboxList'
+import RadioList from '../components/forms/RadioList'
+import DatePickers from '../components/forms/DatePickers'
+import RangeList from '../components/forms/RangeList'
+import TakePicture from '../containers/camera/TakePicture'
+import FooterApp from '../Pages/FooterApp'
 import { Actions } from 'react-native-router-flux';
 
 
@@ -43,37 +44,41 @@ const cards1 = [
 const cards2 = [
   {
     id : 1,
+    question: 'Piece identité',
+    type: 'file',
+  },
+  {
+    id : 2,
     question: 'Votre tranche de revenus par an',
     minMax : [10000, 300000],
     type: 'ranges',
   },
   {
-    id : 2,
+    id : 3,
     question: 'Choisir une date',
     type: 'date',
   },
   {
-    id : 3,
+    id : 4,
     question: 'Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes',
     type: 'checkbox',
     answers: ['Text 1', 'Text 4', 'AjoutTest']
   },
   {
-    id : 4,
+    id : 5,
     question: 'Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes Texte sur plusieurs lignes',
     type: 'radio',
     answers: ['Youpi', 'Text 1', 'Text 3', 'Text 6']
   },
 ];
 
-export default class Form3 extends Component {
+export default class Forms extends Component {
   
   constructor(props){
     super(props);
   }
 
   render() {
-    // Script to update dynamically with form's ids
     const cards = (this.props.numberform == 1) ? cards1 : cards2;
     const elements = cards.find( (a) => {return a.id === parseFloat(this.props.numberquestion)} );
 
@@ -104,7 +109,7 @@ export default class Form3 extends Component {
         </Header>
       <ScrollView style={styles.scrollview}>
         { (!elements) 
-          ? <Text style={styles.titleH1} onPress={() => Actions.Forms3 ({numberform: '1', numberquestion: '1'})}>
+          ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>
               Aller au questionnaire numero 1
             </Text>
           :
@@ -135,6 +140,8 @@ export default class Form3 extends Component {
                         return <DatePickers />       
                       case 'ranges' : 
                         return <RangeList minmax={elements.minMax}/>
+                      case 'file':
+                        return <TakePicture numberform={this.props.numberform} numberquestion={this.props.numberquestion}/>
                       default:
                         return '';
                   }
@@ -143,12 +150,12 @@ export default class Form3 extends Component {
             </Card>
             <View style={styles.viewButtons}>
             {elements.id !== 1 &&
-              <Button style={styles.buttonLeft} onPress={() => Actions.Forms3 ({numberform: this.props.numberform, numberquestion: elements.id - 1})}>
+              <Button style={styles.buttonLeft} onPress={() => Actions.Forms ({numberform: this.props.numberform, numberquestion: elements.id - 1})}>
                 <Text>Précédente</Text>
               </Button>
             }
             {elements.id !== cards.length &&
-              <Button style={styles.buttonRight} onPress={() => Actions.Forms3 ({numberform: this.props.numberform, numberquestion: elements.id + 1})}>
+              <Button style={styles.buttonRight} onPress={() => Actions.Forms ({numberform: this.props.numberform, numberquestion: elements.id + 1})}>
                 <Text>Suivant</Text>
               </Button>
             }
