@@ -36,7 +36,7 @@ export default class Profile extends React.Component {
             block
             info
             bordered
-            onPress={() => Actions.Forms3({numberform: '1', numberquestion: '1'})}
+            onPress={() => Actions.Forms({numberform: '1', numberquestion: '1'})}
           >
             <Text
               uppercase={false}
@@ -47,7 +47,7 @@ export default class Profile extends React.Component {
             info
             bordered
             style={{marginTop:10}}
-            onPress={() => Actions.Forms3({numberform: '2', numberquestion: '1'})}
+            onPress={() => Actions.Forms({numberform: '2', numberquestion: '1'})}
           >
             <Text
               uppercase={false}
