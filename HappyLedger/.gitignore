@@ -3,6 +3,9 @@
 # expo
 .expo/
 
+# package-lock
+package-lock.json
+
 # dependencies
 /node_modules
 

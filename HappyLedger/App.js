@@ -14,8 +14,8 @@ import Account from './Pages/Account';
 import Profile from './Pages/Profile';
 import Forms from './Pages/forms/Forms';
 import Forms3 from './Pages/forms/Forms3';
-import ExchangeSurvey from './Pages/ExchangeSurvey';
-import SendPartnAuth from './Pages/SendPartnAuth';
+import ExchangeSurvey from './components/ExchangeSurvey';
+import SendPartnAuth from './components/SendPartnAuth';
 
 import { AppLoading, Font } from 'expo';
 
