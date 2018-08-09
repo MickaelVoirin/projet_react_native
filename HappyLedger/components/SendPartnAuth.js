@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, View, Content, Button, Text } from "native-base";
-import HeaderApp from 'HeaderApp';
+import HeaderApp from './HeaderApp';
 
 class SendPartnAuth extends Component {
 
