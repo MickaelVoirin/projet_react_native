@@ -3,11 +3,13 @@ import { Container, Item, Input, Header, Content, List, ListItem, Text, Icon, Ri
 import { Actions } from 'react-native-router-flux';
 import FooterApp from './FooterApp';
 import { StyleSheet } from 'react-native';
+import HeaderApp from './HeaderApp';
 
 class Home extends React.Component {
   render() { 
     return ( 
 <Container>
+  <HeaderApp/>
   <Header 
   searchBar 
   rounded

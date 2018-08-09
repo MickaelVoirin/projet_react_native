@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { FormInput, SocialIcon, Button } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import { LinearGradient } from 'expo';
+
+
 export default class Connection extends React.Component {
 
   constructor(props) {
