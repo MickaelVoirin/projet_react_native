@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Content, List, ListItem, Text } from "native-base";
-import HeaderApp from 'HeaderApp';
+import HeaderApp from './HeaderApp';
 
 class ExchangeSurvey extends Component {
 
