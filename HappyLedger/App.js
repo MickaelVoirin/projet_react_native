@@ -11,15 +11,20 @@ import thunk from 'redux-thunk';
 import allReducers from './reducers';
 
 import Menu from './Navigation/Menu';
+
 import Connection from './Pages/Connection';
 import Registration from './Pages/Registration';
 import Account from './Pages/Account';
+
+import ExchangeSurvey from './components/ExchangeSurvey';
+import SendPartnAuth from './components/SendPartnAuth';
+import Camera from './components/camera/Camera';
+
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
-import Camera from './components/camera/Camera';
 import CamPicture from './containers/camera/CamPicture';
-import ExchangeSurvey from './Pages/ExchangeSurvey';
-import SendPartnAuth from './Pages/SendPartnAuth';
+import ExchangeSurvey from './components/ExchangeSurvey';
+import SendPartnAuth from './components/SendPartnAuth';
 import Home from './components/Home';
 
 import { AppLoading, Font } from 'expo';

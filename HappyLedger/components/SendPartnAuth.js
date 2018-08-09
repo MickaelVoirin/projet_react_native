@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, View, Content, Button, Text } from "native-base";
+import HeaderApp from './HeaderApp';
 
 class SendPartnAuth extends Component {
 
   render() {
     return (
+
       <Container>
+        <HeaderApp />
         <Content>
           <View style={styles.flexCont}>
             <View style={styles.divRow}>
@@ -35,18 +38,18 @@ const styles = StyleSheet.create({
     flex: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10
+    marginTop: 10,
   },
   divRow: {
     flexDirection: 'row',
   },
   butt: {
-    backgroundColor: '#a936c9'
+    backgroundColor: '#a936c9',
   },
   textAlign: {
     marginTop: 13,
-    marginRight: 10
+    marginRight: 10,
   },
 });
 
-export default SendPartnAuth
+export default SendPartnAuth;
