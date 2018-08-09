@@ -12,8 +12,9 @@ import Connection from './Pages/Connection';
 import Registration from './Pages/Registration';
 import Account from './Pages/Account';
 import Profile from './Pages/Profile';
-import Forms from './Pages/forms/Forms';
-import Forms3 from './Pages/forms/Forms3';
+import Forms from './containers/Forms';
+import Camera from './components/camera/Camera';
+import CamPicture from './containers/camera/CamPicture';
 import ExchangeSurvey from './Pages/ExchangeSurvey';
 import SendPartnAuth from './Pages/SendPartnAuth';
 
@@ -73,11 +74,6 @@ export default class App extends React.Component {
               key="Forms"
               component={Forms}
               title="Forms"
-            />
-            <Scene
-              key="Forms3"
-              component={Forms3}
-              title="Forms3"
               hideNavBar={true}
             />
             <Scene
@@ -89,6 +85,18 @@ export default class App extends React.Component {
               key="SendPartnAuth"
               component={SendPartnAuth}
               title="SendPartnAuth"
+            />
+            <Scene
+              key="Camera"
+              component={Camera}
+              title="Camera"
+              hideNavBar={true}
+            />
+            <Scene
+              key="CamPicture"
+              component={CamPicture}
+              title="Picture"
+              hideNavBar={true}
             />
           </Stack>
         </Router>
