@@ -8,6 +8,8 @@ export default class Profile extends React.Component {
   render() {
     return (
       <Container>
+
+{/* HEADER         */}
         <Header
           style={{backgroundColor:'#a936c9'}}
         >
@@ -24,6 +26,9 @@ export default class Profile extends React.Component {
             </Button>
           </Right>
         </Header>
+
+{/* FIN DU HEADER  */}
+
         <Content
           style={{padding:10}}
         >
