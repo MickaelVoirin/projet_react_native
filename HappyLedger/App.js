@@ -3,15 +3,18 @@ import React from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 
-import { createStore } from 'redux';
+import { createStore , applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
+
+import thunk from 'redux-thunk';
+
 import allReducers from './reducers';
 
 import Menu from './Navigation/Menu';
 import Connection from './Pages/Connection';
 import Registration from './Pages/Registration';
 import Account from './Pages/Account';
-import Profile from './Pages/Profile';
+import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import Camera from './components/camera/Camera';
 import CamPicture from './containers/camera/CamPicture';
@@ -24,7 +27,7 @@ import { Alert, AsyncStorage } from "react-native"
 
 import * as jsonDatas from './JSON/formdatas.json'
 
-const store = createStore(allReducers);
+const store = createStore(allReducers, applyMiddleware(thunk));
 
 export default class App extends React.Component {
 
@@ -48,7 +51,7 @@ export default class App extends React.Component {
       for (let key in jsonDatas) {
         if (jsonDatas.hasOwnProperty(key) && key != 'default') {
           await AsyncStorage.setItem(key, JSON.stringify(jsonDatas[key]));
-          listOfForms.push(key);
+          listOfForms.push({'id':jsonDatas[key]['id'],'name':key,'title':jsonDatas[key]['title']});
         }
         
       };
