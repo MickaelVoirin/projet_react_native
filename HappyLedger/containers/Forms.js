@@ -6,7 +6,7 @@ import RadioList from '../components/forms/RadioList'
 import DatePickers from '../components/forms/DatePickers'
 import RangeList from '../components/forms/RangeList'
 import TakePicture from '../containers/camera/TakePicture'
-import FooterApp from '../Pages/FooterApp'
+import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
 
 

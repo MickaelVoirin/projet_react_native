@@ -23,7 +23,9 @@ import Camera from './components/camera/Camera';
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import CamPicture from './containers/camera/CamPicture';
-import Home from './containers/Home';
+import ExchangeSurvey from './components/ExchangeSurvey';
+import SendPartnAuth from './components/SendPartnAuth';
+import Home from './components/Home';
 
 import { AppLoading, Font } from 'expo';
 

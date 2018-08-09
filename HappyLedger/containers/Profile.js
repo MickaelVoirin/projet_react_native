@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {getListOfForms} from '../actions/ListOfFormsActions';
 import { Container, Header, Content, Title, Button, Left, Right, Body, Icon, Text, Spinner } from 'native-base';
-import FooterApp from '../Pages/FooterApp'
-import { Actions } from 'react-native-router-flux'
+import FooterApp from '../components/FooterApp';
+import { Actions } from 'react-native-router-flux';
  
 class Profile extends Component {
 
