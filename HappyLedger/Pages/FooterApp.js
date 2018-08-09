@@ -7,13 +7,15 @@ export default class FooterApp extends Component {
     return (
         <Footer>
           <FooterTab
-            style={{backgroundColor:'#a936c9'}}
+            // style={{backgroundColor:'#a936c9'}}
             tabBarTextColor='white'
           >
+
+ {/* BUTTON HOME */}
             <Button
               vertical
-              active
-              style={{backgroundColor:'#a936c9'}}
+              // style={{backgroundColor:'#a936c9'}}
+              onPress={() => Actions.Home()}
             >
               <Icon
                 type='FontAwesome'
@@ -24,9 +26,12 @@ export default class FooterApp extends Component {
                 style={{fontFamily:'raleway'}}
               >Home</Text>
             </Button>
+
+{/* FIN DU BUTTON HOME */}
+
             <Button
               vertical
-              style={{backgroundColor:'#a936c9'}}
+              // style={{backgroundColor:'#a936c9'}}
             >
               <Icon
                 type='FontAwesome'
@@ -37,9 +42,12 @@ export default class FooterApp extends Component {
                 style={{fontFamily:'raleway'}}
               >Notifications</Text>
             </Button>
+
+{/* FIN BUTTON NOTIF */}
+
             <Button
               vertical
-              style={{backgroundColor:'#a936c9'}}
+              // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.ExchangeSurvey()}
             >
               <Icon

@@ -16,6 +16,7 @@ import Forms from './Pages/forms/Forms';
 import Forms3 from './Pages/forms/Forms3';
 import ExchangeSurvey from './Pages/ExchangeSurvey';
 import SendPartnAuth from './Pages/SendPartnAuth';
+import Home from './Pages/Home';
 
 import { AppLoading, Font } from 'expo';
 
@@ -57,6 +58,12 @@ export default class App extends React.Component {
               key="Registration"
               component={Registration}
               title="Registration"
+            />
+              <Scene
+              key="Home"
+              component={Home}
+              title="Home"
+              hideNavBar={true}
             />
             <Scene
               key="Account"
