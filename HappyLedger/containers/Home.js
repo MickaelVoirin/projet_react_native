@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Item, Input, Header, Content, List, ListItem, Text, Icon, Right, Body } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import FooterApp from './FooterApp';
+import FooterApp from '../Pages/FooterApp';
 import { StyleSheet } from 'react-native';
 
 class Home extends React.Component {
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     paddingTop : 10,
     paddingBottom: 10,
     paddingLeft: 10,
+    fontFamily: 'raleway',
   },
   iconColor: {
     color: "black",
