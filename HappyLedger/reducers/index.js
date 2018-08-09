@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import dataReducer from './data'
+import listOfFormsReducer from './listOfForms'
 
 const allReducers = combineReducers({
-  data: dataReducer
+  listOfForms: listOfFormsReducer
 })
 
 export default allReducers;
