@@ -20,7 +20,7 @@ import Camera from './components/camera/Camera';
 import CamPicture from './containers/camera/CamPicture';
 import ExchangeSurvey from './Pages/ExchangeSurvey';
 import SendPartnAuth from './Pages/SendPartnAuth';
-import Home from './containers/Home';
+import Home from './components/Home';
 
 import { AppLoading, Font } from 'expo';
 
