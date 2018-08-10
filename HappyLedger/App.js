@@ -112,6 +112,7 @@ export default class App extends React.Component {
               key="ExchangeSurvey"
               component={ExchangeSurvey}
               title="ExchangeSurvey"
+              hideNavBar={true}
             />
             <Scene
               key="SendPartnAuth"
