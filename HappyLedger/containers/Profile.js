@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {getListOfForms} from '../actions/ListOfFormsActions';
-import { Container, Header, Content, Title, Button, Left, Right, Body, Icon, Text, Spinner } from 'native-base';
+import { Container, Content, Right, Body, Icon, Text, Spinner, ListItem, Separator } from 'native-base';
+import { StyleSheet } from 'react-native';
 import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
+import HeaderApp from '../components/HeaderApp';
+
  
 class Profile extends Component {
 
@@ -22,41 +25,42 @@ class Profile extends Component {
     } else {
 
       rendering = listOfForms.map(form =>
-      <Button
+      <ListItem
       key={form.id}
-      block
-      info
-      bordered
       onPress={() => Actions.Forms({numberform: form.id, nameform: form.name, numberquestion: '1'})}
     >
+    <Body>
       <Text
         uppercase={false}
+        style={styles.text}
       >{form.title}</Text>
-    </Button>
+      </Body>
+      <Right>
+        <Icon type="MaterialIcons" name="keyboard-arrow-right"/>
+      </Right>
+    </ListItem>
     )}
   
     return (
       <Container>
-        <Header
-          style={{backgroundColor:'#a936c9'}}
-        >
-          <Left/>
-          <Body>
-            <Title>Profil</Title>
-          </Body>
-          <Right>
-            <Button
-              transparent
-              onPress={() => Actions.Account()}
-            >
-              <Icon type="FontAwesome" name='cog' />
-            </Button>
-          </Right>
-        </Header>
+        <HeaderApp/>
         <Content
           style={{padding:10}}
         >
+         <Separator 
+         bordered
+         style={styles.separator}>
+            <Text>A COMPLETER</Text>
+          </Separator>
+
         { rendering }
+
+        <Separator 
+        bordered
+        style={styles.separatorComplet}>
+            <Text>COMPLET</Text>
+          </Separator>
+
         </Content>
         <FooterApp/>
       </Container>
@@ -72,3 +76,16 @@ const mstp = state => ({
 });
 
 export default connect(mstp)(Profile);
+
+const styles = StyleSheet.create({
+  separator: {
+    marginTop: 2,
+    marginBottom: 2,
+  },
+  separatorComplet : {
+    marginTop: 2,
+  },
+  text: {
+    fontFamily:'raleway',
+  }
+});
