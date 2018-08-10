@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   },
   headerStyle: {
     paddingBottom: 20,
-  }
-
+    paddingTop: 20,
+    backgroundColor: '#f2f2f2',
+  },
 });
