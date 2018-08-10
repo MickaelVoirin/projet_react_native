@@ -13,7 +13,6 @@ export default class MyMenu extends React.Component {
           {title : 'Cpt', color : 'gray', key : 'Account'},
           {title : 'Pl', color : 'gray', key : 'Profile'},
           {title : 'Form', color : 'gray', key : 'Forms'},
-          {title : 'Form3', color : 'gray', key : 'Forms3'},
           {title : 'ExS', color : 'gray', key : 'ExchangeSurvey'},
           {title : 'SpA', color : 'gray', key : 'SendPartnAuth'},
           {title : 'H', color: 'gray', key : 'Home'},
