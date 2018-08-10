@@ -8,7 +8,7 @@ export default class FooterApp extends Component {
     return (
         <Footer>
           <FooterTab
-            // style={{backgroundColor:'#a936c9'}}
+            style={{backgroundColor:'#f2f2f2'}}
             tabBarTextColor='white'
           >
 
@@ -20,6 +20,7 @@ export default class FooterApp extends Component {
               <Icon
                 type='FontAwesome'
                 name="home"
+                style={styles.icon}
               />
               <Text
                 uppercase={false}
@@ -35,6 +36,7 @@ export default class FooterApp extends Component {
               <Icon
                 type='MaterialIcons'
                 name="notifications"
+                style={styles.icon}
               />
               <Text
                 uppercase={false}
@@ -51,7 +53,9 @@ export default class FooterApp extends Component {
             >
               <Icon
                 type='FontAwesome'
-                name="check" />
+                name="check"
+                style={styles.icon}
+              />
                 <Text
                   uppercase={false}
                   style={styles.text}
@@ -67,7 +71,9 @@ export default class FooterApp extends Component {
             >
               <Icon
                 type='FontAwesome'
-                name="user" />
+                name="user"
+                style={styles.icon}
+              />
                 <Text
                 style={styles.text}
                   uppercase={false}
@@ -86,6 +92,9 @@ const styles = StyleSheet.create({
     fontFamily: 'raleway',
     paddingLeft: 1,
     paddingRight: 1,
-
+    color: '#848484',
+  },
+  icon: {
+    color: '#848484',
   }
 })
