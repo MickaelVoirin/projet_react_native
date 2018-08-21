@@ -19,6 +19,7 @@ import Home from './components/Home';
 import Account from './components/Account';
 import Registration from './components/Registration';
 import Notifications from './components/Notifications';
+import Portefeuille from './components/Portefeuille';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -95,6 +96,12 @@ export default class App extends React.Component {
               key="Account"
               component={Account}
               title="Account Manager"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Portefeuille"
+              component={Portefeuille}
+              title="Portefeuille"
               hideNavBar={true}
             />
             <Scene

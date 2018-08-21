@@ -24,7 +24,9 @@ class Home extends React.Component {
         <Content>
           <List>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.Portefeuille()}
+            >
               <Body>
               <Text style={styles.text}>Portefeuille</Text>
               </Body>
