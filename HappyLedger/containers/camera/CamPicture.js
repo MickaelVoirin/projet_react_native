@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Content, View, Text, Header, Left, Right, Button, Icon, Title, Body } from 'native-base';
 import { Image } from 'react-native';
+import HeaderApp from '../../components/HeaderApp';
 import FooterApp from '../../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -22,30 +23,7 @@ class CamPicture extends React.Component{
     const {image} = this.props; 
     return (
       <Container>
-        <Header
-          style={{backgroundColor:'#a936c9'}}
-        >
-          <Left>
-            <Button 
-              transparent
-              onPress={() => Actions.Camera()}
-            >
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Camera</Title>
-          </Body>
-          <Right>
-
-            <Button
-              transparent
-              onPress={() => Actions.Forms()}
-            >
-              <Icon type="FontAwesome" name='cog' />
-            </Button>
-          </Right>
-        </Header>
+        <HeaderApp title={this.props.title}/>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{marginBottom:20}}>Souhaitez vous valider cette photo ?</Text>
             <View style={{flexDirection: 'row', marginBottom:20}}>
