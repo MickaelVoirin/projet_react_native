@@ -78,13 +78,13 @@ export default class App extends React.Component {
             <Scene
               key="Connection"
               component={Connection}
-              title="Connection"
+              title="Connexion"
               hideNavBar={true}
             />
             <Scene
               key="Registration"
               component={Registration}
-              title="Registration"
+              title="Créer un compte"
               hideNavBar={true}
             />
               <Scene
@@ -96,7 +96,7 @@ export default class App extends React.Component {
             <Scene
               key="Account"
               component={Account}
-              title="Account Manager"
+              title="Paramètres"
               hideNavBar={true}
             />
             <Scene
@@ -114,19 +114,19 @@ export default class App extends React.Component {
             <Scene
               key="Profile"
               component={Profile}
-              title="Profile Manager"
+              title="Profil"
               hideNavBar={true}
             />
             <Scene
               key="Forms"
               component={Forms}
-              title="Forms"
+              title="Formulaires"
               hideNavBar={true}
             />
             <Scene
               key="ExchangeSurvey"
               component={ExchangeSurvey}
-              title="ExchangeSurvey"
+              title="Autorisations"
               hideNavBar={true}
             />
             <Scene

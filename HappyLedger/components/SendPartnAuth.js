@@ -9,7 +9,7 @@ class SendPartnAuth extends Component {
     return (
 
       <Container>
-        <HeaderApp />
+        <HeaderApp title={this.props.title}/>
         <Content>
           <View style={styles.flexCont}>
             <View style={styles.divRow}>

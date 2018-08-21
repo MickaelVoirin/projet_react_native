@@ -9,7 +9,7 @@ class Home extends React.Component {
   render() { 
     return ( 
 <Container>
-  <HeaderApp/>
+  <HeaderApp title={this.props.title}/>
   <Header 
   searchBar 
   rounded
