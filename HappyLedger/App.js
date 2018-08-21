@@ -22,6 +22,7 @@ import Notifications from './components/Notifications';
 import Portefeuille from './components/Portefeuille';
 import Recherche from './components/Recherche';
 import AcheterVendre from './components/AcheterVendre';
+import Investir from './components/Investir';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -116,6 +117,12 @@ export default class App extends React.Component {
               key="AcheterVendre"
               component={AcheterVendre}
               title="AcheterVendre"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Investir"
+              component={Investir}
+              title="Investir"
               hideNavBar={true}
             />
             <Scene

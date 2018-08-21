@@ -50,7 +50,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.Investir()}
+            >
             <Body>
               <Text style={styles.text}>Investir</Text>
               </Body>
