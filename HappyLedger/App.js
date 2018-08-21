@@ -24,6 +24,7 @@ import Recherche from './components/Recherche';
 import AcheterVendre from './components/AcheterVendre';
 import Investir from './components/Investir';
 import Epargner from './components/Epargner';
+import DemandePret from './components/DemandePret';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -130,6 +131,12 @@ export default class App extends React.Component {
               key="Epargner"
               component={Epargner}
               title="Epargner"
+              hideNavBar={true}
+            />
+            <Scene
+              key="DemandePret"
+              component={DemandePret}
+              title="Demande de Prêt"
               hideNavBar={true}
             />
             <Scene

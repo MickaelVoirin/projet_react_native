@@ -72,7 +72,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.DemandePret()}
+            >
               <Body>
               <Text style={styles.text}>Demande de Prêt</Text>
               </Body>
