@@ -8,7 +8,7 @@ export default class Registration extends React.Component {
   render() {
     return (
         <Container>
-            <HeaderApp />
+            <HeaderApp title={this.props.title}/>
             <Content>
                 <Text>Registration page</Text>
             </Content>

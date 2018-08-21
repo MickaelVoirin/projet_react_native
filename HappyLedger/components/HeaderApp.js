@@ -5,6 +5,11 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo';
 
 export default class HeaderApp extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
 
@@ -25,7 +30,7 @@ export default class HeaderApp extends Component {
             <Icon name='arrow-back' style={styles.buttonBack} />
           </Button>
 
-          <Title style={styles.title}>{Actions.currentScene}</Title>
+          <Title style={styles.title}>{this.props.title}</Title>
 
           <Button
             transparent

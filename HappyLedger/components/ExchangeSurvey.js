@@ -6,16 +6,11 @@ import { StyleSheet } from 'react-native';
 
 class ExchangeSurvey extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
 
       <Container>
-        <HeaderApp />
+        <HeaderApp title={this.props.title}/>
         <Content>
 
           <List style={styles.pad}>

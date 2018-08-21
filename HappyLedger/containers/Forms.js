@@ -85,7 +85,7 @@ export default class Forms extends Component {
 
     return (
       <Container> 
-      <HeaderApp />
+      <HeaderApp title={this.props.title}/>
       <ScrollView style={styles.scrollview}>
         { (!elements) 
           ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>

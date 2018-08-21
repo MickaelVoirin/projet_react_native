@@ -8,7 +8,7 @@ export default class Account extends React.Component {
   render() {
     return (
         <Container>
-            <HeaderApp />
+            <HeaderApp title={this.props.title}/>
             <Content>
                 <Text>Account managment page</Text>
             </Content>

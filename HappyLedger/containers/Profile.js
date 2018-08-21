@@ -43,7 +43,7 @@ class Profile extends Component {
   
     return (
       <Container>
-        <HeaderApp/>
+        <HeaderApp title={this.props.title}/>
         <Content
           style={{padding:10}}
         >
