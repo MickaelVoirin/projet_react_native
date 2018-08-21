@@ -10,8 +10,6 @@ import thunk from 'redux-thunk';
 
 import allReducers from './reducers';
 
-import Menu from './Navigation/Menu';
-
 import Connection from './Pages/Connection';
 
 import ExchangeSurvey from './components/ExchangeSurvey';
@@ -72,7 +70,7 @@ export default class App extends React.Component {
     if (this.state.isReady) {
       return (
         <Provider store={store}>
-        <Router navBar={Menu}>
+        <Router>
           <Stack key="root">
             <Scene
               key="Connection"
