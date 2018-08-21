@@ -61,7 +61,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.Epargner()}
+            >
             <Body>
               <Text style={styles.text}>Epargner</Text>
               </Body>
