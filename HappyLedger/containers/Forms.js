@@ -6,6 +6,7 @@ import RadioList from '../components/forms/RadioList'
 import DatePickers from '../components/forms/DatePickers'
 import RangeList from '../components/forms/RangeList'
 import TakePicture from '../containers/camera/TakePicture'
+import HeaderApp from '../components/HeaderApp';
 import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
 
@@ -84,29 +85,7 @@ export default class Forms extends Component {
 
     return (
       <Container> 
-      <Header
-          style={{backgroundColor:'#a936c9'}}
-        >
-          <Left>
-            <Button 
-              transparent
-              onPress={() => Actions.Profile()}
-            >
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Formulaire</Title>
-          </Body>
-          <Right>
-            <Button
-              transparent
-              onPress={() => Actions.Account()}
-            >
-              <Icon type="FontAwesome" name='cog' />
-            </Button>
-          </Right>
-        </Header>
+      <HeaderApp />
       <ScrollView style={styles.scrollview}>
         { (!elements) 
           ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>
