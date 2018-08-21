@@ -25,6 +25,7 @@ import AcheterVendre from './components/AcheterVendre';
 import Investir from './components/Investir';
 import Epargner from './components/Epargner';
 import DemandePret from './components/DemandePret';
+import AssuranceVie from './components/AssuranceVie';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -137,6 +138,12 @@ export default class App extends React.Component {
               key="DemandePret"
               component={DemandePret}
               title="Demande de Prêt"
+              hideNavBar={true}
+            />
+            <Scene
+              key="AssuranceVie"
+              component={AssuranceVie}
+              title="Assurance vie"
               hideNavBar={true}
             />
             <Scene

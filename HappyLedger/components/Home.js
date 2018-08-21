@@ -83,7 +83,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.AssuranceVie()}
+            >
             <Body>
               <Text style={styles.text}>Assurance Vie</Text>
               </Body>
