@@ -18,6 +18,7 @@ import Camera from './components/camera/Camera';
 import Home from './components/Home';
 import Account from './components/Account';
 import Registration from './components/Registration';
+import Notifications from './components/Notifications';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -112,6 +113,12 @@ export default class App extends React.Component {
               key="ExchangeSurvey"
               component={ExchangeSurvey}
               title="ExchangeSurvey"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Notifications"
+              component={Notifications}
+              title="Notifications"
               hideNavBar={true}
             />
             <Scene
