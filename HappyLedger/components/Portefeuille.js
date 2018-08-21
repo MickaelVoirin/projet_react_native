@@ -10,7 +10,7 @@ export default class Portefeuille extends React.Component {
         <Container>
             <HeaderApp title={this.props.title}/>
             <Content>
-                <Text>Page de protefeuille</Text>
+                <Text>Page de portefeuille</Text>
             </Content>
             <FooterApp/>
         </Container>
