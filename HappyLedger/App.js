@@ -10,16 +10,14 @@ import thunk from 'redux-thunk';
 
 import allReducers from './reducers';
 
-import Menu from './Navigation/Menu';
-
 import Connection from './Pages/Connection';
-import Registration from './Pages/Registration';
-import Account from './Pages/Account';
 
 import ExchangeSurvey from './components/ExchangeSurvey';
 import SendPartnAuth from './components/SendPartnAuth';
 import Camera from './components/camera/Camera';
 import Home from './components/Home';
+import Account from './components/Account';
+import Registration from './components/Registration';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -72,7 +70,7 @@ export default class App extends React.Component {
     if (this.state.isReady) {
       return (
         <Provider store={store}>
-        <Router navBar={Menu}>
+        <Router>
           <Stack key="root">
             <Scene
               key="Connection"
@@ -84,6 +82,7 @@ export default class App extends React.Component {
               key="Registration"
               component={Registration}
               title="Registration"
+              hideNavBar={true}
             />
               <Scene
               key="Home"
@@ -95,6 +94,7 @@ export default class App extends React.Component {
               key="Account"
               component={Account}
               title="Account Manager"
+              hideNavBar={true}
             />
             <Scene
               key="Profile"
@@ -118,6 +118,7 @@ export default class App extends React.Component {
               key="SendPartnAuth"
               component={SendPartnAuth}
               title="SendPartnAuth"
+              hideNavBar={true}
             />
             <Scene
               key="Camera"
