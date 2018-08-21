@@ -16,7 +16,11 @@ class Home extends React.Component {
   style={styles.headerStyle}
   >
           <Item>
-            <Icon type="Entypo" name="magnifying-glass" />
+            <Icon
+              type="Entypo"
+              name="magnifying-glass"
+              onPress={() => Actions.Recherche()}
+            />
             <Input placeholder="Rechercher des Titres" />
           </Item>
         </Header>

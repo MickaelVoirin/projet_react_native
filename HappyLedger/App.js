@@ -20,6 +20,7 @@ import Account from './components/Account';
 import Registration from './components/Registration';
 import Notifications from './components/Notifications';
 import Portefeuille from './components/Portefeuille';
+import Recherche from './components/Recherche';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -96,6 +97,12 @@ export default class App extends React.Component {
               key="Account"
               component={Account}
               title="Account Manager"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Recherche"
+              component={Recherche}
+              title="Recherche"
               hideNavBar={true}
             />
             <Scene
