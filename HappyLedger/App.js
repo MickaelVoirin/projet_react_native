@@ -21,6 +21,7 @@ import Registration from './components/Registration';
 import Notifications from './components/Notifications';
 import Portefeuille from './components/Portefeuille';
 import Recherche from './components/Recherche';
+import AcheterVendre from './components/AcheterVendre';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -109,6 +110,12 @@ export default class App extends React.Component {
               key="Portefeuille"
               component={Portefeuille}
               title="Portefeuille"
+              hideNavBar={true}
+            />
+            <Scene
+              key="AcheterVendre"
+              component={AcheterVendre}
+              title="AcheterVendre"
               hideNavBar={true}
             />
             <Scene

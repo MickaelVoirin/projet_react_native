@@ -39,7 +39,9 @@ class Home extends React.Component {
             </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.AcheterVendre()}
+            >
             <Body>
               <Text style={styles.text}>Acheter / Vendre</Text>
               </Body>
