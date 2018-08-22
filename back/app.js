@@ -6,8 +6,11 @@ import logger from 'morgan';
 import path from 'path';
 // import favicon from 'serve-favicon';
 
-import index from './routes/index';
+// IMPORT INDEX
+import indexRouter from './routes/index';
 
+
+// CONST
 const app = express();
 const debug = Debug('back:app');
 
@@ -23,7 +26,8 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+// DEFINITION ROUTE INDEX = /API
+app.use('/api', indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -50,3 +54,4 @@ process.on('uncaughtException', (err) => {
 });
 
 export default app;
+// module.exports = app;

@@ -1,6 +1,15 @@
+// IMPORT
 import express from 'express';
+import userRouter from './user/user';
 
+
+// CONST
 const router = express.Router();
+
+
+// ROUTER USE
+router.use('/user', userRouter);
+
 
 /* GET index page. */
 router.get('/', (req, res) => {
@@ -10,3 +19,4 @@ router.get('/', (req, res) => {
 });
 
 export default router;
+
