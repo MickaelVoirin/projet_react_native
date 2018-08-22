@@ -1,12 +1,16 @@
 {
   "expo": {
    "name": "Happy Ledger",
+   "icon": "./asset/images/LOGO_HAPPYLEDGER.png",
    "version": "1.0.0",
    "slug": "your-app-slug",
    "sdkVersion": "28.0.0",
-   "packagerOpts": {
-    "nonPersistent": true
-    }
+   "ios": {
+     "bundleIdentifier": "com.yourcompany.yourappname"
+   },
+   "android": {
+     "package": "com.yourcompany.yourappname"
+   }
   }
 }
 
