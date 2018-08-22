@@ -1,5 +1,12 @@
 {
   "expo": {
-    "sdkVersion": "28.0.0"
+   "name": "Happy Ledger",
+   "version": "1.0.0",
+   "slug": "your-app-slug",
+   "sdkVersion": "28.0.0",
+   "packagerOpts": {
+    "nonPersistent": true
+    }
   }
 }
+
