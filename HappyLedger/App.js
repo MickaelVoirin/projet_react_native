@@ -18,6 +18,14 @@ import Camera from './components/camera/Camera';
 import Home from './components/Home';
 import Account from './components/Account';
 import Registration from './components/Registration';
+import Notifications from './components/Notifications';
+import Portefeuille from './components/Portefeuille';
+import Recherche from './components/Recherche';
+import AcheterVendre from './components/AcheterVendre';
+import Investir from './components/Investir';
+import Epargner from './components/Epargner';
+import DemandePret from './components/DemandePret';
+import AssuranceVie from './components/AssuranceVie';
 
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
@@ -97,6 +105,48 @@ export default class App extends React.Component {
               hideNavBar={true}
             />
             <Scene
+              key="Recherche"
+              component={Recherche}
+              title="Recherche"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Portefeuille"
+              component={Portefeuille}
+              title="Portefeuille"
+              hideNavBar={true}
+            />
+            <Scene
+              key="AcheterVendre"
+              component={AcheterVendre}
+              title="AcheterVendre"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Investir"
+              component={Investir}
+              title="Investir"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Epargner"
+              component={Epargner}
+              title="Epargner"
+              hideNavBar={true}
+            />
+            <Scene
+              key="DemandePret"
+              component={DemandePret}
+              title="Demande de Prêt"
+              hideNavBar={true}
+            />
+            <Scene
+              key="AssuranceVie"
+              component={AssuranceVie}
+              title="Assurance vie"
+              hideNavBar={true}
+            />
+            <Scene
               key="Profile"
               component={Profile}
               title="Profil"
@@ -112,6 +162,12 @@ export default class App extends React.Component {
               key="ExchangeSurvey"
               component={ExchangeSurvey}
               title="Autorisations"
+              hideNavBar={true}
+            />
+            <Scene
+              key="Notifications"
+              component={Notifications}
+              title="Notifications"
               hideNavBar={true}
             />
             <Scene

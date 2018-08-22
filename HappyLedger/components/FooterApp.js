@@ -32,6 +32,7 @@ export default class FooterApp extends Component {
 
             <Button
               // style={{backgroundColor:'#a936c9'}}
+              onPress={() => Actions.Notifications()}
             >
               <Icon
                 type='MaterialIcons'

@@ -16,7 +16,11 @@ class Home extends React.Component {
   style={styles.headerStyle}
   >
           <Item>
-            <Icon type="Entypo" name="magnifying-glass" />
+            <Icon
+              type="Entypo"
+              name="magnifying-glass"
+              onPress={() => Actions.Recherche()}
+            />
             <Input placeholder="Rechercher des Titres" />
           </Item>
         </Header>
@@ -24,7 +28,9 @@ class Home extends React.Component {
         <Content>
           <List>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.Portefeuille()}
+            >
               <Body>
               <Text style={styles.text}>Portefeuille</Text>
               </Body>
@@ -33,7 +39,9 @@ class Home extends React.Component {
             </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.AcheterVendre()}
+            >
             <Body>
               <Text style={styles.text}>Acheter / Vendre</Text>
               </Body>
@@ -42,7 +50,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.Investir()}
+            >
             <Body>
               <Text style={styles.text}>Investir</Text>
               </Body>
@@ -51,7 +61,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.Epargner()}
+            >
             <Body>
               <Text style={styles.text}>Epargner</Text>
               </Body>
@@ -60,7 +72,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.DemandePret()}
+            >
               <Body>
               <Text style={styles.text}>Demande de Prêt</Text>
               </Body>
@@ -69,7 +83,9 @@ class Home extends React.Component {
               </Right>
             </ListItem>
 
-            <ListItem>
+            <ListItem
+              onPress={() => Actions.AssuranceVie()}
+            >
             <Body>
               <Text style={styles.text}>Assurance Vie</Text>
               </Body>
