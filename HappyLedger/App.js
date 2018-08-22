@@ -1,17 +1,20 @@
+// IMPORT REACT 
 import React from 'react';
-
 import { StyleSheet, StatusBar } from 'react-native';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 
+// IMPORT REDUX
 import { createStore , applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
-
 import thunk from 'redux-thunk';
 
+// IMPORT ALL REDUCERS
 import allReducers from './reducers';
 
+// IMPORT PAGE CONNEXION
 import Connection from './Pages/Connection';
 
+// IMPORT DES COMPONENTS
 import ExchangeSurvey from './components/ExchangeSurvey';
 import SendPartnAuth from './components/SendPartnAuth';
 import Camera from './components/camera/Camera';
@@ -27,18 +30,23 @@ import Epargner from './components/Epargner';
 import DemandePret from './components/DemandePret';
 import AssuranceVie from './components/AssuranceVie';
 
+// IMPORT DES CONTAINERS
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import CamPicture from './containers/camera/CamPicture';
 
+// IMPORT EXPO
 import { AppLoading, Font } from 'expo';
 
 import { Alert, AsyncStorage } from "react-native"
 
 import * as jsonDatas from './JSON/formdatas.json'
 
+
 const store = createStore(allReducers, applyMiddleware(thunk));
 
+
+// DEBUT EXPORT CLASS DEFAULT 
 export default class App extends React.Component {
 
   state = {
