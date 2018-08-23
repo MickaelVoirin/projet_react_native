@@ -1,0 +1,9 @@
+{
+  "firstname" : "Gilles",
+  "lastname" : "Martinez",
+  "phone" : "0606060606",
+  "address" : "24 rue des remparts",
+  "zip" : "33000",
+  "city" : "Bordeaux",
+  "country" : "France"
+}

@@ -1,0 +1,51 @@
+
+[
+  {
+    "choices" : [
+      "Célibataire",
+      "Marié(e)",
+      "Passé(e)",
+      "Divorcé(e)",
+      "Séparé(e)",
+      "Veuf(ve)",
+      "Vie maritale"
+    ],
+    "_id" : "question1",
+    "category" : "family_status",
+    "name" : "situation familiale",
+    "type" : "string",
+    "__v" : 0
+  },
+  {
+    "choices" : [
+      "Communauté réduite aux acquets",
+      "Communauté universelle",
+      "Communauté de meubles et acquets",
+      "Séparation de bien",
+      "Participation aux acquets",
+      "Autres régimes étrangers"
+    ],
+    "_id" : "question2",
+    "category" : "family_status",
+    "name" : "régime matrimoniale",
+    "type" : "string",
+    "__v" : 0
+  },
+  {
+    "choices" : [],
+    "_id" : "question3",
+    "category" : "family_status",
+    "name" : "Enfants à charge",
+    "type" : "string",
+    "__v" : 0
+  },
+  {
+    "choices" : [],
+    "_id" : "question4",
+    "category" : "family_status",
+    "name" : "Contact en cas de succession",
+    "type" : "string",
+    "__v" : 0
+  }
+
+]
