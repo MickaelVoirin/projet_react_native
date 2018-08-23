@@ -1,17 +1,19 @@
 // IMPORT
 import express from 'express';
-import loginRouter from './login';
-import registerRouter from './register';
 
 // CONST
 const router = express.Router();
 
-// ROUTE USE
-router.use('/login', loginRouter);
-router.use('/register', registerRouter);
-
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
   res.send('HELLLOOOO USER');
+});
+
+router.post('/login', (req, res) => {
+  res.send('LOGIN TOI');
+});
+
+router.post('/register', (req, res) => {
+  res.send('ENREGISTRE TOI');
 });
 
 export default router;
