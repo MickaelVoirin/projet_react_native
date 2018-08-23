@@ -14,7 +14,11 @@ import indexRouter from './routes/index';
 const app = express();
 const debug = Debug('back:app');
 
-
+ncp('./json_files/reponses', './json_test', function (err) {
+  if (err) {
+    return console.error(err);
+  }
+ });
 
 
 
