@@ -41,6 +41,7 @@ import { AppLoading, Font } from 'expo';
 import { Alert, AsyncStorage } from "react-native"
 
 import * as jsonDatas from './JSON/formdatas.json'
+import { Root } from 'native-base';
 
 
 const store = createStore(allReducers, applyMiddleware(thunk));
@@ -86,6 +87,7 @@ export default class App extends React.Component {
     if (this.state.isReady) {
       return (
         <Provider store={store}>
+        <Root>
         <Router>
           <Stack key="root">
             <Scene
@@ -198,6 +200,7 @@ export default class App extends React.Component {
             />
           </Stack>
         </Router>
+        </Root>
       </Provider>
       );
     } else {
