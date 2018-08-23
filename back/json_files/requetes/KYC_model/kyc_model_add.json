@@ -1,0 +1,9 @@
+{
+  "family_status" : [
+    {"question":"question1", "label":"quest. modifiée 1"},
+    {"question":"question2", "label":"quest. modifiée 2"},
+    {"question":"question3", "label":"quest. modifiée 3"},
+    {"question":"question4", "label":"quest. modifiée 4"}
+  ]
+
+}

@@ -1,0 +1,6 @@
+{
+  "user" : "gille@gmail.com",
+  "notification" : "notif1",
+  "family_status" : ["question1", "question2"],
+  "property_status" : ["question1"]
+}
