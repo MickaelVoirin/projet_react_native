@@ -6,15 +6,77 @@ import { StyleSheet } from 'react-native';
 import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
+import axios from 'axios';
 
- 
+import { Alert, AsyncStorage } from "react-native"
+
+
 class Profile extends Component {
+  
+  state = {
+    listOfForms : 'default'
+  }
 
-  componentDidMount() {
+  componentWillMount(){
+    this._loadAssetsAsync();
+  }
+
+  componentDidMount() { 
     this.props.dispatch(getListOfForms());
   }
-  render() {
 
+  componentDidUpdate(){
+     this._loadtest();
+  }
+
+  async _loadtest(){
+    await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
+    this.state.listOfForms.forEach( x => {
+      // alert(JSON.stringify(x.elements));
+      AsyncStorage.setItem(x.name, JSON.stringify(x.elements));
+    });
+    
+  }
+
+  async _loadAssetsAsync() {
+    
+    
+      const self = this;
+      axios.post('http://192.168.1.45:8888/api/kyc/get_form')
+      .then(function (response) {
+        const listOfForms = [];
+        const allFormsJson = JSON.parse(response.data);
+        try {
+          
+          // alert(allFormsJson['askFor'])
+          const allForms = [];
+          for (let key in allFormsJson['askFor']) {
+            
+            if(Array.isArray(allFormsJson['askFor'][key])){
+              // await AsyncStorage.setItem(key, JSON.stringify(allFormsJson['askFor'][key]));
+              let title = key.split('_').map(x => x.charAt(0).toUpperCase() + x.slice(1) ).join(' ');
+              listOfForms.push({'id':key,'name':key,'title':title, 'elements':allFormsJson['askFor'][key]});
+            }
+          }  
+          self.setState({listOfForms})        
+          // await AsyncStorage.setItem('listOfForms', JSON.stringify(listOfForms));
+        } 
+        catch (error) {
+          Alert.alert(error.message);
+        }   
+          
+      
+      })
+      .catch(function (error) {
+        Alert.alert(error.message);
+      });
+
+      //this.setState({listOfForms : 'qsdsqddsqqsdqsdMMMM' });
+
+  }
+
+  render() {
+    
     const { error, loading, listOfForms } = this.props;
     let rendering = '';
 
@@ -27,7 +89,7 @@ class Profile extends Component {
       rendering = listOfForms.map(form =>
       <ListItem
       key={form.id}
-      onPress={() => Actions.Forms({numberform: form.id, nameform: form.name, numberquestion: '1'})}
+      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
     >
     <Body>
       <Text
@@ -67,7 +129,7 @@ class Profile extends Component {
     );
   }
 }
-  
+
 
 const mstp = state => ({
   listOfForms: state.listOfForms.items,

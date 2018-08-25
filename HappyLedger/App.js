@@ -55,7 +55,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.clear();
+    
     StatusBar.setHidden(true);
     this._loadAssetsAsync();
   }
@@ -65,19 +65,7 @@ export default class App extends React.Component {
       'raleway': require('./assets/fonts/Raleway-Regular.ttf'),
       'Roboto_medium': require('./assets/fonts/Roboto-Medium.ttf'),
     });
-    try {
-      let listOfForms = [];
-      for (let key in jsonDatas) {
-        if (jsonDatas.hasOwnProperty(key) && key != 'default') {
-          await AsyncStorage.setItem(key, JSON.stringify(jsonDatas[key]));
-          listOfForms.push({'id':jsonDatas[key]['id'],'name':key,'title':jsonDatas[key]['title']});
-        }
-        
-      };
-      await AsyncStorage.setItem('listOfForms', JSON.stringify(listOfForms));
-    } catch (error) {
-      Alert.alert(error.message);
-    }
+    
     
 
     this.setState({ isReady: true });    

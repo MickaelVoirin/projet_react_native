@@ -10,6 +10,7 @@ import HeaderApp from '../components/HeaderApp';
 import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
 
+import { Alert, AsyncStorage } from "react-native"
 
 const cards1 = [
   {
@@ -79,8 +80,41 @@ export default class Forms extends Component {
     super(props);
   }
 
+  state = {
+    question : ''
+  }
+
+  async componentWillMount(){
+    let listOfFormsPromises = await AsyncStorage.getItem(this.props.nameform);
+    const tableau = JSON.parse(listOfFormsPromises);
+    const question = tableau[this.props.numberquestion];
+    //alert(JSON.stringify(question));
+    this.setState({question});
+  }
+
+
   render() {
-    const cards = (this.props.numberform == 1) ? cards1 : cards2;
+    // alert('qsdqsdsqd');
+    return(
+      <Container> 
+        <HeaderApp title={this.props.title}/>
+          <Text>
+            {JSON.stringify(this.state.question)}
+          </Text>
+          <View style={styles.viewButtons}>
+            <Button style={styles.buttonLeft} onPress={() => Actions.Forms ({nameform: this.props.nameform, numberquestion: this.props.numberquestion - 1})}>
+                <Text>Précédente</Text>
+            </Button>
+            
+            <Button style={styles.buttonRight} onPress={() => Actions.Forms ({nameform: this.props.nameform, numberquestion:  this.props.numberquestion + 1})}>
+              <Text>Suivant</Text>
+            </Button>  
+          </View>
+        <FooterApp/>
+      </Container> 
+    )
+
+    /* const cards = (this.props.numberform == 1) ? cards1 : cards2;
     const elements = cards.find( (a) => {return a.id === parseFloat(this.props.numberquestion)} );
 
     return (
@@ -147,8 +181,8 @@ export default class Forms extends Component {
       <FooterApp/>
       </Container>
       
-    );
-  }
+    ); */
+  } 
 }
 
 const styles = StyleSheet.create({
