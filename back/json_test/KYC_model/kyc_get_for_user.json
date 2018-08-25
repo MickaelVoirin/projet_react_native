@@ -1,0 +1,40 @@
+{
+  "docType" : "",
+  "insertion_date" : "2018-08-20T12:45:34",
+  "update_date" : "2018-08-20T12:45:34",
+  "family_status" : [
+    {
+      "id" : "question1",
+      "field" : "Enfants à charge",
+      "answer" : "12",
+      "type" : "int",
+      "update_date" : "2018-08-20T12:45:34, 143987873642"
+    },
+    {
+      "id" : "question2",
+      "field" : "Situation familiale",
+      "answer" : "marie",
+      "type" : "string",
+      "update_date" : "2018-08-20T12:45:34, 143987823436"
+    },
+    {
+      "id" : "question3",
+      "field" : "Régime matrimonial",
+      "answer" : "Communauté universelle",
+      "type" : "string",
+      "update_date" : "2018-08-20T12:45:34, 143987823436"
+    }
+  ],
+  "property_status" : [
+    {
+      "id" : "question1",
+      "field" : "Revenu global",
+      "answer" : "55005",
+      "type" : "int",
+      "update_date" : "2018-08-20T12:45:34, 143987823436"
+    }
+  ],
+  "company_status" : null,
+  "knowledge" : null,
+  "goals_and_preferences" : null
+}

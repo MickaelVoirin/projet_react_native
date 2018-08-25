@@ -8,8 +8,8 @@ import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
 import axios from 'axios';
 
-import { Alert, AsyncStorage } from "react-native"
-
+import { Alert, AsyncStorage } from "react-native";
+import urlAPI from '../urlAPI';
 
 class Profile extends Component {
   
@@ -42,7 +42,7 @@ class Profile extends Component {
     
     
       const self = this;
-      axios.post('http://192.168.1.45:8888/api/kyc/get_form')
+      axios.post(`${urlAPI}kyc/get_form`)
       .then(function (response) {
         const listOfForms = [];
         const allFormsJson = JSON.parse(response.data);
