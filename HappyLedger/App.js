@@ -11,9 +11,6 @@ import thunk from 'redux-thunk';
 // IMPORT ALL REDUCERS
 import allReducers from './reducers';
 
-// IMPORT PAGE CONNEXION
-import Connection from './Pages/Connection';
-
 // IMPORT DES COMPONENTS
 import ExchangeSurvey from './components/ExchangeSurvey';
 import SendPartnAuth from './components/SendPartnAuth';
@@ -34,6 +31,7 @@ import AssuranceVie from './components/AssuranceVie';
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import CamPicture from './containers/camera/CamPicture';
+import Connection from './containers/Connection';
 
 // IMPORT EXPO
 import { AppLoading, Font } from 'expo';

@@ -82,3 +82,7 @@ H*/package-lock.json
 # ignore backend test data
 
 back/json_test/*
+
+# fichier de configuration URL de l'API
+
+HappyLedger/urlAPI.js
