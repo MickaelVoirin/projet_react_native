@@ -78,3 +78,7 @@ data-container/
 # ignore package-lock.json
 
 H*/package-lock.json
+
+# ignore backend test data
+
+back/json_test/*
