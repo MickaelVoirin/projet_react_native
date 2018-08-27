@@ -1,13 +1,13 @@
 {
   "isAccepted" : null,
-  "_id" : "notif1",
+  "_id" : "notif_1",
   "receiver" : "gilles@gmail.com",
   "transmitter" : "hp@gmail.com",
   "date" : "2018-08-25T13:45:34",
   "askFor" : {
-    "_id":"form1",
+    "_id":"form_1",
     "date":"2018-08-20T12:45:34",
-    "company_name" : "first_one",
+    "company_name" : "BNP",
     "company_id" : "123456789",
     "general":[],
     "family_status" : [

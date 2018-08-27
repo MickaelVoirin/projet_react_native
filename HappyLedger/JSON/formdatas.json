@@ -40,7 +40,7 @@
       "userAnswer": ""
     },
     "city": {
-      "id": 7,
+      "id,": 7,
       "questionText": "your city",
       "answerType": "text",
       "userAnswer": ""
@@ -226,6 +226,31 @@
 "investment" : {
   "id": 3,
   "title": "Investissement",
+  "Content": {
+    "amountInvest": {
+      "id": 1,
+      "questionText": "how much did you invest",
+      "answerType": "cursor",
+      "userAnswer": [],
+      "ContentType":
+      [
+        0,
+        500000,
+        50000
+      ]
+    },
+    "expectation": "",
+    "duration": "",
+    "proportion": "",
+    "performing": "",
+    "reaction": "",
+    "withdrawal": "",
+    "diversification": ""
+  }
+},
+"investment2" : {
+  "id": 3,
+  "title": "Investissement 2",
   "Content": {
     "amountInvest": {
       "id": 1,
