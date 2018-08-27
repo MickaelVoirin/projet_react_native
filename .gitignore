@@ -78,3 +78,6 @@ data-container/
 # ignore package-lock.json
 
 H*/package-lock.json
+
+# urlAPI
+H*/urlAPI.js
