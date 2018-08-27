@@ -1,21 +1,34 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { FormInput, SocialIcon, Button } from 'react-native-elements';
+import { Spinner } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { LinearGradient } from 'expo';
+import { getUserLogin } from '../actions/UserLoginActions';
+import { connect } from "react-redux";
 
-
-export default class Connection extends React.Component {
+class Connection extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
+      email: '',
       password: '',
     };
   }
 
   render() {
+
+    const { error, loading } = this.props;
+
+    let rendering;
+
+    if (error) {
+      rendering = <Text style={styles.forgotPassword}>Email ou mot de passe invalide</Text>
+    } else if (loading) {
+      rendering = <Spinner color='white' />;
+    }
+
     return (
       <LinearGradient
         colors={['#3c76eb', '#b330c5']}
@@ -32,28 +45,30 @@ export default class Connection extends React.Component {
         <View style={styles.form}>
           <FormInput
           style={{width:200,height:50}}
-          placeholder="Nom d'utilisateur"
+          placeholder="Email"
           inputStyle={{fontFamily:'raleway'}}
-          onChangeText={(username) => this.setState({username})}
+          onChangeText={(email) => this.setState({email})}
         />
         <FormInput
           style={{width:200,height:50}}
           secureTextEntry
           placeholder="Mot de Passe"
           inputStyle={{fontFamily:'raleway'}}
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={(password) => this.setState({password})}
         />
+        { rendering }
         <View
           style={styles.connectButton}
         >
           <Button
-            onPress={() => Actions.Home()}
+            onPress={() => this.props.dispatch(getUserLogin(this.state.email,this.state.password))}
             rounded
             title="Se connecter"
             color='#a936c9'
             backgroundColor='white'
             fontFamily = 'raleway'
           />
+          
         </View>
 
         <Text
@@ -98,6 +113,13 @@ export default class Connection extends React.Component {
     );
   }
 }
+
+const mstp = state => ({
+  loading: state.userLogin.loading,
+  error: state.userLogin.error,
+});
+
+export default connect(mstp)(Connection);
 
 const styles = StyleSheet.create({
   container: {
