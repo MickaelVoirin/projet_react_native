@@ -1,33 +1,85 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import {getListOfForms} from '../actions/ListOfFormsActions';
 import { Container, Content, Right, Body, Icon, Text, Spinner, ListItem, Separator } from 'native-base';
 import { StyleSheet } from 'react-native';
 import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
+import axios from 'axios';
 
- 
+import { Alert, AsyncStorage } from "react-native";
+import urlAPI from '../urlAPI';
+
 class Profile extends Component {
+  
 
-  componentDidMount() {
-    this.props.dispatch(getListOfForms());
+  state = {
+    listOfForms : [],
+    isReady : false,
+    err: false
   }
-  render() {
 
+  async componentDidMount() { 
+    await this._loadJsonsElementsAsync();
+    await this._saveStrorageAsync();
+    this.setState({isReady:true});
+  }
+
+  async _saveStrorageAsync(){
+     try{ 
+      await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
+      this.state.listOfForms.forEach( x => {
+        AsyncStorage.setItem(x.name, JSON.stringify(x.elements));
+      });
+    } catch(error){
+      this.setState({err:false});
+    }
+  }
+
+  async _loadJsonsElementsAsync() {
+    
+      // Received Notifications (Future : via async storage)
+      const getIdNotifs = ['notif_1','notif_2', 'notif_3'];
+
+      const self = this;
+      for(let i of getIdNotifs){
+        await axios.post(`${urlAPI}kyc/form/${i}`)
+        .then(function (response) {
+          const form = JSON.parse(response.data);
+          let listOfQuestions = [];
+          for (let key in form['askFor']) {
+            if(Array.isArray(form['askFor'][key])){
+              listOfQuestions = listOfQuestions.concat(form['askFor'][key]);
+            }
+          }  
+          const listOfForms = [...self.state.listOfForms]
+          listOfForms.push({'id':form['askFor']['_id'],'name':form['askFor']['company_name'],'title':form['askFor']['company_name'], 'elements':listOfQuestions});
+          self.setState({listOfForms})               
+        })
+        .catch(function (error) {
+          self.setState({err:true});
+        });
+      }
+      
+      
+  }
+
+  render() {
+    
     const { error, loading, listOfForms } = this.props;
     let rendering = '';
-
-    if (error) {
+    
+    if (this.state.err) {
       rendering =  <Text>Une erreur est survenue dans le traitement de votre demande.</Text>;
-    } else if (loading) {
+    } 
+    else if(!this.state.isReady){
       rendering = <Spinner color='#a936c9' />;
-    } else {
+    } 
+    else {
 
-      rendering = listOfForms.map(form =>
+      rendering = this.state.listOfForms.map(form =>
       <ListItem
       key={form.id}
-      onPress={() => Actions.Forms({numberform: form.id, nameform: form.name, numberquestion: '1'})}
+      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
     >
     <Body>
       <Text
@@ -67,15 +119,9 @@ class Profile extends Component {
     );
   }
 }
-  
 
-const mstp = state => ({
-  listOfForms: state.listOfForms.items,
-  loading: state.listOfForms.loading,
-  error: state.listOfForms.error
-});
 
-export default connect(mstp)(Profile);
+export default Profile;
 
 const styles = StyleSheet.create({
   separator: {
