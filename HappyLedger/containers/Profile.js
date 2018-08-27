@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import {getListOfForms} from '../actions/ListOfFormsActions';
 import { Container, Content, Right, Body, Icon, Text, Spinner, ListItem, Separator } from 'native-base';
 import { StyleSheet } from 'react-native';
 import FooterApp from '../components/FooterApp';
@@ -13,80 +11,72 @@ import urlAPI from '../urlAPI';
 
 class Profile extends Component {
   
+
   state = {
-    listOfForms : 'default'
+    listOfForms : [],
+    isReady : false,
+    err: false
   }
 
-  componentWillMount(){
-    this._loadAssetsAsync();
+  async componentDidMount() { 
+    await this._loadJsonsElementsAsync();
+    await this._saveStrorageAsync();
+    this.setState({isReady:true});
   }
 
-  componentDidMount() { 
-    this.props.dispatch(getListOfForms());
+  async _saveStrorageAsync(){
+     try{ 
+      await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
+      this.state.listOfForms.forEach( x => {
+        AsyncStorage.setItem(x.name, JSON.stringify(x.elements));
+      });
+    } catch(error){
+      this.setState({err:false});
+    }
   }
 
-  componentDidUpdate(){
-     this._loadtest();
-  }
-
-  async _loadtest(){
-    await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
-    this.state.listOfForms.forEach( x => {
-      // alert(JSON.stringify(x.elements));
-      AsyncStorage.setItem(x.name, JSON.stringify(x.elements));
-    });
+  async _loadJsonsElementsAsync() {
     
-  }
+      // Received Notifications (Future : via async storage)
+      const getIdNotifs = ['notif_1','notif_2', 'notif_3'];
 
-  async _loadAssetsAsync() {
-    
-    
       const self = this;
-      axios.post(`${urlAPI}kyc/get_form`)
-      .then(function (response) {
-        const listOfForms = [];
-        const allFormsJson = JSON.parse(response.data);
-        try {
-          
-          // alert(allFormsJson['askFor'])
-          const allForms = [];
-          for (let key in allFormsJson['askFor']) {
-            
-            if(Array.isArray(allFormsJson['askFor'][key])){
-              // await AsyncStorage.setItem(key, JSON.stringify(allFormsJson['askFor'][key]));
-              let title = key.split('_').map(x => x.charAt(0).toUpperCase() + x.slice(1) ).join(' ');
-              listOfForms.push({'id':key,'name':key,'title':title, 'elements':allFormsJson['askFor'][key]});
+      for(let i of getIdNotifs){
+        await axios.post(`${urlAPI}kyc/form/${i}`)
+        .then(function (response) {
+          const form = JSON.parse(response.data);
+          let listOfQuestions = [];
+          for (let key in form['askFor']) {
+            if(Array.isArray(form['askFor'][key])){
+              listOfQuestions = listOfQuestions.concat(form['askFor'][key]);
             }
           }  
-          self.setState({listOfForms})        
-          // await AsyncStorage.setItem('listOfForms', JSON.stringify(listOfForms));
-        } 
-        catch (error) {
-          Alert.alert(error.message);
-        }   
-          
+          const listOfForms = [...self.state.listOfForms]
+          listOfForms.push({'id':form['askFor']['_id'],'name':form['askFor']['company_name'],'title':form['askFor']['company_name'], 'elements':listOfQuestions});
+          self.setState({listOfForms})               
+        })
+        .catch(function (error) {
+          self.setState({err:true});
+        });
+      }
       
-      })
-      .catch(function (error) {
-        Alert.alert(error.message);
-      });
-
-      //this.setState({listOfForms : 'qsdsqddsqqsdqsdMMMM' });
-
+      
   }
 
   render() {
     
     const { error, loading, listOfForms } = this.props;
     let rendering = '';
-
-    if (error) {
+    
+    if (this.state.err) {
       rendering =  <Text>Une erreur est survenue dans le traitement de votre demande.</Text>;
-    } else if (loading) {
+    } 
+    else if(!this.state.isReady){
       rendering = <Spinner color='#a936c9' />;
-    } else {
+    } 
+    else {
 
-      rendering = listOfForms.map(form =>
+      rendering = this.state.listOfForms.map(form =>
       <ListItem
       key={form.id}
       onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
@@ -131,13 +121,7 @@ class Profile extends Component {
 }
 
 
-const mstp = state => ({
-  listOfForms: state.listOfForms.items,
-  loading: state.listOfForms.loading,
-  error: state.listOfForms.error
-});
-
-export default connect(mstp)(Profile);
+export default Profile;
 
 const styles = StyleSheet.create({
   separator: {
