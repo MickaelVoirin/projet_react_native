@@ -15,6 +15,24 @@ async function delay() {
 
 // --------------------------------------
 
+function _saveAuthAsync(auth,token,status) {
+  try {
+    AsyncStorage.setItem('auth', JSON.stringify(auth));
+  } catch (error) {
+    console.log(error.message);
+  }
+  try {
+    AsyncStorage.setItem('token', token);
+  } catch (error) {
+    console.log(error.message);
+  }    
+  try {
+    AsyncStorage.setItem('status', JSON.stringify(status));
+  } catch (error) {
+    console.log(error.message);
+  }    
+}
+
 export const getUserLogin = (email,password) => {
   return dispatch => {
     dispatch(getUserLoginBegin());
@@ -28,8 +46,8 @@ export const getUserLogin = (email,password) => {
       })
       .then(x => {
         if (x.data.auth === true ) {
-          
-          Actions.Home();
+          _saveAuthAsync(x.data.auth,x.data.token,x.data.status)
+          Actions.Home()
         }
       })
       .catch (error => {
