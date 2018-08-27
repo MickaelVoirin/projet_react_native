@@ -7,27 +7,9 @@
   "askFor" : {
     "_id":"form1",
     "date":"2018-08-20T12:45:34",
-    "company" : "Wild Code School",
-    "general":"[]",
-    "family_status10" : [
-      {
-        "choices": [  
-          "célibataire",
-          "marié(e)",
-          "pacsé(e)",
-          "séparé(e)",
-          "veuf(ve)",
-          "vie maritale"
-        ],
-        "_id": "fs_question1",
-        "category": "family_status",
-        "name": "situation familiale",
-        "type": "string",
-        "default_label": "Quelle est votre situation familiale",
-        "common_core": true,
-        "__v": 0
-      }
-    ],
+    "company_name" : "first_one",
+    "company_id" : "123456789",
+    "general":[],
     "family_status" : [
       {
         "choices": [
