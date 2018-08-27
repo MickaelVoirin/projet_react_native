@@ -31,7 +31,6 @@ import AssuranceVie from './components/AssuranceVie';
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import CamPicture from './containers/camera/CamPicture';
-import Connection from './containers/Connection';
 
 // IMPORT EXPO
 import { AppLoading, Font } from 'expo';
@@ -89,12 +88,6 @@ export default class App extends React.Component {
         <Router>
           <Stack key="root">
             <Scene
-              key="Connection"
-              component={Connection}
-              title="Connexion"
-              hideNavBar={true}
-            />
-            <Scene
               key="Registration"
               component={Registration}
               title="Créer un compte"
@@ -105,6 +98,7 @@ export default class App extends React.Component {
               component={Home}
               title="Home"
               hideNavBar={true}
+              initial= {true}
             />
             <Scene
               key="Account"

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { FormInput, SocialIcon, Button } from 'react-native-elements';
-import { Container, Spinner } from 'native-base';
+import { Spinner } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { LinearGradient } from 'expo';
 import { getUserLogin } from '../actions/UserLoginActions';
@@ -30,7 +30,6 @@ class Connection extends React.Component {
     }
 
     return (
-      <Container>
       <LinearGradient
         colors={['#3c76eb', '#b330c5']}
         style={styles.container}
@@ -111,7 +110,6 @@ class Connection extends React.Component {
           />
         </View>
       </LinearGradient>
-      </Container>
     );
   }
 }
