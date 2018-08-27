@@ -3,18 +3,6 @@ import axios from 'axios'
 import urlAPI from '../urlAPI'
 import { Actions } from 'react-native-router-flux';
 
-// HACK => temporisation pour la rétro 
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function delay() {
-  await sleep(2000);
-}
-
-// --------------------------------------
-
 function _saveAuthAsync(auth,token,status) {
   try {
     AsyncStorage.setItem('auth', JSON.stringify(auth));
