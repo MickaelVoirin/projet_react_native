@@ -19,8 +19,6 @@ class Home extends React.Component {
     try {
       const value = await AsyncStorage.getItem('auth');
       if (value === 'true') {
-        // We have data!!
-        console.log(value);
         this.setState({ auth: true })
       }
     } catch (error) {
