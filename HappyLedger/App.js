@@ -11,9 +11,6 @@ import thunk from 'redux-thunk';
 // IMPORT ALL REDUCERS
 import allReducers from './reducers';
 
-// IMPORT PAGE CONNEXION
-import Connection from './Pages/Connection';
-
 // IMPORT DES COMPONENTS
 import ExchangeSurvey from './components/ExchangeSurvey';
 import SendPartnAuth from './components/SendPartnAuth';
@@ -79,12 +76,6 @@ export default class App extends React.Component {
         <Router>
           <Stack key="root">
             <Scene
-              key="Connection"
-              component={Connection}
-              title="Connexion"
-              hideNavBar={true}
-            />
-            <Scene
               key="Registration"
               component={Registration}
               title="Créer un compte"
@@ -95,6 +86,7 @@ export default class App extends React.Component {
               component={Home}
               title="Home"
               hideNavBar={true}
+              initial= {true}
             />
             <Scene
               key="Account"

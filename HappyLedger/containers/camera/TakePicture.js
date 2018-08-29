@@ -29,15 +29,9 @@ class TakePicture extends Component {
 
   _pickDocument = async () => {
     let result = await DocumentPicker.getDocumentAsync();
-    if (Platform.OS == 'ios') {
       if (result.type != 'cancel') {
         this.props.getDocumentData(result);
       }
-    } else {
-        if (!result.cancelled) {
-          this.props.getDocumentData(result);
-        }
-    }
   };
 
   _pickImage = async () => {
