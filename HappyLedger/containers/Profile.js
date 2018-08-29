@@ -44,10 +44,9 @@ class Profile extends Component {
       for(let i of getIdNotifs){
         await axios.post(`${urlAPI}kyc/form/${i}`)
         .then(function (response) {
-          alert(JSON.stringify(response.data));
           const form = JSON.parse(response.data);
           const listOfForms = [...self.state.listOfForms]
-          listOfForms.push({'id':form['company'],'name':form['name'],'title':form['company'], 'elements':form['items']});
+          listOfForms.push({'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
           self.setState({listOfForms})               
         })
         .catch(function (error) {
