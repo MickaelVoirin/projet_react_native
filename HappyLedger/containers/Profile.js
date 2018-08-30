@@ -45,14 +45,8 @@ class Profile extends Component {
         await axios.post(`${urlAPI}kyc/form/${i}`)
         .then(function (response) {
           const form = JSON.parse(response.data);
-          let listOfQuestions = [];
-          for (let key in form['askFor']) {
-            if(Array.isArray(form['askFor'][key])){
-              listOfQuestions = listOfQuestions.concat(form['askFor'][key]);
-            }
-          }  
           const listOfForms = [...self.state.listOfForms]
-          listOfForms.push({'id':form['askFor']['_id'],'name':form['askFor']['company_name'],'title':form['askFor']['company_name'], 'elements':listOfQuestions});
+          listOfForms.push({'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
           self.setState({listOfForms})               
         })
         .catch(function (error) {
