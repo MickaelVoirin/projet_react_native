@@ -86,7 +86,7 @@ export default class App extends React.Component {
               component={Home}
               title="Home"
               hideNavBar={true}
-              initial= {true}
+              
             />
             <Scene
               key="Account"
@@ -141,12 +141,14 @@ export default class App extends React.Component {
               component={Profile}
               title="Profil"
               hideNavBar={true}
+              initial= {true}
             />
             <Scene
               key="Forms"
               component={Forms}
               title="Formulaires"
               hideNavBar={true}
+              
             />
             <Scene
               key="ExchangeSurvey"
