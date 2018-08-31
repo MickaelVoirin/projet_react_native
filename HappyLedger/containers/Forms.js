@@ -84,48 +84,43 @@ export default class Forms extends Component {
     question : ''
   }
 
-  async componentWillMount(){
-    let listOfFormsPromises = await AsyncStorage.getItem(this.props.nameform);
-    const tableau = JSON.parse(listOfFormsPromises);
-    const question = tableau[this.props.numberquestion];
-    //alert(JSON.stringify(question));
-    this.setState({question});
-  }
+  // async componentWillMount(){
+  //   let listOfFormsPromises = await AsyncStorage.getItem(this.props.nameform);
+  //   const tableau = JSON.parse(listOfFormsPromises);
+  //   const question = tableau[this.props.numberquestion];
+  //   //alert(JSON.stringify(question));
+  //   this.setState({question});
+  // }
 
 
   render() {
     // alert('qsdqsdsqd');
-    return(
-      <Container> 
-        <HeaderApp title={this.props.title}/>
-          <Text>
-            {JSON.stringify(this.state.question)}
-          </Text>
-          <View style={styles.viewButtons}>
-            <Button style={styles.buttonLeft} onPress={() => Actions.Forms ({nameform: this.props.nameform, numberquestion: this.props.numberquestion - 1})}>
-                <Text>Précédente</Text>
-            </Button>
+    // return(
+    //   <Container> 
+    //     <HeaderApp title={this.props.title}/>
+    //       <Text>
+    //         {JSON.stringify(this.state.question)}
+    //       </Text>
+    //       <View style={styles.viewButtons}>
+    //         <Button style={styles.buttonLeft} onPress={() => Actions.Forms ({nameform: this.props.nameform, numberquestion: this.props.numberquestion - 1})}>
+    //             <Text>Précédente</Text>
+    //         </Button>
             
-            <Button style={styles.buttonRight} onPress={() => Actions.Forms ({nameform: this.props.nameform, numberquestion:  this.props.numberquestion + 1})}>
-              <Text>Suivant</Text>
-            </Button>  
-          </View>
-        <FooterApp/>
-      </Container> 
-    )
+    //         <Button style={styles.buttonRight} onPress={() => Actions.Forms ({nameform: this.props.nameform, numberquestion:  this.props.numberquestion + 1})}>
+    //           <Text>Suivant</Text>
+    //         </Button>  
+    //       </View>
+    //     <FooterApp/>
+    //   </Container> 
+    // )
 
-    /* const cards = (this.props.numberform == 1) ? cards1 : cards2;
+    const cards = (this.props.numberform == 1) ? cards1 : cards2;
     const elements = cards.find( (a) => {return a.id === parseFloat(this.props.numberquestion)} );
 
     return (
       <Container> 
       <HeaderApp title={this.props.title}/>
       <ScrollView style={styles.scrollview}>
-        { (!elements) 
-          ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>
-              Aller au questionnaire numero 1
-            </Text>
-          :
           <View>  
             <H1 style={styles.titleH1}>Questionnaire n ° {this.props.numberform}</H1>
             <Card style={styles.card}>
@@ -174,14 +169,13 @@ export default class Forms extends Component {
             }
             </View>
           </View>
-          
-        }
+
       
       </ScrollView>
       <FooterApp/>
       </Container>
       
-    ); */
+    );
   } 
 }
 
