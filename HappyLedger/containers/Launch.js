@@ -55,7 +55,7 @@ class Launch extends React.Component {
   };
 
   async componentDidMount() {
-    // AsyncStorage.clear();
+    //AsyncStorage.clear();
     StatusBar.setHidden(true);
     await this._loadAssetsAsync();
     await this._loadNotifStorage();
@@ -88,6 +88,7 @@ class Launch extends React.Component {
         self.setState({err:true});
       });
   }
+  
   async _saveStoreAndRedux() {
     const notificationsStorage = [];
     for(let valeurJsons of this.state.notificationsJsons){
@@ -97,7 +98,7 @@ class Launch extends React.Component {
             temoin = false; 
         } 
       }
-      valeurJsons['new'] = temoin;
+      if(temoin){valeurJsons['new'] = true};
       notificationsStorage.push(valeurJsons); 
     } 
     await AsyncStorage.setItem('notifications', JSON.stringify(notificationsStorage));
@@ -122,7 +123,6 @@ class Launch extends React.Component {
               component={Home}
               title="Home"
               hideNavBar={true}
-              initial= {true}
             />
             <Scene
               key="Account"
@@ -177,6 +177,7 @@ class Launch extends React.Component {
               component={Profile}
               title="Profil"
               hideNavBar={true}
+              initial= {true}
             />
             <Scene
               key="Forms"
@@ -224,15 +225,11 @@ class Launch extends React.Component {
   }
 }
 
-const mstp = state => ({
-  notifications: state.notifications
-});
-
 const mdtp = (dispatch) => {
   return bindActionCreators({addNotifs}, dispatch);
 };
 
-export default connect(mstp, mdtp)(Launch);
+export default connect(null, mdtp)(Launch);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
-import { Footer, FooterTab, Button, Icon, Text } from 'native-base';
+import { Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import { connect } from "react-redux";
 import { StyleSheet } from 'react-native';
 
-export default class FooterApp extends Component {
+class FooterApp extends Component {
+
+  state = {
+    numberNewNotifs : 0,
+  }
+
+  componentDidMount(){
+    let numberNewNotifs = 0;
+    for(let valeur of this.props.notifications){
+      if(valeur.new){
+        numberNewNotifs++;
+      }
+    }
+    this.setState({numberNewNotifs});
+  }
+
   render() {
     return (
         <Footer>
@@ -31,6 +47,7 @@ export default class FooterApp extends Component {
 {/* FIN DU BUTTON HOME */}
 
             <Button
+              style={{position:'relative'}}
               // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.Notifications()}
             >
@@ -39,6 +56,11 @@ export default class FooterApp extends Component {
                 name="notifications"
                 style={styles.icon}
               />
+              {this.state.numberNewNotifs != 0 &&
+              <Badge style={{ backgroundColor: '#b330c5', position:'absolute',top:3,right:20,height:16 }}>
+                <Text style={{fontSize: 12, lineHeight: 16, height:16, minWidth:11}}>{this.state.numberNewNotifs}</Text>
+              </Badge>
+              }
               <Text
                 uppercase={false}
                 style={styles.text}
@@ -87,6 +109,12 @@ export default class FooterApp extends Component {
     );
   }
 }
+
+const mstp = state => ({
+  notifications: state.notifications
+});
+
+export default connect(mstp)(FooterApp);
 
 const styles = StyleSheet.create({
   text: {
