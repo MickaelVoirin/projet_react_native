@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, Right, Body, Icon, Text, Spinner, ListItem, Separator } from 'native-base';
 import { StyleSheet } from 'react-native';
-import FooterApp from '../components/FooterApp';
+import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
 import axios from 'axios';

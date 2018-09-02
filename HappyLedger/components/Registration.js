@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
-import FooterApp from './FooterApp';
+import FooterApp from '../containers/FooterApp';
 
 export default class Registration extends React.Component {
   render() {
