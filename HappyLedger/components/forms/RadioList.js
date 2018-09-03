@@ -28,10 +28,12 @@ export default class RadioList extends Component {
   }
 
   render() {
+    // alert(JSON.stringify(this.props.answers));
     return (
       <Content>
           {
             this.props.answers.map( (a, i) => {
+              
               return <RadioToList 
                         key={i} 
                         text={a} 

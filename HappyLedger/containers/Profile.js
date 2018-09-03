@@ -5,12 +5,17 @@ import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addForms} from '../actions/AddForms';
 
 import { Alert, AsyncStorage } from "react-native";
 import urlAPI from '../urlAPI';
 
 class Profile extends Component {
-  
+  constructor(props){
+    super(props);
+  }
 
   state = {
     listOfForms : [],
@@ -21,15 +26,15 @@ class Profile extends Component {
   async componentDidMount() { 
     await this._loadJsonsElementsAsync();
     await this._saveStrorageAsync();
+    //alert(JSON.stringify(this.state.listOfForms));
+    //alert(JSON.stringify(this.props.listOfQuestions[0]))
     this.setState({isReady:true});
   }
 
   async _saveStrorageAsync(){
      try{ 
       await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
-      this.state.listOfForms.forEach( x => {
-        AsyncStorage.setItem(x.name, JSON.stringify(x.elements));
-      });
+        this.props.addForms(this.state.listOfForms);
     } catch(error){
       this.setState({err:false});
     }
@@ -38,7 +43,7 @@ class Profile extends Component {
   async _loadJsonsElementsAsync() {
     
       // Received Notifications (Future : via async storage)
-      const getIdNotifs = ['notif_1','notif_2', 'notif_3'];
+      const getIdNotifs = ['troncommun','notif_1','notif_2', 'notif_3'];
 
       const self = this;
       for(let i of getIdNotifs){
@@ -73,7 +78,7 @@ class Profile extends Component {
       rendering = this.state.listOfForms.map(form =>
       <ListItem
       key={form.id}
-      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
+      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 1})}
     >
     <Body>
       <Text
@@ -115,7 +120,12 @@ class Profile extends Component {
 }
 
 
-export default Profile;
+const mdtp = dispatch => {
+  return bindActionCreators({addForms}, dispatch);
+}
+
+
+export default connect(null, mdtp)(Profile);
 
 const styles = StyleSheet.create({
   separator: {

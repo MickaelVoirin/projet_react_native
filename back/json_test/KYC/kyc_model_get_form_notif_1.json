@@ -2,7 +2,7 @@
   "isAccepted" : null,
   "_id" : "notif_1",
   "company" : "SG's Company",
-  "name" : "essai 0-1",
+  "name" : "essai_0_1",
   "items" : [
     {
       "question" : {
@@ -16,13 +16,13 @@
         ],
         "_id": "fs_question1",
         "category": "family_status",
-        "name": "situation familiale",
-        "type": "select",
+        "name": "Situation Familiale",
+        "type": "radio",
         "default_label": "Quelle est votre situation familiale",
         "common_core": true,
         "__v": 0
       },
-      "label" : "Quelle est votre situation familiale",
+      "label" : "Quelle est votre situation familiale ?",
       "answer" : ""
     },
     {
@@ -38,7 +38,7 @@
         "_id": "fs_question2",
         "category": "family_status",
         "name": "régime matrimoniale",
-        "type": "string",
+        "type": "radio",
         "default_label": "Si vous êtes marié, quel est votre régime matrimonial ?",
         "common_core": true,
         "__v": 0
@@ -90,7 +90,7 @@
         "_id": "ps_question1",
         "category": "property_status",
         "name": "situation professionnelle",
-        "type": "string",
+        "type": "radio",
         "default_label": "Quelle est votre situation professionnelle ?",
         "common_core": true,
         "__v": 0
@@ -131,7 +131,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "revenus immobiliers",
-          "type": "int",
+          "type": "string",
           "default_label": "Revenus immobiliers",
           "common_core": true,
           "__v": 0
@@ -148,7 +148,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "salaires, pensions",
-          "type": "int",
+          "type": "string",
           "default_label": "Salaires, pensions (dont retraite)",
           "common_core": true,
           "__v": 0
@@ -165,7 +165,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "bénéfices non-commerciaux",
-          "type": "int",
+          "type": "string",
           "default_label": "Bénéfices non-commerciaux",
           "common_core": true,
           "__v": 0
@@ -182,7 +182,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "revenus financiers",
-          "type": "int",
+          "type": "string",
           "default_label": "Revenus financiers",
           "common_core": true,
           "__v": 0
@@ -199,7 +199,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "bénéfices industriels et commerciaux",
-          "type": "int",
+          "type": "string",
           "default_label": "Bénéfices industriels et commerciaux",
           "common_core": true,
           "__v": 0
@@ -216,7 +216,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "cession d'entreprise",
-          "type": "int",
+          "type": "string",
           "default_label": "Cession d'entreprise",
           "common_core": true,
           "__v": 0
@@ -233,7 +233,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "autres revenus",
-          "type": "int",
+          "type": "string",
           "default_label": "Autres (à préciser)",
           "common_core": true,
           "__v": 0
@@ -271,7 +271,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "succession/donation",
-          "type": "int",
+          "type": "string",
           "default_label": "Succession/donation",
           "common_core": true,
           "__v": 0
@@ -288,7 +288,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "bénéfices agricoles",
-          "type": "int",
+          "type": "string",
           "default_label": "Bénéfices agricoles",
           "common_core": true,
           "__v": 0
@@ -305,7 +305,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "frais de scolarité",
-          "type": "int",
+          "type": "string",
           "default_label": "Frais de scolarité",
           "common_core": true,
           "__v": 0
@@ -322,7 +322,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "crédits immobiliers",
-          "type": "int",
+          "type": "string",
           "default_label": "Remboursement d'un ou plusieurs emprunts immobiliers",
           "common_core": true,
           "__v": 0
@@ -339,7 +339,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "loyer",
-          "type": "int",
+          "type": "string",
           "default_label": "Loyer à payer",
           "common_core": true,
           "__v": 0
@@ -356,7 +356,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "pensions",
-          "type": "int",
+          "type": "string",
           "default_label": "Pensions",
           "common_core": true,
           "__v": 0
@@ -373,7 +373,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "crédits consommation",
-          "type": "int",
+          "type": "string",
           "default_label": "Remboursement d'un ou plusieurs crédit à la consommation",
           "common_core": true,
           "__v": 0
@@ -390,7 +390,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "dépôt d'espèces",
-          "type": "int",
+          "type": "string",
           "default_label": "Dépôt d'espèces",
           "common_core": true,
           "__v": 0
@@ -428,7 +428,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "ir/ifi",
-          "type": "int",
+          "type": "string",
           "default_label": "Impôts sur le revenu et sur la fortune immobilière",
           "common_core": true,
           "__v": 0
@@ -445,7 +445,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "résidence secondaire",
-          "type": "int",
+          "type": "string",
           "default_label": "Résidence secondaire",
           "common_core": true,
           "__v": 0
@@ -462,7 +462,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "autres charges",
-          "type": "int",
+          "type": "string",
           "default_label": "Autres forme de dettes (à préciser)",
           "common_core": true,
           "__v": 0
@@ -479,7 +479,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "immobilier locatif",
-          "type": "int",
+          "type": "string",
           "default_label": "Immobilier Locatif",
           "common_core": true,
           "__v": 0
@@ -496,7 +496,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "placement en instrument financier",
-          "type": "int",
+          "type": "string",
           "default_label": "placement en instruments financiers (actions, olbigations, placements collectifs) / compte titres, pea, pea-pme",
           "common_core": true,
           "__v": 0
@@ -513,7 +513,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "contrats d'assurance vie ou capitalisation",
-          "type": "int",
+          "type": "string",
           "default_label": "Contrats d'assurance vie ou de capitalisation",
           "common_core": true,
           "__v": 0
@@ -530,7 +530,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "résidence principale",
-          "type": "int",
+          "type": "string",
           "default_label": "Résidence principale",
           "common_core": true,
           "__v": 0
@@ -547,7 +547,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "participations dans des sociétés civiles ou commerciales",
-          "type": "int",
+          "type": "string",
           "default_label": "Détention de participations dans des sociétés civiles ou commerciales(non cotées)",
           "common_core": true,
           "__v": 0
@@ -564,7 +564,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "autres patrimoines",
-          "type": "int",
+          "type": "string",
           "default_label": "Autres(à préciser)",
           "common_core": true,
           "__v": 0
@@ -581,7 +581,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "biens fonciers",
-          "type": "int",
+          "type": "string",
           "default_label": "Biens fonciers",
           "common_core": true,
           "__v": 0
@@ -600,7 +600,7 @@
           "_id": "kl_question1",
           "category": "knowledge",
           "name": "perte",
-          "type": "string",
+          "type": "radio",
           "default_label": "Avez subi une perte sur vos placements financiers ?",
           "common_core": true,
           "__v": 0
@@ -619,7 +619,7 @@
           "_id": "kl_question2",
           "category": "knowledge",
           "name": "réaction",
-          "type": "string",
+          "type": "radio",
           "default_label": "Comment avez vous réagi à cette perte ?",
           "common_core": true,
           "__v": 0
@@ -697,7 +697,7 @@
           "_id": "gp_question1",
           "category": "goals_and_preferences",
           "name": "objectifs",
-          "type": "multiple",
+          "type": "checkbox",
           "default_label": "Pour quelle(s) raison(s) investissez-vous ?",
           "common_core": true,
           "__v": 0
@@ -734,7 +734,7 @@
           "_id": "gp_question3",
           "category": "goals_and_preferences",
           "name": "urgence",
-          "type": "string",
+          "type": "checkbox",
           "default_label": "Comment feriez-vous face à une dépense urgente et inattendue (coup dur, nouvelle voiture...) ?",
           "common_core": true,
           "__v": 0
@@ -750,7 +750,7 @@
           "_id": "gp_question4",
           "category": "goals_and_preferences",
           "name": "déblocage",
-          "type": "bool",
+          "type": "checkbox",
           "default_label": "pensez-vous avoir besoin de votre épargne afin de la durée prévue ?",
           "common_core": true,
           "__v": 0
@@ -768,7 +768,7 @@
           "_id": "gp_question5",
           "category": "goals_and_preferences",
           "name": "profile de risque",
-          "type": "string",
+          "type": "checkbox",
           "default_label": "Quel est votre niveau de tolérance au risque ?",
           "common_core": true,
           "__v": 0
