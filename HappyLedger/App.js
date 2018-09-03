@@ -163,7 +163,7 @@ export default class App extends React.Component {
             <Scene
               key="SendPartnAuth"
               component={SendPartnAuth}
-              title="SendPartnAuth"
+              title="Envoi de formulaires"
               hideNavBar={true}
             />
             <Scene

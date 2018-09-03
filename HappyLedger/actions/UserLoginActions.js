@@ -15,7 +15,7 @@ function _saveAuthAsync(auth,token,status) {
     console.log(error.message);
   }    
   try {
-    AsyncStorage.setItem('status', JSON.stringify(status));
+    AsyncStorage.setItem('status', status);
   } catch (error) {
     console.log(error.message);
   }    
