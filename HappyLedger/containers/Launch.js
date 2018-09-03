@@ -11,7 +11,7 @@ import Camera from '../components/camera/Camera';
 import Home from '../components/Home';
 import Account from '../components/Account';
 import Registration from '../components/Registration';
-import Notifications from '../components/Notifications';
+import Notifications from '../containers/Notifications';
 import Portefeuille from '../components/Portefeuille';
 import Recherche from '../components/Recherche';
 import AcheterVendre from '../components/AcheterVendre';
@@ -55,7 +55,7 @@ class Launch extends React.Component {
   };
 
   async componentDidMount() {
-    //AsyncStorage.clear();
+    AsyncStorage.clear();
     StatusBar.setHidden(true);
     await this._loadAssetsAsync();
     await this._loadNotifStorage();

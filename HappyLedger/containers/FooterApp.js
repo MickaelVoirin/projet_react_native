@@ -57,8 +57,8 @@ class FooterApp extends Component {
                 style={styles.icon}
               />
               {this.state.numberNewNotifs != 0 &&
-              <Badge style={{ backgroundColor: '#b330c5', position:'absolute',top:3,right:20,height:16 }}>
-                <Text style={{fontSize: 12, lineHeight: 16, height:16, minWidth:11}}>{this.state.numberNewNotifs}</Text>
+              <Badge style={styles.badge}>
+                <Text style={styles.badgeText}>{this.state.numberNewNotifs}</Text>
               </Badge>
               }
               <Text
@@ -122,6 +122,19 @@ const styles = StyleSheet.create({
     paddingLeft: 1,
     paddingRight: 1,
     color: '#848484',
+  },
+  badge:{
+    backgroundColor: '#b330c5', 
+    position:'absolute',
+    top:3,
+    right:20,
+    height:16
+  },
+  badgeText:{
+    fontSize: 12, 
+    lineHeight: 16, 
+    height:16, 
+    minWidth:11
   },
   icon: {
     color: '#848484',
