@@ -9,11 +9,12 @@ import TakePicture from '../containers/camera/TakePicture'
 import HeaderApp from '../components/HeaderApp';
 import FooterApp from '../components/FooterApp';
 import { Actions } from 'react-native-router-flux';
+import {connect} from 'react-redux';
 
 import { Alert, AsyncStorage } from "react-native"
 
 
-export default class Forms extends Component {
+class Forms extends Component {
   
   constructor(props){
     super(props);
@@ -23,14 +24,18 @@ export default class Forms extends Component {
     questions: undefined,
   }
 
+async _receivedProps() {
+  const questions = this.props.listOfQuestions[this.props.nameform][this.props.numberquestion];
+  this.setState({questions});
+}
 
   async componentDidMount(){
-    let listOfFormsPromises = await AsyncStorage.getItem(this.props.nameform);
-    const tableau = JSON.parse(listOfFormsPromises);
-    const questions = tableau[this.props.numberquestion];
-    this.setState({questions});
+    await this._receivedProps();
   }
 
+  async componentWillReceiveProps(){
+    await this._receivedProps();
+  }
 
   render() {
     let label = '';
@@ -97,12 +102,12 @@ export default class Forms extends Component {
             </Card>
             <View style={styles.viewButtons}>
            
-              <Button style={styles.buttonLeft} onPress={() => {alert(this.props.nameform); Actions.refresh({nameform: 'essai_0_1', numberquestion: 2})}}>
+              <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
                 <Text>Précédente</Text>
               </Button>
           
             
-              <Button style={styles.buttonRight} onPress={() => Actions.refresh ({nameform: this.props.nameform, numberquestion: 3})}>
+              <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
                 <Text>Suivant</Text>
               </Button>
             
@@ -118,6 +123,13 @@ export default class Forms extends Component {
     ); 
   } 
 }
+
+const mstp = state => ({
+  listOfQuestions : state.addForms,
+})
+
+export default connect(mstp)(Forms);
+
 
 const styles = StyleSheet.create({
   scrollview: {
