@@ -9,11 +9,12 @@ export default class CheckBoxToList extends Component {
     return (
       <ListItem>
         <Radio 
-          selected={this.props.selected} 
+        
+          selected={true} 
           onPress={() => this.props.onChangeRadio(this.props.number)} 
         />
         <Body>
-          <Text >{this.props.text}</Text>
+          <Text>{this.props.text}</Text>
         </Body>
       </ListItem>
      );
