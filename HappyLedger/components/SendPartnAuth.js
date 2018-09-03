@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, View, Content, Button, Text } from "native-base";
+import { Container, Content, Form, Item, Input, Label, Button, Text, Grid, Col } from "native-base";
 import HeaderApp from './HeaderApp';
+import FooterApp from './FooterApp';
 
 class SendPartnAuth extends Component {
 
@@ -10,45 +11,36 @@ class SendPartnAuth extends Component {
 
       <Container>
         <HeaderApp title={this.props.title}/>
-        <Content>
-          <View style={styles.flexCont}>
-            <View style={styles.divRow}>
-              <Text style={styles.textAlign}>John Doe</Text>
-              <Button style={styles.butt} rounded>
-                <Text>Envoyer la demande</Text>
-              </Button>
-            </View>
-          </View>
-          <View style={styles.flexCont}>
-            <View style={styles.divRow}>
-              <Text style={styles.textAlign}>Allan Smithy</Text>
-              <Button style={styles.butt} rounded>
-                <Text>Envoyer la demande</Text>
-              </Button>
-            </View>
-          </View>
-        </Content>
+        <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
+          <Grid style={styles.grid}>
+            <Col>
+            <Form>
+          <Item stackedLabel last>
+            <Label>Saisissez le nom de l'utilisateur</Label>
+            <Input/>
+          </Item>
+        </Form>
+        <Button style={styles.submitButton} block rounded >
+          <Text>Envoyer la demande</Text>
+        </Button>
+    </Col>
+  </Grid>
+</Content>
+        <FooterApp/>
       </Container>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  flexCont: {
-    flex: 0,
+  grid: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
+    padding: 20,
   },
-  divRow: {
-    flexDirection: 'row',
-  },
-  butt: {
-    backgroundColor: '#a936c9',
-  },
-  textAlign: {
-    marginTop: 13,
-    marginRight: 10,
+  submitButton : {
+    marginTop: 20,
+    backgroundColor: '#b330c5',
   },
 });
 
