@@ -16,7 +16,7 @@ export const sendNotification = (receiver, askFor) => {
             dispatch(sendNotificationSuccess());
         })
         .catch (error => {
-        dispatch(sendNotificationError(error));
+          dispatch(sendNotificationError(error));
         })
     }}
 

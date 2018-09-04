@@ -10,7 +10,11 @@ const router = express.Router();
 // });
 
 router.post('/send', (req, res) => {
-  res.send('SEND NOTIFICATION');
+  if (req.body.receiver === 'gilles@gmail.com') {
+    res.send('success');
+  } else {
+    res.status(403).send({ message: 'utilisateur inconnu' });
+  }
 });
 
 router.get('/get_received', (req, res) => {

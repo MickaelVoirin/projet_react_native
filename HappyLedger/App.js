@@ -13,7 +13,6 @@ import allReducers from './reducers';
 
 // IMPORT DES COMPONENTS
 import ExchangeSurvey from './components/ExchangeSurvey';
-import SendPartnAuth from './components/SendPartnAuth';
 import Camera from './components/camera/Camera';
 import Home from './components/Home';
 import Account from './components/Account';
@@ -31,6 +30,7 @@ import AssuranceVie from './components/AssuranceVie';
 import Profile from './containers/Profile';
 import Forms from './containers/Forms';
 import CamPicture from './containers/camera/CamPicture';
+import SendPartnAuth from './containers/SendPartnAuth';
 
 // IMPORT EXPO
 import { AppLoading, Font } from 'expo';

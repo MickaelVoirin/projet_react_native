@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Alert } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Button, Text, Grid, Col, Picker, Icon } from "native-base";
-import HeaderApp from './HeaderApp';
-import FooterApp from './FooterApp';
+import { StyleSheet } from 'react-native';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Grid, Col, Picker, Icon, Spinner } from "native-base";
+import HeaderApp from '../components/HeaderApp';
+import FooterApp from '../components/FooterApp';
 import { sendNotification } from '../actions/SendNotificationActions';
 import { connect } from "react-redux";
 
@@ -25,6 +25,17 @@ class SendPartnAuth extends Component {
   render() {
 
     const { error, sending, success } = this.props;
+
+    let rendering;
+
+    if (error) {
+      console.log(error);
+      rendering = <Text style={styles.sendingError}>{error.response.data.message}</Text>
+    } else if (sending) {
+      rendering = <Spinner color='#b330c5' />;
+    } else if (success) {
+      rendering = <Text style={styles.sendingSuccess}>Notification envoyée <Icon style={styles.iconColor} type="FontAwesome" name="check" /></Text>
+    }
 
     return (
       <Container>
@@ -56,6 +67,7 @@ class SendPartnAuth extends Component {
               </Picker>
             </Item>
         </Form>
+        {rendering}
         <Button
           style={styles.submitButton} 
           block 
@@ -90,5 +102,20 @@ const styles = StyleSheet.create({
   submitButton : {
     marginTop: 20,
     backgroundColor: '#b330c5',
+  },
+  sendingError: {
+    textAlign: 'center',
+    marginTop: 20,
+    fontFamily: 'raleway',
+    color: 'red',
+  },
+  sendingSuccess: {
+    textAlign: 'center',
+    marginTop: 20,
+    fontFamily: 'raleway',
+    color: 'green',
+  },
+  iconColor: {
+    color: "green",
   },
 });
