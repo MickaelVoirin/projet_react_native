@@ -123,6 +123,7 @@ class Launch extends React.Component {
               component={Home}
               title="Home"
               hideNavBar={true}
+              initial= {true}
             />
             <Scene
               key="Account"
@@ -177,7 +178,6 @@ class Launch extends React.Component {
               component={Profile}
               title="Profil"
               hideNavBar={true}
-              initial= {true}
               toMount={true}
             />
             <Scene
