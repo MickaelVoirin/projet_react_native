@@ -21,7 +21,8 @@ class Profile extends Component {
     listOfForms : [],
     isReady : false,
     err: false,
-    notifications:false
+    notifications:false,
+    mount:false
   }
 
   async componentDidMount() { 
@@ -31,11 +32,15 @@ class Profile extends Component {
   }
   
   async componentWillReceiveProps(){
-    this.setState({isReady:false});
-    await this._loadJsonsElementsAsync();
-    await this._saveStrorageAsync();
-    this.setState({isReady:true});
-  }
+    if(this.state.mount){
+      this.setState({isReady:false});
+      await this._loadJsonsElementsAsync();
+      await this._saveStrorageAsync();
+      this.setState({isReady:true});
+    } else {
+      this.setState({mount:true});
+    }
+  } 
 
   async _saveStrorageAsync(){
      try{ 
