@@ -16,10 +16,6 @@ import { Alert, AsyncStorage } from "react-native"
 
 class Forms extends Component {
   
-  constructor(props){
-    super(props);
-  }
-
   state = {
     questions: undefined,
   }
@@ -95,24 +91,22 @@ async _receivedProps() {
                       case 'file':
                         return <TakePicture numberform={this.props.numberform} numberquestion={this.props.numberquestion}/>
                       default:
-                        //return '';
+                        return '';
                         break;
                   }
                   })()}
                 </View>
             </Card>
             <View style={styles.viewButtons}>
-           { this.props.numberquestion > 0 &&  
-               <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
+
+               <Button style={styles.buttonLeft} onPress={() => {alert(this.props.numberquestion), Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}}>
                 <Text>Précédente</Text>
               </Button>
-           }
-           { this.props.listOfQuestions[this.props.nameform][this.props.numberquestion + 1] &&
-              <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
+       
+              <Button style={styles.buttonRight} onPress={() => {alert(this.props.numberquestion), Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}}>
                 <Text>Suivant</Text>
-
               </Button>
-           }
+           
            
             </View>
           </View>

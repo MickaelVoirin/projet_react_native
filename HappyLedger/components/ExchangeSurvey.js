@@ -5,6 +5,55 @@ import FooterApp from './FooterApp';
 import { StyleSheet } from 'react-native';
 
 class ExchangeSurvey extends Component {
+  constructor(props){
+    super(props);
+
+  state = {
+    isSwitchOn : null,
+    isSwitchOn1 : null,
+    isSwitchOn2 : null,
+    isSwitchOn3 : null,
+  }
+  this.handleChange = this.handleChange.bind(this);
+  this.handleChange1 = this.handleChange1.bind(this);
+  this.handleChange2 = this.handleChange2.bind(this);
+  this.handleChange3 = this.handleChange3.bind(this);
+  }
+
+  handleChange(){
+    this.setState({
+      isSwitchOn: !this.state.isSwitchOn,
+    });
+  }
+
+  handleChange1(){
+    this.setState({
+      isSwitchOn1: !this.state.isSwitchOn1,
+    });
+  }
+
+  handleChange2(){
+    this.setState({
+      isSwitchOn2: !this.state.isSwitchOn2,
+    });
+  }
+
+  handleChange3(){
+    this.setState({
+      isSwitchOn3: !this.state.isSwitchOn3,
+    });
+  }
+
+
+  componentWillMount(){
+    this.setState( {
+      isSwitchOn: this.props.isSwitchOn,
+      isSwitchOn1: this.props.isSwitchOn1,
+      isSwitchOn2: this.props.isSwitchOn2,
+      isSwitchOn3: this.props.isSwitchOn3,
+    });
+  }
+
 
   render() {
     return (
@@ -22,7 +71,10 @@ class ExchangeSurvey extends Component {
               >BNP Paribas</Text>
               </Body>
               <Right>
-              <Switch value={true} />
+              <Switch 
+              onValueChange={this.handleChange}
+              value= {this.state.isSwitchOn}
+              />
             </Right>
             </ListItem>
 
@@ -33,7 +85,10 @@ class ExchangeSurvey extends Component {
               >Axa</Text>
               </Body>
               <Right>
-              <Switch value={true} />
+              <Switch 
+              onValueChange={this.handleChange1}
+              value= {this.state.isSwitchOn1}
+              />
             </Right>
             </ListItem>
 
@@ -44,7 +99,10 @@ class ExchangeSurvey extends Component {
               >Mr Pignon - CGP</Text>
               </Body>
               <Right>
-              <Switch value={false} />
+              <Switch 
+              onValueChange={this.handleChange2}
+              value= {this.state.isSwitchOn2}
+              />
             </Right>
             </ListItem>
 
@@ -55,7 +113,10 @@ class ExchangeSurvey extends Component {
               >Happy Capital</Text>
               </Body>
               <Right>
-              <Switch value={true} />
+              <Switch
+              onValueChange={this.handleChange3}
+              value= {this.state.isSwitchOn3}
+              />
             </Right>
             </ListItem>
 

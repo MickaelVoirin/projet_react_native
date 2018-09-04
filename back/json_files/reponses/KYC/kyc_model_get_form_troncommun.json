@@ -7,7 +7,7 @@
     {
       "question" : {
         "choices": [],
-        "_id": "fs_question0",
+        "_id": "fs_question1",
         "category": "identité",
         "name": "Nom Prénom",
         "type": "string",
@@ -21,7 +21,7 @@
     {
       "question" : {
         "choices": [],
-        "_id": "fs_question1",
+        "_id": "fs_question2",
         "category": "adresse",
         "name": "Adresse",
         "type": "textarea",
@@ -45,7 +45,7 @@
           "sans profession",
           "autres"
         ],
-        "_id": "fs_question2",
+        "_id": "fs_question3",
         "category": "professional",
         "name": "situation professionnelle",
         "type": "radio",
@@ -59,7 +59,7 @@
       {
         "question" : {
           "choices": [],
-          "_id": "fs_question3",
+          "_id": "fs_question4",
           "category": "birth date",
           "name": "date de naissance",
           "type": "date",
@@ -82,7 +82,7 @@
               "réduire vos impots",
               "investir de l'argent mis de côté"
             ],
-            "_id": "fs_question4",
+            "_id": "fs_question5",
             "category": "goals_and_preferences",
             "name": "objectifs",
             "type": "checkbox",
@@ -98,7 +98,7 @@
             "choices": [
               1, 5
             ],
-            "_id": "fs_question5",
+            "_id": "fs_question6",
             "category": "goals_and_preferences",
             "name": "horizon d'investissement",
             "type": "ranges",
@@ -112,7 +112,7 @@
         {
           "question" : {
             "choices": [],
-            "_id": "fs_question6",
+            "_id": "fs_question7",
             "category": "justificatif d'identité",
             "name": "pièce d'identité",
             "type": "file",

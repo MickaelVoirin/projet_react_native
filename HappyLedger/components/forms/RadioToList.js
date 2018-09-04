@@ -10,7 +10,7 @@ export default class CheckBoxToList extends Component {
       <ListItem>
         <Radio 
         
-          selected={true} 
+          selected={this.props.selected} 
           onPress={() => this.props.onChangeRadio(this.props.number)} 
         />
         <Body>
