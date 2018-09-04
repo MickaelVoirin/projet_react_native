@@ -59,11 +59,11 @@ async _receivedProps() {
       <Container> 
       <HeaderApp title={this.props.title}/>
       <ScrollView style={styles.scrollview}>
-        { (!obj) 
+        {/* { (!obj) 
           ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>
               Aller au questionnaire numero 1
             </Text>
-          :
+          : */}
           <View>  
            
             <Card style={styles.card}>
@@ -95,22 +95,25 @@ async _receivedProps() {
                       case 'file':
                         return <TakePicture numberform={this.props.numberform} numberquestion={this.props.numberquestion}/>
                       default:
-                        return '';
+                        //return '';
+                        break;
                   }
                   })()}
                 </View>
             </Card>
             <View style={styles.viewButtons}>
-           
-              <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
+           { this.props.numberquestion > 0 &&  
+               <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
                 <Text>Précédente</Text>
               </Button>
-          
-            
+           }
+           { this.props.listOfQuestions[this.props.nameform][this.props.numberquestion + 1] &&
               <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
                 <Text>Suivant</Text>
+
               </Button>
-            
+           }
+           
             </View>
           </View>
           
