@@ -11,14 +11,23 @@ class FooterApp extends Component {
   }
 
   componentDidMount(){
-    let numberNewNotifs = 0;
-    for(let valeur of this.props.notifications){
-      if(valeur.new){
-        numberNewNotifs++;
-      }
-    }
-    this.setState({numberNewNotifs});
+    this.getNotifs();
   }
+
+  componentWillReceiveProps(){
+    this.getNotifs();
+  }
+  
+  getNotifs(){
+    let numberNewNotifs = 0;
+      for(let valeur of this.props.notifications){
+        if(valeur.new){
+          numberNewNotifs++;
+        }
+      }
+      this.setState({numberNewNotifs});
+  }
+
 
   render() {
     return (

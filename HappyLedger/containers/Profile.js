@@ -26,8 +26,6 @@ class Profile extends Component {
   async componentDidMount() { 
     await this._loadJsonsElementsAsync();
     await this._saveStrorageAsync();
-    //alert(JSON.stringify(this.state.listOfForms));
-    //alert(JSON.stringify(this.props.listOfQuestions[0]))
     this.setState({isReady:true});
   }
 
@@ -43,7 +41,8 @@ class Profile extends Component {
   async _loadJsonsElementsAsync() {
     
       // Received Notifications (Future : via async storage)
-      const getIdNotifs = ['troncommun','notif_1','notif_2', 'notif_3'];
+      const notificationsRedux = [...this.props.notifications];
+      const getIdNotifs = notificationsRedux.map( (obj) => obj._id );
 
       const self = this;
       for(let i of getIdNotifs){
@@ -119,13 +118,16 @@ class Profile extends Component {
   }
 }
 
+const mstp = state => ({
+  notifications: state.notifications
+});
 
 const mdtp = dispatch => {
   return bindActionCreators({addForms}, dispatch);
 }
 
 
-export default connect(null, mdtp)(Profile);
+export default connect(mstp, mdtp)(Profile);
 
 const styles = StyleSheet.create({
   separator: {

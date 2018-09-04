@@ -1,22 +1,57 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { Container, Content, Separator } from 'native-base'
+import { StyleSheet } from 'react-native';
+import { Container, Content, Right, Body, Icon, Text, ListItem, Separator, Spinner } from 'native-base'
 import HeaderApp from '../components/HeaderApp';
 import FooterApp from './FooterApp';
+import { Actions } from 'react-native-router-flux';
 import { connect } from "react-redux";
+import urlAPI from '../urlAPI';
+import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import { updateNotifs } from '../actions/notification';
+import { Alert, AsyncStorage } from "react-native";
 
 class Notifications extends React.Component {
   
   state = {
-    newNotifs: false,
+    listOfForms : false,
+    isReady : false,
+    newNotifs : false
   }
 
-  componentDidMount(){
+  async componentDidMount(){
+    await this._loadNewNotifs();
+    await this._loadJsonsElementsAsync();
+    await this.props.updateNotifs(this.state.newNotifs);
+    this.setState({isReady:true});
+  }
+
+
+  async _loadNewNotifs(){
     const notificationsRedux = [...this.props.notifications];
-    const newNotifs = notificationsRedux.filter( (obj) => obj.new === true);
+    const newNotifs = notificationsRedux.filter( (obj) => obj.new === true).map( (obj) => obj._id );
     this.setState({newNotifs});
   }
-  
+
+  async _loadJsonsElementsAsync() {
+    
+    const self = this;
+    for(let i of this.state.newNotifs){
+      await axios.post(`${urlAPI}kyc/form/${i}`)
+      .then(function (response) {
+        const form = JSON.parse(response.data);
+        const listOfForms = [...self.state.listOfForms]
+        listOfForms.push({'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
+        self.setState({listOfForms})               
+      })
+      .catch(function (error) {
+        self.setState({err:true});
+      });
+    }
+    
+  }
+
+
   render() {
     return (
         <Container>
@@ -29,12 +64,14 @@ class Notifications extends React.Component {
               style={styles.separator}>
                 <Text>NOUVEAUX FORMULAIRES</Text>
               </Separator>
-              {!this.state.newNotifs ? (
+              {!this.state.isReady ? (
+                <Spinner color='#a936c9' />
+              ) : (
+              !this.state.listOfForms ? (
                 <Text>Pas de nouveaux formulaires</Text>
               ) : (
-                
-                this.state.newNotifs.map(form => <Text key={form._id}>{form.company}</Text>
-                  /*<ListItem
+                this.state.listOfForms.map(form => {
+                  return <ListItem
                     key={form.id}
                     onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
                   >
@@ -48,13 +85,12 @@ class Notifications extends React.Component {
                       <Icon type="MaterialIcons" name="keyboard-arrow-right"/>
                     </Right>
                   </ListItem>
-                  */
-                  )
-              )}
-              
+                })
+              )
+            )} 
             
             </Content>
-            <FooterApp/>
+            <FooterApp />
         </Container>
     );
   }
@@ -63,7 +99,11 @@ const mstp = state => ({
   notifications: state.notifications
 });
 
-export default connect(mstp)(Notifications);
+const mdtp = (dispatch) => {
+  return bindActionCreators({updateNotifs}, dispatch);
+};
+
+export default connect(mstp, mdtp)(Notifications);
 
 const styles = StyleSheet.create({
   separator: {

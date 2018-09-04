@@ -411,7 +411,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "patrimoine financier hors immobilier",
-          "type": "range",
+          "type": "ranges",
           "default_label": "Quel est le montant de votre patrimoine financier hors immobilier ?",
           "common_core": true,
           "__v": 0
