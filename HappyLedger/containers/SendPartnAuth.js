@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Content, Form, Item, Input, Label, Button, Text, Grid, Col, Picker, Icon, Spinner } from "native-base";
 import HeaderApp from '../components/HeaderApp';
-import FooterApp from '../components/FooterApp';
+import FooterApp from './FooterApp';
 import { sendNotification } from '../actions/SendNotificationActions';
 import { connect } from "react-redux";
 

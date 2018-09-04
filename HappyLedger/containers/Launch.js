@@ -6,7 +6,6 @@ import { Router, Stack, Scene } from 'react-native-router-flux';
 
 // IMPORT DES COMPONENTS
 import ExchangeSurvey from '../components/ExchangeSurvey';
-import SendPartnAuth from '../components/SendPartnAuth';
 import Camera from '../components/camera/Camera';
 import Home from '../components/Home';
 import Account from '../components/Account';
@@ -24,6 +23,7 @@ import AssuranceVie from '../components/AssuranceVie';
 import Profile from './Profile';
 import Forms from './Forms';
 import CamPicture from './camera/CamPicture';
+import SendPartnAuth from './SendPartnAuth';
 
 // IMPORT EXPO
 import { AppLoading, Font } from 'expo';
