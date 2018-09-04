@@ -4,6 +4,7 @@ import listOfFormsReducer from './listOfForms';
 import documentLoaderReducer from './documentLoader';
 import userLoginReducer from './userLogin';
 import addFormsReducer from './addForms';
+import sendNotificationReducer from './sendNotification'
 
 
 const allReducers = combineReducers({
@@ -12,6 +13,7 @@ const allReducers = combineReducers({
   document:documentLoaderReducer,
   userLogin:userLoginReducer,
   addForms: addFormsReducer,
+  sendNotification: sendNotificationReducer,
 })
 
 export default allReducers;
