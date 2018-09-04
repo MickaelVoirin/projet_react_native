@@ -102,15 +102,18 @@ async _receivedProps(numberquestion) {
             </Card>
             <View style={styles.viewButtons}>
 
+            {this.props.numberquestion < 0 &&
                <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
-                <Text>Précédente {this.props.numberquestion}</Text>
+                <Text>Précédente</Text>
               </Button>
-       
+            }
+            {
               <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-                <Text>Suivant {this.props.numberquestion + 1}</Text>
+              <Text>Suivant</Text>
+               <Text>Valider</Text>
               </Button>
-           
-           
+            }
+            
             </View>
           </View>
           
