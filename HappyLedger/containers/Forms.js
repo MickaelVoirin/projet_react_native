@@ -18,19 +18,22 @@ class Forms extends Component {
   
   state = {
     questions: undefined,
+    mount:true
   }
 
-async _receivedProps() {
-  const questions = this.props.listOfQuestions[this.props.nameform][this.props.numberquestion];
+async _receivedProps(numberquestion) {
+  const questions = this.props.listOfQuestions[this.props.nameform][numberquestion];
+  
   this.setState({questions});
 }
 
   async componentDidMount(){
-    await this._receivedProps();
+      
+    await this._receivedProps(this.props.numberquestion);
   }
 
-  async componentWillReceiveProps(){
-    await this._receivedProps();
+  async componentWillReceiveProps(nextProps){
+    await this._receivedProps(nextProps.numberquestion);
   }
 
   render() {
@@ -100,11 +103,11 @@ async _receivedProps() {
             <View style={styles.viewButtons}>
 
                <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
-                <Text>Précédente</Text>
+                <Text>Précédente {this.props.numberquestion}</Text>
               </Button>
        
               <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-                <Text>Suivant</Text>
+                <Text>Suivant {this.props.numberquestion + 1}</Text>
               </Button>
            
            
