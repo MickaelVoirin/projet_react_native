@@ -1,4 +1,10 @@
-{
-  "email":"gilles@gmail.com",
-  "password":"happyledger"
-}
+[
+  {
+    "email":"gilles@gmail.com",
+    "password":"happyledger"
+  },
+  {
+    "email":"bob@gmail.com",
+    "password":"happyledger"
+  }
+]
