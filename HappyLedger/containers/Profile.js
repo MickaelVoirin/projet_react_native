@@ -20,10 +20,18 @@ class Profile extends Component {
   state = {
     listOfForms : [],
     isReady : false,
-    err: false
+    err: false,
+    notifications:false
   }
 
   async componentDidMount() { 
+    await this._loadJsonsElementsAsync();
+    await this._saveStrorageAsync();
+    this.setState({isReady:true});
+  }
+  
+  async componentWillReceiveProps(){
+    this.setState({isReady:false});
     await this._loadJsonsElementsAsync();
     await this._saveStrorageAsync();
     this.setState({isReady:true});
@@ -38,19 +46,25 @@ class Profile extends Component {
     }
   }
 
+
   async _loadJsonsElementsAsync() {
     
       // Received Notifications (Future : via async storage)
       const notificationsRedux = [...this.props.notifications];
-      const getIdNotifs = notificationsRedux.map( (obj) => obj._id );
-
+      
+      const getIdNotifs = notificationsRedux.map( (obj) => {
+        return {
+          '_id' : obj._id,
+          'new' : obj.new
+        }   
+      });
+      const listOfForms = [];
       const self = this;
       for(let i of getIdNotifs){
-        await axios.post(`${urlAPI}kyc/form/${i}`)
+        await axios.post(`${urlAPI}kyc/form/${i._id}`)
         .then(function (response) {
           const form = JSON.parse(response.data);
-          const listOfForms = [...self.state.listOfForms]
-          listOfForms.push({'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
+          listOfForms.push({'new' : i.new, 'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
           self.setState({listOfForms})               
         })
         .catch(function (error) {
@@ -61,9 +75,10 @@ class Profile extends Component {
       
   }
 
+  
+
   render() {
     
-    const { error, loading, listOfForms } = this.props;
     let rendering = '';
     
     if (this.state.err) {
@@ -83,7 +98,8 @@ class Profile extends Component {
       <Text
         uppercase={false}
         style={styles.text}
-      >{form.title}</Text>
+      >{form.title}</Text> 
+      {form.new && <Text style={{color:'red'}}>nouveau</Text> }
       </Body>
       <Right>
         <Icon type="MaterialIcons" name="keyboard-arrow-right"/>

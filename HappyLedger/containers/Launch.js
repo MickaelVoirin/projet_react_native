@@ -55,7 +55,7 @@ class Launch extends React.Component {
   };
 
   async componentDidMount() {
-    AsyncStorage.clear();
+    // AsyncStorage.clear();
     StatusBar.setHidden(true);
     await this._loadAssetsAsync();
     await this._loadNotifStorage();
@@ -178,6 +178,7 @@ class Launch extends React.Component {
               title="Profil"
               hideNavBar={true}
               initial= {true}
+              toMount={true}
             />
             <Scene
               key="Forms"

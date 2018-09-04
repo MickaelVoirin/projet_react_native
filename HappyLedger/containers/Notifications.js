@@ -26,6 +26,11 @@ class Notifications extends React.Component {
     this.setState({isReady:true});
   }
 
+  async componentDidUpdate(){
+    if(this.state.isReady == true){
+      await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
+    }
+  }
 
   async _loadNewNotifs(){
     const notificationsRedux = [...this.props.notifications];
