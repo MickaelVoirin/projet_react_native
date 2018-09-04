@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Item, Input, Header, Content, List, ListItem, Text, Icon, Right, Body, View } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import FooterApp from './FooterApp';
+import FooterApp from '../containers/FooterApp';
 import { StyleSheet, AsyncStorage } from 'react-native';
 import HeaderApp from './HeaderApp';
 import Connection from '../containers/Connection';
