@@ -14,35 +14,35 @@ class ExchangeSurvey extends Component {
     isSwitchOn2 : null,
     isSwitchOn3 : null,
   }
-  this.handleChange = this.handleChange.bind(this);
-  this.handleChange1 = this.handleChange1.bind(this);
-  this.handleChange2 = this.handleChange2.bind(this);
-  this.handleChange3 = this.handleChange3.bind(this);
+  // this.handleChange = this.handleChange.bind(this);
+  // this.handleChange1 = this.handleChange1.bind(this);
+  // this.handleChange2 = this.handleChange2.bind(this);
+  // this.handleChange3 = this.handleChange3.bind(this);
   }
 
-  handleChange(){
+  handleChange(event){
     this.setState({
-      isSwitchOn: !this.state.isSwitchOn,
+      [event]: !this.state[event],
     });
   }
 
-  handleChange1(){
-    this.setState({
-      isSwitchOn1: !this.state.isSwitchOn1,
-    });
-  }
+  // handleChange1(){
+  //   this.setState({
+  //     isSwitchOn1: !this.state.isSwitchOn1,
+  //   });
+  // }
 
-  handleChange2(){
-    this.setState({
-      isSwitchOn2: !this.state.isSwitchOn2,
-    });
-  }
+  // handleChange2(){
+  //   this.setState({
+  //     isSwitchOn2: !this.state.isSwitchOn2,
+  //   });
+  // }
 
-  handleChange3(){
-    this.setState({
-      isSwitchOn3: !this.state.isSwitchOn3,
-    });
-  }
+  // handleChange3(){
+  //   this.setState({
+  //     isSwitchOn3: !this.state.isSwitchOn3,
+  //   });
+  // }
 
 
   componentWillMount(){
@@ -72,7 +72,7 @@ class ExchangeSurvey extends Component {
               </Body>
               <Right>
               <Switch 
-              onValueChange={this.handleChange}
+              onValueChange={() => this.handleChange('isSwitchOn')}
               value= {this.state.isSwitchOn}
               />
             </Right>
@@ -86,7 +86,7 @@ class ExchangeSurvey extends Component {
               </Body>
               <Right>
               <Switch 
-              onValueChange={this.handleChange1}
+              onValueChange={() => this.handleChange('isSwitchOn1')}
               value= {this.state.isSwitchOn1}
               />
             </Right>
@@ -100,7 +100,7 @@ class ExchangeSurvey extends Component {
               </Body>
               <Right>
               <Switch 
-              onValueChange={this.handleChange2}
+              onValueChange={() => this.handleChange('isSwitchOn2')}
               value= {this.state.isSwitchOn2}
               />
             </Right>
@@ -114,7 +114,7 @@ class ExchangeSurvey extends Component {
               </Body>
               <Right>
               <Switch
-              onValueChange={this.handleChange3}
+              onValueChange={() => this.handleChange('isSwitchOn3')}
               value= {this.state.isSwitchOn3}
               />
             </Right>
