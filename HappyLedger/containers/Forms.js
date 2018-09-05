@@ -68,7 +68,7 @@ async _receivedProps(numberquestion) {
                 <H2 style={styles.H2}>{name}</H2>
                 <Text style={styles.question}>"{label}"</Text>
                 <View style={styles.field}>
-                <Text>Réponse  
+                <Text style={styles.reponse}>Réponse  
                 {(type === 'checkbox') 
                     ? ' (choix multiples)' 
                     : (type === 'radio')
@@ -91,7 +91,7 @@ async _receivedProps(numberquestion) {
                       case 'ranges' : 
                         return <RangeList minmax={choices}/>
                       case 'file':
-                        return <TakePicture numberform={this.props.numberform} numberquestion={this.props.numberquestion}/>
+                        return <TakePicture nameform={this.props.nameform} numberquestion={this.props.numberquestion}/>
                       default:
                         return '';
                   }
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     right:0
   },
   viewButtons :{ 
-    minHeight:80,
+    minHeight: 80,
     flexDirection: "row", 
     flex: 1, 
     position: "relative", 
@@ -174,10 +174,6 @@ const styles = StyleSheet.create({
     paddingTop : 80,
   }, 
   viewForm : {
-    // marginRight : 100,
-    // marginLeft : 100,
-    //paddingLeft : 100,
-    //paddingRight : 100,
     width: "100%"
   },
   title : {
@@ -186,6 +182,10 @@ const styles = StyleSheet.create({
   },
   H2 : {
     textAlign: 'center'
+  },
+  reponse : {
+   marginBottom: 15,
+   marginLeft : 10
   }
   
 });

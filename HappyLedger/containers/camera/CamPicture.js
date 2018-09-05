@@ -16,7 +16,7 @@ class CamPicture extends React.Component{
   
   validPicture(){
     this.props.cameraTakeUri(this.props.image);
-    Actions.Forms({numberform: this.props.numberform, numberquestion: this.props.numberquestion});
+    Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion});
   }
 
   render(){
@@ -37,7 +37,7 @@ class CamPicture extends React.Component{
               <Button
                 transparent
                 title="Oui"
-                onPress={() => Actions.Forms({numberform: this.props.numberform, numberquestion: this.props.numberquestion})}
+                onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion})}
               >
                 <Text style={{color:'black'}}>NON</Text>
               </Button>
