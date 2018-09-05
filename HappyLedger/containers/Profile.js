@@ -97,7 +97,7 @@ class Profile extends Component {
       rendering = this.state.listOfForms.map(form =>
       <ListItem
       key={form.id}
-      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 1})}
+      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
     >
     <Body>
       <Text

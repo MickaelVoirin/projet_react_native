@@ -5,6 +5,10 @@
   "date" : "2018-08-25T13:45:34",
   "items" : [
     {
+      "_id":"troncommun",
+      "company":"Tronc Commun"
+    },
+    {
       "_id":"notif_1",
       "company":"SG's Company"
     },

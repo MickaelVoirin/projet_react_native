@@ -13,7 +13,7 @@ export default class Range extends Component {
   change(value) {
     this.setState(() => {
       return {
-        value: parseFloat(value),
+        value: parseInt(value),
       };
     });
   }

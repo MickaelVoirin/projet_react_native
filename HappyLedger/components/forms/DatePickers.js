@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DatePicker, Text, Content } from 'native-base';
+import { StyleSheet} from 'react-native';
 
 export default class DatePickers extends Component {
  
@@ -17,9 +18,9 @@ export default class DatePickers extends Component {
     return (
       <Content>
           <DatePicker
-            defaultDate={new Date()}
-            minimumDate={new Date()}
-            maximumDate={new Date(2040, 8, 30)}
+            // defaultDate={new Date()}
+            // minimumDate={new Date()}
+            // maximumDate={new Date(2040, 8, 30)}
             locale={"fr"}
             timeZoneOffsetInMinutes={undefined}
             modalTransparent={false}
@@ -30,10 +31,18 @@ export default class DatePickers extends Component {
             placeHolderTextStyle={{ color: "#d3d3d3" }}
             onDateChange={this.setDate}
           />
-          <Text>
+          <Text style={styles.date}>
             Date: {this.state.chosenDate.toString().substr(4, 12)}
           </Text>
       </Content>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  date : {
+    marginTop : 20,
+    marginBottom : 10, 
+    marginLeft : 10
+  }
+});
