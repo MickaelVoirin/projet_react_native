@@ -28,7 +28,6 @@ export default class RadioList extends Component {
   }
 
   render() {
-    // alert(JSON.stringify(this.props.answers));
     return (
       <Content>
           {

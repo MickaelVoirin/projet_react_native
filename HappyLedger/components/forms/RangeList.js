@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text } from 'native-base';
+import { View, Text, Content } from 'native-base';
 import Range from './Range.js';
+import { StyleSheet} from 'react-native';
 
 export default class RangeList extends Component {
   
   render() {
     return (
       <View>
-        <Text>Minimum :</Text>
+        <Text style={styles.range}>Minimum</Text>
+        <Content style={styles.minmax}>
         <Range minmax={this.props.minmax} />
-        <Text>Maximum :</Text>
+        </Content>
+        <Text style={styles.range}>Maximum</Text>
+        <Content style={styles.minmax}>
         <Range minmax={this.props.minmax} />
+        </Content>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  range : {
+    marginLeft : 10,
+    textAlign : 'center',
+  },
+  minmax : {
+    marginLeft : 20,
+    marginRight : 20,
+    marginBottom : 10,
+
+  }
+});

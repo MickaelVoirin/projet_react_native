@@ -16,25 +16,23 @@ import { Alert, AsyncStorage } from "react-native"
 
 class Forms extends Component {
   
-  constructor(props){
-    super(props);
-  }
-
   state = {
     questions: undefined,
   }
 
-async _receivedProps() {
-  const questions = this.props.listOfQuestions[this.props.nameform][this.props.numberquestion];
+async _receivedProps(numberquestion) {
+  const questions = this.props.listOfQuestions[this.props.nameform][numberquestion];
+  
   this.setState({questions});
 }
 
   async componentDidMount(){
-    await this._receivedProps();
+      
+    await this._receivedProps(this.props.numberquestion);
   }
 
-  async componentWillReceiveProps(){
-    await this._receivedProps();
+  async componentWillReceiveProps(nextProps){
+    await this._receivedProps(nextProps.numberquestion);
   }
 
   render() {
@@ -70,7 +68,7 @@ async _receivedProps() {
                 <H2 style={styles.H2}>{name}</H2>
                 <Text style={styles.question}>"{label}"</Text>
                 <View style={styles.field}>
-                <Text>Réponse  
+                <Text style={styles.reponse}>Réponse  
                 {(type === 'checkbox') 
                     ? ' (choix multiples)' 
                     : (type === 'radio')
@@ -83,7 +81,7 @@ async _receivedProps() {
                       case 'string':
                         return <Item><Input placeholder='Saisissez votre réponse' /></Item>;
                       case 'textarea':
-                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered />;
+                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered placeholder='Saisissez votre réponse'/>;
                       case 'checkbox':  
                         return <CheckboxList answers={choices}/>
                       case 'radio':  
@@ -93,7 +91,7 @@ async _receivedProps() {
                       case 'ranges' : 
                         return <RangeList minmax={choices}/>
                       case 'file':
-                        return <TakePicture numberform={this.props.numberform} numberquestion={this.props.numberquestion}/>
+                        return <TakePicture nameform={this.props.nameform} numberquestion={this.props.numberquestion}/>
                       default:
                         return '';
                   }
@@ -101,15 +99,20 @@ async _receivedProps() {
                 </View>
             </Card>
             <View style={styles.viewButtons}>
-           
-              <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
+
+            {this.props.numberquestion > 0 &&
+               <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
                 <Text>Précédente</Text>
               </Button>
-          
-            
-              <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-                <Text>Suivant</Text>
+            }
+            { this.props.numberquestion !== this.props.listOfQuestions[this.props.nameform].length -1
+             ? <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
+               <Text>Suivant</Text>
+               </Button>
+            : <Button style={styles.buttonRight} onPress={() => Actions.Profile()}>
+               <Text>Valider</Text>
               </Button>
+            }
             
             </View>
           </View>
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
     right:0
   },
   viewButtons :{ 
-    minHeight:80,
+    minHeight: 80,
     flexDirection: "row", 
     flex: 1, 
     position: "relative", 
@@ -171,10 +174,6 @@ const styles = StyleSheet.create({
     paddingTop : 80,
   }, 
   viewForm : {
-    // marginRight : 100,
-    // marginLeft : 100,
-    //paddingLeft : 100,
-    //paddingRight : 100,
     width: "100%"
   },
   title : {
@@ -183,6 +182,10 @@ const styles = StyleSheet.create({
   },
   H2 : {
     textAlign: 'center'
+  },
+  reponse : {
+   marginBottom: 15,
+   marginLeft : 10
   }
   
 });

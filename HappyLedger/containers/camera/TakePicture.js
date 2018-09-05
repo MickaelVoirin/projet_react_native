@@ -45,7 +45,7 @@ class TakePicture extends Component {
 
   render() {
     
-    const {image, document, numberform, numberquestion} = this.props; 
+    const {image, document, nameform, numberquestion} = this.props; 
     
     let renderDocument;
 
@@ -84,9 +84,9 @@ class TakePicture extends Component {
     let renderButton;
     if (Platform.OS === 'ios') {
       renderButton =  <Button
-                        style={{marginTop:20}}
+                        style={styles.camera}
                         color='#a936c9'
-                        title="chercher un document sur le téléphone"
+                        title="Choisir une photo existante"
                         onPress={() =>
                           ActionSheet.show(
                           {
@@ -104,9 +104,9 @@ class TakePicture extends Component {
                         /> 
     } else {
       renderButton =  <Button
-                        style={{marginTop:20}}
+                        style={{marginBottom : 200}}
                         color='#a936c9'
-                        title="chercher un document sur le téléphone"
+                        title="Choisir une photo existante"
                         onPress={this._pickDocument}
                       />
     }
@@ -114,10 +114,10 @@ class TakePicture extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Button
-          style={{marginTop:20}}
+          style={styles.camera}
           color='#a936c9'
-          title="Prendre une photo avec votre téléphone"
-          onPress={() => Actions.Camera({numberform: numberform, numberquestion: numberquestion})}
+          title="Prendre une photo"
+          onPress={() => Actions.Camera({nameform: nameform, numberquestion: numberquestion})}
         />
         { renderButton }
         {image != '' &&
@@ -146,6 +146,10 @@ const styles = StyleSheet.create({
   iconColor: {
     color: "grey",
   },
+  camera : {
+    marginBottom: 20,
+    marginTop : 10,
+  }
 })
 
 const mapStateToProps = (state) => ({
