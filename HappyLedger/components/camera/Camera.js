@@ -101,7 +101,7 @@ export default class CameraScreen extends React.Component {
     this.refs.cache.setNativeProps({
       opacity: 0
     });
-    Actions.CamPicture({image: pictureName, numberform: this.props.numberform, numberquestion: this.props.numberquestion})
+    Actions.CamPicture({image: pictureName, nameform: this.props.nameform, numberquestion: this.props.numberquestion})
     this.setState({type: 'back'}); 
   }
 
@@ -232,11 +232,6 @@ const styles = StyleSheet.create({
     flex: 0.12,
     flexDirection: 'row',
   },
-  waitBar: {/*
-    backgroundColor: 'gray',
-    height:'100%',
-    width:'100%'*/
-  },
   noPermissions: {
     flex: 1,
     alignItems:'center',
@@ -253,7 +248,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  
   row: {
     flexDirection: 'row',
   },
