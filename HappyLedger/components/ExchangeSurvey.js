@@ -8,16 +8,12 @@ class ExchangeSurvey extends Component {
   constructor(props){
     super(props);
 
-  state = {
-    isSwitchOn : null,
-    isSwitchOn1 : null,
-    isSwitchOn2 : null,
-    isSwitchOn3 : null,
-  }
-  // this.handleChange = this.handleChange.bind(this);
-  // this.handleChange1 = this.handleChange1.bind(this);
-  // this.handleChange2 = this.handleChange2.bind(this);
-  // this.handleChange3 = this.handleChange3.bind(this);
+    state = {
+      isSwitchOn : null,
+      isSwitchOn1 : null,
+      isSwitchOn2 : null,
+      isSwitchOn3 : null,
+    }
   }
 
   handleChange(event){
@@ -25,25 +21,6 @@ class ExchangeSurvey extends Component {
       [event]: !this.state[event],
     });
   }
-
-  // handleChange1(){
-  //   this.setState({
-  //     isSwitchOn1: !this.state.isSwitchOn1,
-  //   });
-  // }
-
-  // handleChange2(){
-  //   this.setState({
-  //     isSwitchOn2: !this.state.isSwitchOn2,
-  //   });
-  // }
-
-  // handleChange3(){
-  //   this.setState({
-  //     isSwitchOn3: !this.state.isSwitchOn3,
-  //   });
-  // }
-
 
   componentWillMount(){
     this.setState( {
