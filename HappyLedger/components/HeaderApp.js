@@ -4,10 +4,49 @@ import { Header, Title, Button, Icon } from 'native-base';
 import { StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo';
 
-export default class HeaderApp extends Component {
+import { addNotifs } from '../actions/notification';
+import { bindActionCreators } from 'redux';
+import axios from 'axios';
+import urlAPI from '../urlAPI';
+import { connect } from "react-redux";
+
+class HeaderApp extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+    this._verifyNotifs();
+  }
+
+  _verifyNotifs() {
+    const self = this;
+    axios.post(`${urlAPI}notification/get_received`)
+      .then(function (response) {
+        const notificationsJsons = JSON.parse(response.data).items;
+        const notificationsRedux = [...self.props.notifications]; 
+        const notificationsStorage = [];
+        let numberNewNotifs = 0;
+        for(let valeurJsons of notificationsJsons){
+          let temoin = true;
+          for(let valeurRedux of notificationsRedux){
+            if(valeurRedux._id === valeurJsons._id && valeurRedux.new != true){
+                temoin = false; 
+            } 
+          }
+          if(temoin){
+            numberNewNotifs++;
+          };
+          valeurJsons['new'] = temoin;
+          notificationsStorage.push(valeurJsons); 
+        } 
+        self.props.addNotifs(notificationsStorage);
+        AsyncStorage.setItem('notifications', JSON.stringify(notificationsStorage));
+      })
+      .catch(function (error) {
+        self.setState({err:true});
+      });
   }
 
   render() {
@@ -47,6 +86,16 @@ export default class HeaderApp extends Component {
     );
   }
 }
+
+const mdtp = (dispatch) => {
+  return bindActionCreators({addNotifs}, dispatch);
+};
+
+const mstp = state => ({
+  notifications: state.notifications
+});
+
+export default connect(mstp, mdtp)(HeaderApp);
 
 const win = Dimensions.get('window');
 
