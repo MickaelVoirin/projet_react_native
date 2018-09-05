@@ -18,7 +18,6 @@ class Forms extends Component {
   
   state = {
     questions: undefined,
-    mount:true
   }
 
 async _receivedProps(numberquestion) {
@@ -82,7 +81,7 @@ async _receivedProps(numberquestion) {
                       case 'string':
                         return <Item><Input placeholder='Saisissez votre réponse' /></Item>;
                       case 'textarea':
-                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered />;
+                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered placeholder='Saisissez votre réponse'/>;
                       case 'checkbox':  
                         return <CheckboxList answers={choices}/>
                       case 'radio':  
@@ -95,21 +94,22 @@ async _receivedProps(numberquestion) {
                         return <TakePicture numberform={this.props.numberform} numberquestion={this.props.numberquestion}/>
                       default:
                         return '';
-                        break;
                   }
                   })()}
                 </View>
             </Card>
             <View style={styles.viewButtons}>
 
-            {this.props.numberquestion < 0 &&
+            {this.props.numberquestion > 0 &&
                <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
                 <Text>Précédente</Text>
               </Button>
             }
-            {
-              <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-              <Text>Suivant</Text>
+            { this.props.numberquestion !== this.props.listOfQuestions[this.props.nameform].length -1
+             ? <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
+               <Text>Suivant</Text>
+               </Button>
+            : <Button style={styles.buttonRight} onPress={() => Actions.Profile()}>
                <Text>Valider</Text>
               </Button>
             }

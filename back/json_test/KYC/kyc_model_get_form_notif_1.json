@@ -114,7 +114,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "revenu global",
-          "type": "range",
+          "type": "radio",
           "default_label": "Quel est le montant global des revenus de votre foyer ?",
           "common_core": true,
           "__v": 0
@@ -254,7 +254,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "crédits",
-          "type": "range",
+          "type": "radio",
           "default_label": "Quel est le montant du capital de vos crédits restants dûs à titre personnel ?",
           "common_core": true,
           "__v": 0
@@ -411,7 +411,7 @@
           "category": "property_status",
           "subcategory": "patrimoine",
           "name": "patrimoine financier hors immobilier",
-          "type": "ranges",
+          "type": "radio",
           "default_label": "Quel est le montant de votre patrimoine financier hors immobilier ?",
           "common_core": true,
           "__v": 0
@@ -637,7 +637,7 @@
           "_id": "kl_question3",
           "category": "knowledge",
           "name": "années d'expérience",
-          "type": "range",
+          "type": "radio",
           "default_label": "Depuis combien de temps investissez-vous sur les marchés financiers ?",
           "common_core": true,
           "__v": 0
@@ -716,7 +716,7 @@
           "_id": "gp_question2",
           "category": "goals_and_preferences",
           "name": "horizon d'investissement",
-          "type": "ranges",
+          "type": "radio",
           "default_label": "Quel est l'horizon d'investissement pour ces actifs ?",
           "common_core": true,
           "__v": 0
