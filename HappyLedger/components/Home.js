@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Item, Input, Header, Content, List, ListItem, Text, Icon, Right, Body, View } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import FooterApp from './FooterApp';
+import FooterApp from '../containers/FooterApp';
 import { StyleSheet, AsyncStorage } from 'react-native';
 import HeaderApp from './HeaderApp';
 import Connection from '../containers/Connection';
@@ -12,6 +12,7 @@ class Home extends React.Component {
     super();
     this.state = {
       auth: false,
+      status: ''
     };
   }
 
@@ -19,7 +20,7 @@ class Home extends React.Component {
     try {
       const value = await AsyncStorage.getItem('auth');
       if (value === 'true') {
-        this.setState({ auth: true })
+        return value
       }
     } catch (error) {
       console.log(error);
@@ -27,17 +28,49 @@ class Home extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    this._loadData()
+  async _getUserStatus() {
+    try {
+      const value = await AsyncStorage.getItem('status');
+      if (value) {
+        return value
+      }
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+
+  async componentWillReceiveProps() {
+    data = await this._loadData()
+    userStatus = await this._getUserStatus()
+    this.setState({ 
+      auth: data,
+      status: userStatus,
+    })
   }
 
   render() {
 
     let rendering
-
     if (!this.state.auth) {
       rendering = <Container><Connection /></Container>
     } else {
+      let render_userStatus
+      if (this.state.status == 'entreprise') {
+        render_userStatus = 
+          <ListItem
+            onPress={() => Actions.SendPartnAuth()}
+            style={styles.SendPartnAuth}
+          >
+            <Body>
+              <Text style={styles.textWhite}>Envoi de Formulaire</Text>
+            </Body>
+            <Right>
+              <Icon style={styles.iconColorWhite} type="Entypo" name="direction" />
+            </Right>
+            </ListItem>
+      }
+
       rendering =
         <Container>
           <HeaderApp title={this.props.title} />
@@ -127,7 +160,7 @@ class Home extends React.Component {
                     name="birthday-cake" />
                 </Right>
               </ListItem>
-
+                { render_userStatus }
             </List>
           </Content>
           <FooterApp /></Container>
@@ -156,5 +189,19 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 20,
     backgroundColor: '#f2f2f2',
+  },
+  SendPartnAuth: {
+    backgroundColor: '#4273e9',
+  },
+  textWhite: {
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    fontFamily: 'raleway',
+    color: 'white',
+  },
+  iconColorWhite: {
+    color: "white",
   },
 });

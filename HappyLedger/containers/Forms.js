@@ -7,7 +7,7 @@ import DatePickers from '../components/forms/DatePickers'
 import RangeList from '../components/forms/RangeList'
 import TakePicture from '../containers/camera/TakePicture'
 import HeaderApp from '../components/HeaderApp';
-import FooterApp from '../components/FooterApp';
+import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import {connect} from 'react-redux';
 

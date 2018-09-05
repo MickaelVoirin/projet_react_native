@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, List, ListItem, Text, Body, Right, Switch } from "native-base";
 import HeaderApp from './HeaderApp';
-import FooterApp from './FooterApp';
+import FooterApp from '../containers/FooterApp';
 import { StyleSheet } from 'react-native';
 
 class ExchangeSurvey extends Component {

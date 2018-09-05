@@ -17,7 +17,7 @@
         "_id": "fs_question1",
         "category": "family_status",
         "name": "situation familiale",
-        "type": "select",
+        "type": "radio",
         "default_label": "Quelle est votre situation familiale",
         "common_core": true,
         "__v": 0

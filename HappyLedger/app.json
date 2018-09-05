@@ -10,7 +10,10 @@
    },
    "android": {
      "package": "com.happycapital.happyledger"
-   }
+   },
+   "loading": {
+    "backgroundColor": "#b330c5"
+    }
   }
 }
 

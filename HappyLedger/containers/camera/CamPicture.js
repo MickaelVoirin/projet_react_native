@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Content, View, Text, Header, Left, Right, Button, Icon, Title, Body } from 'native-base';
 import { Image } from 'react-native';
 import HeaderApp from '../../components/HeaderApp';
-import FooterApp from '../../components/FooterApp';
+import FooterApp from '../FooterApp';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'; 
