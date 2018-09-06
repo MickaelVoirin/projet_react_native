@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Platform, Button, View, Text, StyleSheet } from 'react-native';
+import { Platform, View, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
 import { Icon, ActionSheet } from 'native-base'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -73,53 +74,40 @@ class TakePicture extends Component {
     }
 
     const BUTTONS = [
+      { text: "Photos", icon: "photos", iconColor: "#2c8ef4" },
       { text: "Images", icon: "images", iconColor: "#2c8ef4" },
       { text: "Documents", icon: "document", iconColor: "#f42ced" },
       { text: "Delete", icon: "trash", iconColor: "#fa213b" },
       { text: "Cancel", icon: "close", iconColor: "#25de5b" }
     ];
-    const DESTRUCTIVE_INDEX = 2;
-    const CANCEL_INDEX = 3;
-
-    let renderButton;
-    if (Platform.OS === 'ios') {
-      renderButton =  <Button
-                        style={styles.camera}
-                        color='#a936c9'
-                        title="Choisir une photo existante"
-                        onPress={() =>
-                          ActionSheet.show(
-                          {
-                            options: BUTTONS,
-                            cancelButtonIndex: CANCEL_INDEX,
-                            destructiveButtonIndex: DESTRUCTIVE_INDEX,
-                            title: "Choisissez un format"
-                          },
-                          buttonIndex => {
-                            if (BUTTONS[buttonIndex].icon === 'images') {
-                              this._pickImage()
-                            } else { this._pickDocument() }
-                          }
-                          )}
-                        /> 
-    } else {
-      renderButton =  <Button
-                        style={{marginBottom : 200}}
-                        color='#a936c9'
-                        title="Choisir une photo existante"
-                        onPress={this._pickDocument}
-                      />
-    }
+    const DESTRUCTIVE_INDEX = 3;
+    const CANCEL_INDEX = 4;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom:20}}>
         <Button
-          style={styles.camera}
-          color='#a936c9'
-          title="Prendre une photo"
-          onPress={() => Actions.Camera({nameform: nameform, numberquestion: numberquestion})}
+          rounded
+          fontFamily = 'raleway'
+          backgroundColor='#a936c9'
+          color='white'
+          title="Sélectionnez un document"
+          onPress={() =>
+            ActionSheet.show(
+              {
+                options: BUTTONS,
+                cancelButtonIndex: CANCEL_INDEX,
+                destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                title: "Choisissez un format"
+              },
+              buttonIndex => {
+                if (BUTTONS[buttonIndex].icon === 'images') {
+                  this._pickImage()
+                } else if (BUTTONS[buttonIndex].icon === 'photos') {
+                  Actions.Camera({nameform: nameform, numberquestion: numberquestion});
+                } else { this._pickDocument() }
+              }
+            )}
         />
-        { renderButton }
         {image != '' &&
             <Image source={{ uri: image }} width={250} style={{marginTop:20, marginBottom:20}}/>
         }
@@ -146,10 +134,6 @@ const styles = StyleSheet.create({
   iconColor: {
     color: "grey",
   },
-  camera : {
-    marginBottom: 20,
-    marginTop : 10,
-  }
 })
 
 const mapStateToProps = (state) => ({
