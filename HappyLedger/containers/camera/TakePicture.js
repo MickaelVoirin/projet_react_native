@@ -46,7 +46,7 @@ class TakePicture extends Component {
 
   render() {
     
-    const {image, media, nameform, numberquestion} = this.props; 
+    const {media, nameform, numberquestion} = this.props; 
     
     let renderDocument;
 
@@ -74,9 +74,9 @@ class TakePicture extends Component {
     }
 
     const BUTTONS = [
-      { text: "Photos", icon: "photos", iconColor: "#2c8ef4" },
-      { text: "Images", icon: "images", iconColor: "#2c8ef4" },
-      { text: "Documents", icon: "document", iconColor: "#f42ced" },
+      { text: "Prendre une photo", icon: "camera", iconColor: "#2c8ef4", key: 'photo' },
+      { text: "Images", icon: "images", iconColor: "#2c8ef4", key: 'image' },
+      { text: "Documents", icon: "document", iconColor: "#f42ced", key: 'document' },
       { text: "Delete", icon: "trash", iconColor: "#fa213b" },
       { text: "Cancel", icon: "close", iconColor: "#25de5b" }
     ];
@@ -100,17 +100,17 @@ class TakePicture extends Component {
                 title: "Choisissez un format"
               },
               buttonIndex => {
-                if (BUTTONS[buttonIndex].icon === 'images') {
+                if (BUTTONS[buttonIndex].key === 'image') {
                   this._pickImage()
-                } else if (BUTTONS[buttonIndex].icon === 'photos') {
+                } else if (BUTTONS[buttonIndex].key === 'photo') {
                   Actions.Camera({nameform: nameform, numberquestion: numberquestion});
                 } else { this._pickDocument() }
               }
             )}
         />
-        {image != '' &&
+        {/* {image != '' &&
             <Image source={{ uri: image }} width={250} style={{marginTop:20, marginBottom:20}}/>
-        }
+        } */}
         { renderDocument }
       </View>
     );
@@ -137,7 +137,6 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => ({
-  image: state.camera,
   media: state.media,
 });
 

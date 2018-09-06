@@ -101,7 +101,11 @@ export default class CameraScreen extends React.Component {
     this.refs.cache.setNativeProps({
       opacity: 0
     });
-    Actions.CamPicture({image: pictureName, nameform: this.props.nameform, numberquestion: this.props.numberquestion})
+    let media = {
+      uri:pictureName,
+      type:'image'
+    }
+    Actions.CamPicture({media: media, nameform: this.props.nameform, numberquestion: this.props.numberquestion})
     this.setState({type: 'back'}); 
   }
 
