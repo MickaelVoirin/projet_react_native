@@ -6,7 +6,7 @@ import FooterApp from '../FooterApp';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'; 
-import {cameraTakeUri} from '../../actions'
+import {getMedia} from '../../actions'
 
 class CamPicture extends React.Component{
   
@@ -15,12 +15,12 @@ class CamPicture extends React.Component{
   }
   
   validPicture(){
-    this.props.cameraTakeUri(this.props.image);
+    this.props.getMedia(this.props.media);
     Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion});
   }
 
   render(){
-    const {image} = this.props; 
+    const {media} = this.props; 
     return (
       <Container>
         <HeaderApp title={this.props.title}/>
@@ -42,7 +42,7 @@ class CamPicture extends React.Component{
                 <Text style={{color:'black'}}>NON</Text>
               </Button>
             </View>
-            <Image source={{ uri: image }} style={{width:'70%', height:'70%'}} />
+            <Image source={{ uri: media.uri }} style={{width:'70%', height:'70%'}} />
         </View>
         <FooterApp/>
       </Container>
@@ -52,7 +52,7 @@ class CamPicture extends React.Component{
 
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({cameraTakeUri}, dispatch);
+  return bindActionCreators({getMedia}, dispatch);
 }; 
 
 export default connect(null, mapDispatchToProps)(CamPicture); 
