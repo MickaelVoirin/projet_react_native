@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Image from 'react-native-scalable-image';
 import { DocumentPicker, ImagePicker, Permissions } from 'expo';
 import { bindActionCreators } from 'redux'; 
-import { getDocumentData } from '../../actions';
+import { getMedia } from '../../actions';
 
 class TakePicture extends Component {
   
@@ -31,7 +31,7 @@ class TakePicture extends Component {
   _pickDocument = async () => {
     let result = await DocumentPicker.getDocumentAsync();
       if (result.type != 'cancel') {
-        this.props.getDocumentData(result);
+        this.props.getMedia(result);
       }
   };
 
@@ -40,28 +40,28 @@ class TakePicture extends Component {
       type: 'Images',
     });
     if (!result.cancelled) {
-      this.props.getDocumentData(result);
+      this.props.getMedia(result);
     }
   };
 
   render() {
     
-    const {image, document, nameform, numberquestion} = this.props; 
+    const {image, media, nameform, numberquestion} = this.props; 
     
     let renderDocument;
 
-    if (document != '' && document.type == 'image') {
-      renderDocument = <Image source={{ uri: document.uri }} width={250} style={{marginTop:20, marginBottom:20}}/>;
-    } else if (document != ''){
-      if (document.name.match(/^.+\.pdf$/)){
+    if (media != '' && media.type == 'image') {
+      renderDocument = <Image source={{ uri: media.uri }} width={250} style={{marginTop:20, marginBottom:20}}/>;
+    } else if (media != ''){
+      if (media.name.match(/^.+\.pdf$/)){
         renderDocument =  <View style={styles.container}>
                             <Text style={styles.textBlock}>
                               <Icon style={styles.iconColor} type="FontAwesome" name="file-pdf-o" />
                             </Text>
-                            <Text style={styles.textBlock}>{document.name}</Text>
+                            <Text style={styles.textBlock}>{media.name}</Text>
                           </View>;
-      } else if (document.name.match(/^.+\.(jpg|JPG|jpeg|JPEG|png|PNG)$/)){
-        renderDocument = <Image source={{ uri: document.uri }} width={250} style={{marginTop:20, marginBottom:20}}/>;
+      } else if (media.name.match(/^.+\.(jpg|JPG|jpeg|JPEG|png|PNG)$/)){
+        renderDocument = <Image source={{ uri: media.uri }} width={250} style={{marginTop:20, marginBottom:20}}/>;
       } else {
         renderDocument =  <View style={styles.container}>
                             <Text style={styles.textBlock}>
@@ -138,11 +138,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   image: state.camera,
-  document: state.document,
+  media: state.media,
 });
 
 const mdtp = dispatch => {
-  return bindActionCreators({getDocumentData}, dispatch);
+  return bindActionCreators({getMedia}, dispatch);
 }; 
 
 export default connect(mapStateToProps, mdtp)(TakePicture);
