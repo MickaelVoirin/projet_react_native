@@ -3,7 +3,6 @@ export const addNotifs = (notifications) => ({
   notifications
 });
 
-export const updateNotifs = (notificationsToUpdate) => ({
-  type:'UPDATE_NOTIFS_NOT_NEW',
-  notificationsToUpdate
+export const updateNotifs = () => ({
+  type:'UPDATE_NOTIFS_NOT_NEW'
 });

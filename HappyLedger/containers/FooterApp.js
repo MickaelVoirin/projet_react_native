@@ -3,6 +3,9 @@ import { Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { connect } from "react-redux";
 import { StyleSheet } from 'react-native';
+import { addNotifs } from '../actions/notification';
+import { bindActionCreators } from 'redux';
+
 
 class FooterApp extends Component {
 
@@ -10,11 +13,11 @@ class FooterApp extends Component {
     numberNewNotifs : 0,
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     this.getNotifs();
   }
 
-  componentWillReceiveProps(){
+  async componentWillReceiveProps(){
     this.getNotifs();
   }
   
@@ -27,7 +30,6 @@ class FooterApp extends Component {
       }
       this.setState({numberNewNotifs});
   }
-
 
   render() {
     return (
@@ -119,11 +121,13 @@ class FooterApp extends Component {
   }
 }
 
+
+
 const mstp = state => ({
   notifications: state.notifications
 });
 
-export default connect(mstp)(FooterApp);
+export default connect(mstp, null)(FooterApp);
 
 const styles = StyleSheet.create({
   text: {

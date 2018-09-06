@@ -16,19 +16,30 @@ class Notifications extends React.Component {
   state = {
     listOfForms : false,
     isReady : false,
-    newNotifs : false
+    newNotifs : false,
+    mount:false
   }
 
   async componentDidMount(){
     await this._loadNewNotifs();
     await this._loadJsonsElementsAsync();
-    await this.props.updateNotifs(this.state.newNotifs);
+    await this.props.updateNotifs();
+    
     this.setState({isReady:true});
   }
-
+  
   async componentDidUpdate(){
     if(this.state.isReady == true){
       await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
+    }
+  }
+
+  async componentWillReceiveProps(){
+      
+      await this._loadNewNotifs();
+      await this._loadJsonsElementsAsync();
+    if(this.state.newNotifs.length != 0){
+      await this.props.updateNotifs();
     }
   }
 
@@ -41,11 +52,12 @@ class Notifications extends React.Component {
   async _loadJsonsElementsAsync() {
     
     const self = this;
+    this.setState({listOfForms:false});
+    const listOfForms = [];
     for(let i of this.state.newNotifs){
       await axios.post(`${urlAPI}kyc/form/${i}`)
       .then(function (response) {
         const form = JSON.parse(response.data);
-        const listOfForms = [...self.state.listOfForms]
         listOfForms.push({'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
         self.setState({listOfForms})               
       })
