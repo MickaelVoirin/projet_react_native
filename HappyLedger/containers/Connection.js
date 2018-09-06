@@ -46,14 +46,16 @@ class Connection extends React.Component {
           <FormInput
           style={{width:200,height:50}}
           placeholder="Email"
-          inputStyle={{fontFamily:'raleway'}}
+          placeholderTextColor='white'
+          inputStyle={{fontFamily:'raleway', color:'white', paddingLeft:10}}
           onChangeText={(email) => this.setState({email})}
         />
         <FormInput
           style={{width:200,height:50}}
           secureTextEntry
           placeholder="Mot de Passe"
-          inputStyle={{fontFamily:'raleway'}}
+          placeholderTextColor='white'
+          inputStyle={{fontFamily:'raleway', color:'white', paddingLeft:10}}
           onChangeText={(password) => this.setState({password})}
         />
         { rendering }
