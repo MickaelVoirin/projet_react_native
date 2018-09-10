@@ -11,12 +11,12 @@ const router = express.Router();
 // });
 
 router.post('/send', (req, res) => {
-  if (req.body.receiver === 'gilles@gmail.com') {
+  if (req.body.receiver === 'marie@gmail.com') {
     const content = fs.readFileSync('./json_test/notification/notification_get_received.json', 'UTF-8');
     let contentObject = JSON.parse(content);
     contentObject.items.push({
       _id: 'notif_4',
-      company: 'the New Company'
+      company: 'BNP Paribas'
     });
     console.log(contentObject);
     fs.writeFileSync('./json_test/notification/notification_get_received.json', JSON.stringify(contentObject), 'UTF-8');
