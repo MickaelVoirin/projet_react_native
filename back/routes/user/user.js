@@ -10,12 +10,12 @@ router.post('/login', (req, res) => {
   let login = false;
   for (let i = 0; i < loginData.length; i++) {
     if (loginData[i].email === req.body.email && loginData[i].password === req.body.password) {
-      if (loginData[i].email === 'gilles@gmail.com') {
+      if (loginData[i].email === 'marie@gmail.com') {
         const successLogin = fs.readFileSync('./json_test/user/user_login_a.json', 'UTF-8');
         res.send(successLogin);
         login = true;
       }
-      if (loginData[i].email === 'bob@gmail.com') {
+      if (loginData[i].email === 'vincent@bnp.com') {
         const successLogin = fs.readFileSync('./json_test/user/user_login_b.json', 'UTF-8');
         console.log(successLogin);
         res.send(successLogin);
