@@ -17,7 +17,6 @@ router.post('/login', (req, res) => {
       }
       if (loginData[i].email === 'vincent@bnp.com') {
         const successLogin = fs.readFileSync('./json_test/user/user_login_b.json', 'UTF-8');
-        console.log(successLogin);
         res.send(successLogin);
         login = true;
       }
@@ -26,7 +25,6 @@ router.post('/login', (req, res) => {
   if (!login) {
     res.status(401).send({ message: 'login failed' });
   }
-  
 });
 
 router.post('/register', (req, res) => {
