@@ -51,15 +51,23 @@ Description : Client HTTP basé sur les Promises pour le navigateur et NodeJS
 Documentation : [Github](https://github.com/axios/axios)
 
 #### expo
+
+Description : SDK qui fournit l'accès aux fonctionnalités des smartphones
+
+Documentation : [Expo](https://docs.expo.io/versions/latest/)
+
 #### native-base
 
 Description : Boite à outils pour le design d'application React Native
 
 Documentation : [native-base](https://docs.nativebase.io/)
 
-#### react
-
 #### react-native
+
+Description : Framework utilisant React et Javascript pour développer des applications mobiles natives
+
+Documentation : [React Native](https://facebook.github.io/react-native/)
+
 #### react-native-elements
 
 Description : Boite à outils pour le design d'application React Native
@@ -89,7 +97,17 @@ Description : Permet de calculer la taille de l'image et la redimensionner avec 
 Documentation : [NPM](https://www.npmjs.com/package/react-native-scalable-image)
 
 #### react-redux
+
+Description : Module de liaison entre React et Redux
+
+Documentation : [Redux](https://redux.js.org/basics/usagewithreact)
+
 #### redux
+
+Description : Redux est un conteneur d'état prévisible pour les applications JavaScript.
+
+Documentation : [Redux](https://redux.js.org/)
+
 #### redux-thunk
 
 Description : Nécessaire pour utiliser des requêtes asynchrones dans les actions Redux
