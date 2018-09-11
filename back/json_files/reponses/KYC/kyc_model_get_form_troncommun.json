@@ -16,7 +16,7 @@
         "__v": 0
       },
       "label" : "Votre Etat Civil (Nom et prénom)",
-      "answer" : ""
+      "answer" : "Marie Laurent"
     },
     {
       "question" : {
@@ -30,7 +30,7 @@
         "__v": 0
       },
       "label" : "Quelle est votre adresse postale ?",
-      "answer" : ""
+      "answer" : "68 Cours de Verdun, 33000 Bordeaux"
     },
     {
       "question" : {
@@ -54,7 +54,7 @@
         "__v": 0
       },
       "label" : "Quelle est votre situation professionnelle ?",
-      "answer" : ""
+      "answer" : "étudiant"
       },
       {
         "question" : {
