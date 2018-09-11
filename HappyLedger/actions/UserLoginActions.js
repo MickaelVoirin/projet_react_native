@@ -3,6 +3,8 @@ import axios from 'axios'
 import urlAPI from '../urlAPI'
 import { Actions } from 'react-native-router-flux';
 
+
+// sauvegarde dans le stockage du téléphone l'identification de l'utilisateur
 function _saveAuthAsync(auth,token,status) {
   try {
     AsyncStorage.setItem('auth', JSON.stringify(auth));
@@ -21,6 +23,8 @@ function _saveAuthAsync(auth,token,status) {
   }    
 }
 
+// identification de l'utilisateur via une requete au backend
+// lance une suite d'actions 
 export const getUserLogin = (email,password) => {
   return dispatch => {
     dispatch(getUserLoginBegin());

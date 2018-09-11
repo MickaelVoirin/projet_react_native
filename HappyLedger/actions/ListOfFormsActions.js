@@ -12,6 +12,8 @@ async function delay() {
 
 // --------------------------------------
 
+
+// récupère la liste des formulaires depuis le stockage du téléphone
 retrieveData = async () => {
   try {
     let listOfFormsPromises = await AsyncStorage.getItem('listOfForms');
@@ -24,6 +26,7 @@ retrieveData = async () => {
   }
 }
 
+// dispatch les différentes actions pour l'affichage de la liste de formulaires
 export const getListOfForms = () => {
   return dispatch => {
     dispatch(getListOfFormsBegin());

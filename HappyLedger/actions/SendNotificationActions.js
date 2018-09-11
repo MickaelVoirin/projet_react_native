@@ -1,6 +1,8 @@
 import axios from 'axios'
 import urlAPI from '../urlAPI'
 
+// uniquement utilisateur entreprise, envoi d'une notification au backend
+// lance une suite d'actions
 export const sendNotification = (receiver, askFor) => {
     return dispatch => {
       dispatch(sendNotificationBegin());
