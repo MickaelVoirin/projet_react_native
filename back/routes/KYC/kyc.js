@@ -1,13 +1,7 @@
-// IMPORT
 import express from 'express';
 import fs from 'fs';
-// CONST
+
 const router = express.Router();
-
-
-router.get('/', (req, res) => {
-  res.json({'test': 'KYC MA GUEULE'});
-});
 
 router.post('/form/:id', (req, res) => {
   const contenu = fs.readFileSync(`./json_test/KYC/kyc_model_get_form_${req.params.id}.json`, "UTF-8");

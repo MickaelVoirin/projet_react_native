@@ -20,6 +20,14 @@ back : backend de développement avec l'API et les données de test
 
 ## Installation
 
+### Prérequis
+
+- NodeJS v10.10.0
+
+- NPM v6.4.1
+
+### Etapes
+
 - Décompresser le fichier zip
 
 - exécuter npm install dans les dossiers back et HappyLedger
@@ -112,10 +120,28 @@ Documentation : [Redux](https://redux.js.org/)
 
 Description : Nécessaire pour utiliser des requêtes asynchrones dans les actions Redux
 
-Required to use asynchronous requests in actions
-
 Documentation : [redux-thunk](https://github.com/reduxjs/redux-thunk)
 
 ### Backend
 
+#### babel
 
+Description : Compilateur Javascript
+
+Documentation : [Babel](https://babeljs.io/)
+
+#### express
+
+Description : Infrastructure Web minimaliste, souple et rapide pour Node.js
+
+Documentation : [Express](https://expressjs.com/fr/)
+
+#### ncp
+
+Description : copie récursive et asynchrone de fichiers
+
+Documentation : [NCP](https://github.com/AvianFlu/ncp)
+
+## Build de l'application
+
+Démarche à suivre sur [Expo](https://docs.expo.io/versions/v28.0.0/distribution/building-standalone-apps)

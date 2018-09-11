@@ -86,6 +86,5 @@ back/json_test/*
 
 # fichier de configuration URL de l'API
 
-# urlAPI
 H*/urlAPI.js
 
