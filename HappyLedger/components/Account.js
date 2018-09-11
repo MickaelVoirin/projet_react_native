@@ -10,7 +10,7 @@ export default class Account extends React.Component {
         <Container>
             <HeaderApp title={this.props.title}/>
             <Content>
-                <Text>Account managment page</Text>
+                <Text>Gestion de compte</Text>
             </Content>
             <FooterApp/>
         </Container>

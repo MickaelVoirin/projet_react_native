@@ -1,19 +1,12 @@
-// IMPORT
 import express from 'express';
 import fs from 'fs';
 
-// CONST
 const router = express.Router();
-
-
-// router.get('/', (req, res) => {
-//   res.send('HELLLOOOO USER');
-// });
 
 router.post('/send', (req, res) => {
   if (req.body.receiver === 'marie@gmail.com') {
     const content = fs.readFileSync('./json_test/notification/notification_get_received.json', 'UTF-8');
-    let contentObject = JSON.parse(content);
+    const contentObject = JSON.parse(content);
     contentObject.items.push({
       _id: 'notif_4',
       company: 'BNP Paribas'
@@ -27,7 +20,7 @@ router.post('/send', (req, res) => {
 });
 
 router.post('/get_received', (req, res) => {
-  const content = fs.readFileSync('./json_test/notification/notification_get_received.json', "UTF-8");
+  const content = fs.readFileSync('./json_test/notification/notification_get_received.json', 'UTF-8');
   res.json(content);
 });
 

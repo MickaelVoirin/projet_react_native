@@ -11,12 +11,12 @@
         "category": "identité",
         "name": "Nom Prénom",
         "type": "string",
-        "default_label": "Nom Prénom",
+        "default_label": "Votre Etat Civil (Nom et prénom)",
         "common_core": true,
         "__v": 0
       },
-      "label" : "Nom Prénom",
-      "answer" : ""
+      "label" : "Votre Etat Civil (Nom et prénom)",
+      "answer" : "Marie Laurent"
     },
     {
       "question" : {
@@ -25,12 +25,12 @@
         "category": "adresse",
         "name": "Adresse",
         "type": "textarea",
-        "default_label": "Saisissez votre adresse",
+        "default_label": "Quelle est votre adresse postale ?",
         "common_core": true,
         "__v": 0
       },
-      "label" : "Saisissez votre adresse",
-      "answer" : ""
+      "label" : "Quelle est votre adresse postale ?",
+      "answer" : "68 Cours de Verdun, 33000 Bordeaux"
     },
     {
       "question" : {
@@ -54,7 +54,7 @@
         "__v": 0
       },
       "label" : "Quelle est votre situation professionnelle ?",
-      "answer" : ""
+      "answer" : "étudiant"
       },
       {
         "question" : {

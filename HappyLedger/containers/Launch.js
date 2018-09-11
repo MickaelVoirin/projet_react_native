@@ -1,10 +1,12 @@
-// IMPORT REACT 
 import React from 'react';
-import { StyleSheet, StatusBar, Container } from 'react-native';
+import { StyleSheet, StatusBar, AsyncStorage } from 'react-native';
 import { Router, Stack, Scene } from 'react-native-router-flux';
+import axios from 'axios';
+import urlAPI from '../urlAPI';
+import { AppLoading, Font } from 'expo';
+import { Root } from 'native-base';
 
-
-// IMPORT DES COMPONENTS
+// import des composants
 import ExchangeSurvey from '../components/ExchangeSurvey';
 import Camera from '../components/camera/Camera';
 import Home from '../components/Home';
@@ -19,28 +21,17 @@ import Epargner from '../components/Epargner';
 import DemandePret from '../components/DemandePret';
 import AssuranceVie from '../components/AssuranceVie';
 
-// IMPORT DES CONTAINERS
+// import des containers
 import Profile from './Profile';
 import Forms from './Forms';
 import CamPicture from './camera/CamPicture';
 import SendPartnAuth from './SendPartnAuth';
 
 // IMPORT EXPO
-import { AppLoading, Font } from 'expo';
-
-import { Alert, AsyncStorage } from "react-native"
-
-import { Root } from 'native-base';
 import { addNotifs, notifsLaunch } from '../actions/notification';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
-// AXIOS
-import axios from 'axios';
-import urlAPI from '../urlAPI';
-
-
-// DEBUT EXPORT CLASS DEFAULT 
 class Launch extends React.Component {
 
   constructor(props){
@@ -63,6 +54,7 @@ class Launch extends React.Component {
     this.setState({ isReady: true });  
   }
 
+// chargement des polices de caractères
   async _loadAssetsAsync() {
     await Font.loadAsync({
       'raleway': require('../assets/fonts/Raleway-Regular.ttf'),
@@ -70,6 +62,7 @@ class Launch extends React.Component {
     });  
   }
 
+// chargement des notifications depuis le stockage du téléphone
   async _loadNotifStorage(){
     let notificationsStorage = await AsyncStorage.getItem('notifications');
     notificationsStorage = (notificationsStorage == null) ? [] : JSON.parse(notificationsStorage);
@@ -85,11 +78,6 @@ class Launch extends React.Component {
       });
   }
   
-  async _getForms(){
-
-
-
-  } 
 
 
   render() {

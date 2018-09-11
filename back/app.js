@@ -19,9 +19,6 @@ ncp('./json_files/reponses', './json_test', function (err) {
     return console.error(err);
   }
  });
-
-
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -53,9 +50,9 @@ app.use((err, req, res, next) => {
   res.json(err);
 });
 
-// Port utilisé pour le serveur en local
-const listener = app.listen(8888, function(){
-  console.log('Listening on port ' + listener.address().port); //Listening on port 8888
+// Port 8888 utilisé pour le serveur en local
+const listener = app.listen(8888, function() {
+  console.log(`Listening on port ${listener.address().port}`);
 });
 
 // Handle uncaughtException
@@ -65,4 +62,3 @@ process.on('uncaughtException', (err) => {
 });
 
 export default app;
-// module.exports = app;

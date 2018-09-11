@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Container, Radio, Left, Right, Icon, Body, Title, Subtitle, Header, H1, H2, Button, View, Card, Text, Item, Input, Textarea, Label } from 'native-base';
+import { Container, H2, Button, View, Card, Text, Item, Input, Textarea } from 'native-base';
 import CheckboxList from '../components/forms/CheckboxList'
 import RadioList from '../components/forms/RadioList'
 import DatePickers from '../components/forms/DatePickers'
@@ -11,10 +11,11 @@ import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
-import { Alert, AsyncStorage } from "react-native"
-
-
 class Forms extends Component {
+
+  constructor(props) {
+    super(props)
+  }
   
   state = {
     questions: undefined,
@@ -27,7 +28,6 @@ async _receivedProps(numberquestion) {
 }
 
   async componentDidMount(){
-      
     await this._receivedProps(this.props.numberquestion);
   }
 
@@ -36,26 +36,27 @@ async _receivedProps(numberquestion) {
   }
 
   render() {
+    const obj = this.state.questions;
     let label = '';
     let name = '';
-    let category = '';
     let choices = '';
     let type = '';
-    const obj = this.state.questions;
-
+    let answer = '';
+    
 
     if (obj) {
       label = obj.label;
       name = obj.question.name;
       category = obj.question.category;
       choices = obj.question.choices;
-      type = obj.question.type
+      type = obj.question.type;
+      answer = obj.answer;
     }
  
 
     return (
       <Container> 
-      <HeaderApp title={this.props.title}/>
+      <HeaderApp title={this.props.company}/>
       <ScrollView style={styles.scrollview}>
         { (!obj) 
           ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>
@@ -63,25 +64,16 @@ async _receivedProps(numberquestion) {
             </Text>
           :
           <View>  
-           
             <Card style={styles.card}>
                 <H2 style={styles.H2}>{name}</H2>
                 <Text style={styles.question}>"{label}"</Text>
                 <View style={styles.field}>
-                <Text style={styles.reponse}>Réponse  
-                {(type === 'checkbox') 
-                    ? ' (choix multiples)' 
-                    : (type === 'radio')
-                      ? ' (Un seul choix)'
-                      : '' 
-                } :</Text>
-
                 {( () => {
                   switch(type) {
                       case 'string':
-                        return <Item><Input placeholder='Saisissez votre réponse' /></Item>;
+                        return <Item><Input value={answer} /></Item>;
                       case 'textarea':
-                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered placeholder='Saisissez votre réponse'/>;
+                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered value={answer}/>;
                       case 'checkbox':  
                         return <CheckboxList answers={choices}/>
                       case 'radio':  
@@ -89,7 +81,7 @@ async _receivedProps(numberquestion) {
                       case 'date' : 
                         return <DatePickers />       
                       case 'ranges' : 
-                        return <RangeList minmax={choices}/>
+                        return <RangeList minmax={choices} value={answer}/>
                       case 'file':
                         return <TakePicture nameform={this.props.nameform} numberquestion={this.props.numberquestion}/>
                       default:
@@ -99,30 +91,25 @@ async _receivedProps(numberquestion) {
                 </View>
             </Card>
             <View style={styles.viewButtons}>
-
             {this.props.numberquestion > 0 &&
-               <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
-                <Text>Précédente</Text>
+               <Button style={styles.buttonLeft} rounded onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
+                <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Précédent</Text>
               </Button>
             }
             { this.props.numberquestion !== this.props.listOfQuestions[this.props.nameform].length -1
-             ? <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-               <Text>Suivant</Text>
+             ? <Button style={styles.buttonRight} rounded bordered onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
+               <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Suivant</Text>
                </Button>
-            : <Button style={styles.buttonRight} onPress={() => Actions.Profile()}>
-               <Text>Valider</Text>
+            : <Button style={styles.buttonRight} rounded onPress={() => Actions.Profile()}>
+               <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Valider</Text>
               </Button>
             }
-            
             </View>
-          </View>
-          
+          </View> 
         }
-      
       </ScrollView>
       <FooterApp/>
       </Container>
-      
     ); 
   } 
 }
@@ -132,7 +119,6 @@ const mstp = state => ({
 })
 
 export default connect(mstp)(Forms);
-
 
 const styles = StyleSheet.create({
   scrollview: {
@@ -153,14 +139,28 @@ const styles = StyleSheet.create({
     marginTop:1,
   },
   buttonLeft:{
+    backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
-    left:0
+    left:0,
+    marginLeft:20,
+    shadowColor: '#222',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+    elevation: 1,
   },
   buttonRight:{
+    // backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
-    right:0
+    right:0,
+    marginRight:20,
+    shadowColor: '#222',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+    elevation: 1,
   },
   viewButtons :{ 
     minHeight: 80,
@@ -168,9 +168,8 @@ const styles = StyleSheet.create({
     flex: 1, 
     position: "relative", 
     top: 15,  
-    justifyContent: 'space-between', 
     padding: 10,
-    marginBottom: 20, 
+    marginBottom: 40, 
     paddingTop : 80,
   }, 
   viewForm : {
@@ -181,7 +180,8 @@ const styles = StyleSheet.create({
     paddingTop : 15,
   },
   H2 : {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 20
   },
   reponse : {
    marginBottom: 15,
