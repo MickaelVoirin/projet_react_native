@@ -141,3 +141,7 @@ Documentation : [Express](https://expressjs.com/fr/)
 Description : copie récursive et asynchrone de fichiers
 
 Documentation : [NCP](https://github.com/AvianFlu/ncp)
+
+## Build de l'application
+
+Démarche à suivre sur [Expo](https://docs.expo.io/versions/v28.0.0/distribution/building-standalone-apps)
