@@ -45,7 +45,7 @@ class SendPartnAuth extends Component {
             <Col>
             <Form>
           <Item stackedLabel>
-            <Label>Saisissez le nom de l'utilisateur</Label>
+            <Label style={styles.label}>Saisissez le nom de l'utilisateur</Label>
             <Input
               onChangeText={(receiver) => this.setState({receiver})}
             />
@@ -54,7 +54,7 @@ class SendPartnAuth extends Component {
               <Picker
                 mode="dropdown"
                 iosIcon={<Icon name="ios-arrow-down-outline" />}
-                style={{ width: undefined }}
+                //style={{ width: undefined }}
                 placeholder="Choisissez votre formulaire"
                 placeholderStyle={{ color: "#bfc6ea" }}
                 placeholderIconColor="#007aff"
@@ -118,4 +118,7 @@ const styles = StyleSheet.create({
   iconColor: {
     color: "green",
   },
+  label : {
+    paddingLeft: 25,
+  }
 });
