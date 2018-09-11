@@ -36,18 +36,21 @@ async _receivedProps(numberquestion) {
   }
 
   render() {
+    const obj = this.state.questions;
     let label = '';
     let name = '';
     let choices = '';
     let type = '';
-    const obj = this.state.questions;
+    let answer = '';
+    
 
     if (obj) {
       label = obj.label;
       name = obj.question.name;
       category = obj.question.category;
       choices = obj.question.choices;
-      type = obj.question.type
+      type = obj.question.type;
+      answer = obj.answer;
     }
  
 
@@ -68,9 +71,9 @@ async _receivedProps(numberquestion) {
                 {( () => {
                   switch(type) {
                       case 'string':
-                        return <Item><Input placeholder='Saisissez votre réponse' /></Item>;
+                        return <Item><Input value={answer} /></Item>;
                       case 'textarea':
-                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered placeholder='Saisissez votre réponse'/>;
+                        return <Textarea style={{width:'100%'}} rowSpan={5} bordered value={answer}/>;
                       case 'checkbox':  
                         return <CheckboxList answers={choices}/>
                       case 'radio':  
@@ -78,7 +81,7 @@ async _receivedProps(numberquestion) {
                       case 'date' : 
                         return <DatePickers />       
                       case 'ranges' : 
-                        return <RangeList minmax={choices}/>
+                        return <RangeList minmax={choices} value={answer}/>
                       case 'file':
                         return <TakePicture nameform={this.props.nameform} numberquestion={this.props.numberquestion}/>
                       default:
