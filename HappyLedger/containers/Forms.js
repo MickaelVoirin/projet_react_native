@@ -90,15 +90,15 @@ async _receivedProps(numberquestion) {
             <View style={styles.viewButtons}>
             {this.props.numberquestion > 0 &&
                <Button style={styles.buttonLeft} rounded onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
-                <Text style={{color:'black'}}>Précédente</Text>
+                <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Précédent</Text>
               </Button>
             }
             { this.props.numberquestion !== this.props.listOfQuestions[this.props.nameform].length -1
-             ? <Button style={styles.buttonRight} rounded onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-               <Text style={{color:'black'}}>Suivant</Text>
+             ? <Button style={styles.buttonRight} rounded bordered onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
+               <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Suivant</Text>
                </Button>
             : <Button style={styles.buttonRight} rounded onPress={() => Actions.Profile()}>
-               <Text style={{color:'black'}}>Valider</Text>
+               <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Valider</Text>
               </Button>
             }
             </View>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   buttonRight:{
-    backgroundColor: '#FFFFFF',
+    // backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
     right:0,
@@ -177,7 +177,8 @@ const styles = StyleSheet.create({
     paddingTop : 15,
   },
   H2 : {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 20
   },
   reponse : {
    marginBottom: 15,
