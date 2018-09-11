@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Container, Radio, Left, Right, Icon, Body, Title, Subtitle, Header, H1, H2, Button, View, Card, Text, Item, Input, Textarea, Label } from 'native-base';
+import { Container, H2, Button, View, Card, Text, Item, Input, Textarea } from 'native-base';
 import CheckboxList from '../components/forms/CheckboxList'
 import RadioList from '../components/forms/RadioList'
 import DatePickers from '../components/forms/DatePickers'
@@ -10,9 +10,6 @@ import HeaderApp from '../components/HeaderApp';
 import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import {connect} from 'react-redux';
-
-import { Alert, AsyncStorage } from "react-native"
-
 
 class Forms extends Component {
   
@@ -38,7 +35,6 @@ async _receivedProps(numberquestion) {
   render() {
     let label = '';
     let name = '';
-    let category = '';
     let choices = '';
     let type = '';
     const obj = this.state.questions;
@@ -63,7 +59,6 @@ async _receivedProps(numberquestion) {
             </Text>
           :
           <View>  
-           
             <Card style={styles.card}>
                 <H2 style={styles.H2}>{name}</H2>
                 <Text style={styles.question}>"{label}"</Text>
@@ -99,7 +94,6 @@ async _receivedProps(numberquestion) {
                 </View>
             </Card>
             <View style={styles.viewButtons}>
-
             {this.props.numberquestion > 0 &&
                <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
                 <Text>Précédente</Text>
@@ -113,16 +107,12 @@ async _receivedProps(numberquestion) {
                <Text>Valider</Text>
               </Button>
             }
-            
             </View>
-          </View>
-          
+          </View> 
         }
-      
       </ScrollView>
       <FooterApp/>
       </Container>
-      
     ); 
   } 
 }
@@ -132,7 +122,6 @@ const mstp = state => ({
 })
 
 export default connect(mstp)(Forms);
-
 
 const styles = StyleSheet.create({
   scrollview: {

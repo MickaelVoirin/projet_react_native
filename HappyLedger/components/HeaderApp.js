@@ -20,6 +20,7 @@ class HeaderApp extends Component {
     this._verifyNotifs();
   }
 
+  // requete asynchrone vérifie les nouvelles notifications auprès du backend 
   _verifyNotifs() {
     const self = this;
     axios.post(`${urlAPI}notification/get_received`)

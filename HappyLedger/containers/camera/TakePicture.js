@@ -28,6 +28,7 @@ class TakePicture extends Component {
     
   }
 
+
   _pickDocument = async () => {
     let result = await DocumentPicker.getDocumentAsync();
       if (result.type != 'cancel') {
@@ -108,9 +109,6 @@ class TakePicture extends Component {
               }
             )}
         />
-        {/* {image != '' &&
-            <Image source={{ uri: image }} width={250} style={{marginTop:20, marginBottom:20}}/>
-        } */}
         { renderDocument }
       </View>
     );

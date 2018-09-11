@@ -18,9 +18,6 @@ export default class DatePickers extends Component {
     return (
       <Content>
           <DatePicker
-            // defaultDate={new Date()}
-            // minimumDate={new Date()}
-            // maximumDate={new Date(2040, 8, 30)}
             locale={"fr"}
             timeZoneOffsetInMinutes={undefined}
             modalTransparent={false}
