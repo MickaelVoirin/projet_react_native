@@ -1,7 +1,5 @@
-// IMPORT
 import express from 'express';
 
-// CONST
 const router = express.Router();
 
 
