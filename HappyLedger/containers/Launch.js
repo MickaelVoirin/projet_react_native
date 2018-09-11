@@ -27,8 +27,8 @@ import Forms from './Forms';
 import CamPicture from './camera/CamPicture';
 import SendPartnAuth from './SendPartnAuth';
 
-import { addNotifs } from '../actions/notification';
-
+// IMPORT EXPO
+import { addNotifs, notifsLaunch } from '../actions/notification';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
@@ -50,8 +50,7 @@ class Launch extends React.Component {
     StatusBar.setHidden(true);
     await this._loadAssetsAsync();
     await this._loadNotifStorage();
-    await this._loadNotifJsons();
-    await this._saveStoreAndRedux(); 
+    // alert(JSON.stringify(this.props.notifications)); 
     this.setState({ isReady: true });  
   }
 
@@ -67,39 +66,19 @@ class Launch extends React.Component {
   async _loadNotifStorage(){
     let notificationsStorage = await AsyncStorage.getItem('notifications');
     notificationsStorage = (notificationsStorage == null) ? [] : JSON.parse(notificationsStorage);
-    this.setState({notificationsStorage});
-  }
-
-// chargement des notifications depuis le backend
-  async _loadNotifJsons() {
+    // this.setState({notificationsStorage});
     const self = this;
     await axios.post(`${urlAPI}notification/get_received`)
       .then(function (response) {
         const notificationsJsons = JSON.parse(response.data).items;
-        self.setState({notificationsJsons});
+        self.props.notifsLaunch(notificationsJsons, notificationsStorage);
       })
       .catch(function (error) {
         self.setState({err:true});
       });
   }
+  
 
-// enregistrement des notifications dans le stockage du téléphone
-  async _saveStoreAndRedux() {
-    const notificationsStorage = [];
-    for(let valeurJsons of this.state.notificationsJsons){
-      let temoin = true;
-      for(let valeurStorage of this.state.notificationsStorage){
-        if(valeurStorage._id === valeurJsons._id){
-            temoin = false; 
-        } 
-      }
-      if(temoin){valeurJsons['new'] = true};
-      notificationsStorage.push(valeurJsons); 
-    } 
-    await AsyncStorage.setItem('notifications', JSON.stringify(notificationsStorage));
-    await this.props.addNotifs(notificationsStorage);
-    this.setState({notificationsStorage});
-  }
 
   render() {
     if (this.state.isReady) {
@@ -196,7 +175,7 @@ class Launch extends React.Component {
             <Scene
               key="SendPartnAuth"
               component={SendPartnAuth}
-              title="Notifications"
+              title="SendPartnAuth"
               hideNavBar={true}
             />
             <Scene
@@ -222,8 +201,9 @@ class Launch extends React.Component {
 }
 
 const mdtp = (dispatch) => {
-  return bindActionCreators({addNotifs}, dispatch);
+  return bindActionCreators({addNotifs, notifsLaunch}, dispatch);
 };
+
 
 export default connect(null, mdtp)(Launch);
 
