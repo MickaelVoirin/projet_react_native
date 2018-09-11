@@ -8,7 +8,6 @@ export default class CheckBoxToList extends Component {
 
 
   render() {
-   // alert(String(this.props.number))
     return (
       <ListItem>
         <Radio 
