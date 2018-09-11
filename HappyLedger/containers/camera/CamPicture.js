@@ -13,7 +13,8 @@ class CamPicture extends React.Component{
   constructor(props){
     super(props);
   }
-  
+
+// validation de la photo, renvoi vers le formulaire
   validPicture(){
     this.props.getMedia(this.props.media);
     Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion});

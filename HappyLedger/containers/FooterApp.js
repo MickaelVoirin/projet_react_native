@@ -3,9 +3,6 @@ import { Footer, FooterTab, Button, Icon, Text, Badge } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { connect } from "react-redux";
 import { StyleSheet } from 'react-native';
-import { addNotifs } from '../actions/notification';
-import { bindActionCreators } from 'redux';
-
 
 class FooterApp extends Component {
 
@@ -39,9 +36,8 @@ class FooterApp extends Component {
             tabBarTextColor='white'
           >
 
- {/* BUTTON HOME */}
+ {/* Bouton home */}
             <Button
-              // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.Home()}
             >
               <Icon
@@ -55,11 +51,10 @@ class FooterApp extends Component {
               >Home</Text>
             </Button>
 
-{/* FIN DU BUTTON HOME */}
+{/* bouton notifications */}
 
             <Button
               style={{position:'relative'}}
-              // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.Notifications()}
             >
               <Icon
@@ -78,11 +73,10 @@ class FooterApp extends Component {
               >Notifications</Text>
             </Button>
 
-{/* FIN BUTTON NOTIF */}
+{/* Bouton autorisations */}
 
             <Button
               vertical
-              // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.ExchangeSurvey()}
             >
               <Icon
@@ -90,17 +84,14 @@ class FooterApp extends Component {
                 name="check"
                 style={styles.icon}
               />
-                <Text
-                  uppercase={false}
-                  style={styles.text}
-                >Autorisations</Text>
+              <Text
+                uppercase={false}
+                style={styles.text}
+              >Autorisations</Text>
             </Button>
-
-{/* FIN BUTTON AUTORISATION */}
-
-              <Button
+{/* Bouton profile */}
+            <Button
               vertical
-              // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.Profile()}
             >
               <Icon
@@ -113,8 +104,6 @@ class FooterApp extends Component {
                   uppercase={false}
                 >Profil</Text>
             </Button>
-
-
           </FooterTab>
         </Footer>
     );

@@ -42,6 +42,7 @@ class Profile extends Component {
     }
   } 
 
+// sauvegarde les formulaires dans le stockage du téléphone
   async _saveStrorageAsync(){
      try{ 
       await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
