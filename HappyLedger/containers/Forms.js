@@ -12,6 +12,10 @@ import { Actions } from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
 class Forms extends Component {
+
+  constructor(props) {
+    super(props)
+  }
   
   state = {
     questions: undefined,
@@ -24,7 +28,6 @@ async _receivedProps(numberquestion) {
 }
 
   async componentDidMount(){
-      
     await this._receivedProps(this.props.numberquestion);
   }
 
@@ -39,7 +42,6 @@ async _receivedProps(numberquestion) {
     let type = '';
     const obj = this.state.questions;
 
-
     if (obj) {
       label = obj.label;
       name = obj.question.name;
@@ -51,7 +53,7 @@ async _receivedProps(numberquestion) {
 
     return (
       <Container> 
-      <HeaderApp title={this.props.title}/>
+      <HeaderApp title={this.props.company}/>
       <ScrollView style={styles.scrollview}>
         { (!obj) 
           ? <Text style={styles.titleH1} onPress={() => Actions.Forms ({numberform: '1', numberquestion: '1'})}>
@@ -63,14 +65,6 @@ async _receivedProps(numberquestion) {
                 <H2 style={styles.H2}>{name}</H2>
                 <Text style={styles.question}>"{label}"</Text>
                 <View style={styles.field}>
-                <Text style={styles.reponse}>Réponse  
-                {(type === 'checkbox') 
-                    ? ' (choix multiples)' 
-                    : (type === 'radio')
-                      ? ' (Un seul choix)'
-                      : '' 
-                } :</Text>
-
                 {( () => {
                   switch(type) {
                       case 'string':
