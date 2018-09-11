@@ -60,7 +60,7 @@ class FooterApp extends Component {
             <Button
               style={{position:'relative'}}
               // style={{backgroundColor:'#a936c9'}}
-              onPress={() => Actions.Notifications()}
+              onPress={() => Actions.Notifications({update:Math.random(1000)})}
             >
               <Icon
                 type='MaterialIcons'

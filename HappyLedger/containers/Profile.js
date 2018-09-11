@@ -26,61 +26,18 @@ class Profile extends Component {
   }
 
   async componentDidMount() { 
-    await this._loadJsonsElementsAsync();
-    await this._saveStrorageAsync();
+    await this._checkNotifs();
     this.setState({isReady:true});
+    AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
   }
-  
-  async componentWillReceiveProps(){
-    if(this.state.mount){
-      this.setState({isReady:false});
-      await this._loadJsonsElementsAsync();
-      await this._saveStrorageAsync();
-      this.setState({isReady:true});
-    } else {
-      this.setState({mount:true});
-    }
-  } 
-
-  async _saveStrorageAsync(){
-     try{ 
-      await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
-        this.props.addForms(this.state.listOfForms);
-    } catch(error){
-      this.setState({err:false});
+   
+  _checkNotifs(){
+    if(this.props.notifications.length !== 0){
+      this.state.listOfForms = this.props.notifications;
     }
   }
 
-
-  async _loadJsonsElementsAsync() {
-    
-      // Received Notifications (Future : via async storage)
-      const notificationsRedux = [...this.props.notifications];
-      
-      const getIdNotifs = notificationsRedux.map( (obj) => {
-        return {
-          '_id' : obj._id,
-          'new' : obj.new
-        }   
-      });
-      const listOfForms = [];
-      const self = this;
-      for(let i of getIdNotifs){
-        await axios.post(`${urlAPI}kyc/form/${i._id}`)
-        .then(function (response) {
-          const form = JSON.parse(response.data);
-          listOfForms.push({'new' : i.new, 'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
-          self.setState({listOfForms})               
-        })
-        .catch(function (error) {
-          self.setState({err:true});
-        });
-      }
-      
-      
-  }
-
-  
+ 
 
   render() {
     
@@ -96,7 +53,7 @@ class Profile extends Component {
 
       rendering = this.state.listOfForms.map(form =>
       <ListItem
-      key={form.id}
+      key={form._id}
       onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
     >
     <Body>
@@ -143,12 +100,8 @@ const mstp = state => ({
   notifications: state.notifications
 });
 
-const mdtp = dispatch => {
-  return bindActionCreators({addForms}, dispatch);
-}
 
-
-export default connect(mstp, mdtp)(Profile);
+export default connect(mstp)(Profile);
 
 const styles = StyleSheet.create({
   separator: {

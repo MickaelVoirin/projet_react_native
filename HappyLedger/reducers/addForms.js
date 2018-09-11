@@ -1,12 +1,12 @@
 const addForms = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_FORM' :
-      const copy = {...state};
-      const elements = [...action.elements];
-      for (let value of elements){
-        copy[value.name] = value.elements;
+    case 'ADDING_FORM' :
+      const copyS = {...state};
+      const keysQuestions = Object.keys(copyS);
+      if(!keysQuestions.includes(action.element.name)){
+        copyS[action.element.name] = action.element.list;
       }
-      return copy;
+      return copyS;
     default:
       return state;
   }
