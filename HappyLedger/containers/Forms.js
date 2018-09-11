@@ -95,16 +95,16 @@ async _receivedProps(numberquestion) {
             </Card>
             <View style={styles.viewButtons}>
             {this.props.numberquestion > 0 &&
-               <Button style={styles.buttonLeft} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
-                <Text>Précédente</Text>
+               <Button style={styles.buttonLeft} rounded onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
+                <Text style={{color:'black'}}>Précédente</Text>
               </Button>
             }
             { this.props.numberquestion !== this.props.listOfQuestions[this.props.nameform].length -1
-             ? <Button style={styles.buttonRight} onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
-               <Text>Suivant</Text>
+             ? <Button style={styles.buttonRight} rounded onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
+               <Text style={{color:'black'}}>Suivant</Text>
                </Button>
-            : <Button style={styles.buttonRight} onPress={() => Actions.Profile()}>
-               <Text>Valider</Text>
+            : <Button style={styles.buttonRight} rounded onPress={() => Actions.Profile()}>
+               <Text style={{color:'black'}}>Valider</Text>
               </Button>
             }
             </View>
@@ -142,14 +142,28 @@ const styles = StyleSheet.create({
     marginTop:1,
   },
   buttonLeft:{
+    backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
-    left:0
+    left:0,
+    marginLeft:20,
+    shadowColor: '#222',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+    elevation: 1,
   },
   buttonRight:{
+    backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
-    right:0
+    right:0,
+    marginRight:20,
+    shadowColor: '#222',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+    elevation: 1,
   },
   viewButtons :{ 
     minHeight: 80,
@@ -157,9 +171,8 @@ const styles = StyleSheet.create({
     flex: 1, 
     position: "relative", 
     top: 15,  
-    justifyContent: 'space-between', 
     padding: 10,
-    marginBottom: 20, 
+    marginBottom: 40, 
     paddingTop : 80,
   }, 
   viewForm : {
