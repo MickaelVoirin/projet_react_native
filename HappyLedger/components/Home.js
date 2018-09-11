@@ -163,7 +163,8 @@ class Home extends React.Component {
                 { render_userStatus }
             </List>
           </Content>
-          <FooterApp /></Container>
+          <FooterApp />
+          </Container>
     }
 
     return (
@@ -192,6 +193,7 @@ const styles = StyleSheet.create({
   },
   SendPartnAuth: {
     backgroundColor: '#4273e9',
+    marginLeft: -10
   },
   textWhite: {
     fontSize: 20,
