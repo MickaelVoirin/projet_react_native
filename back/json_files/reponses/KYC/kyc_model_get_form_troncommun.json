@@ -11,11 +11,11 @@
         "category": "identité",
         "name": "Nom Prénom",
         "type": "string",
-        "default_label": "Nom Prénom",
+        "default_label": "Votre Etat Civil (Nom et prénom)",
         "common_core": true,
         "__v": 0
       },
-      "label" : "Nom Prénom",
+      "label" : "Votre Etat Civil (Nom et prénom)",
       "answer" : ""
     },
     {
@@ -25,11 +25,11 @@
         "category": "adresse",
         "name": "Adresse",
         "type": "textarea",
-        "default_label": "Saisissez votre adresse",
+        "default_label": "Quelle est votre adresse postale ?",
         "common_core": true,
         "__v": 0
       },
-      "label" : "Saisissez votre adresse",
+      "label" : "Quelle est votre adresse postale ?",
       "answer" : ""
     },
     {
