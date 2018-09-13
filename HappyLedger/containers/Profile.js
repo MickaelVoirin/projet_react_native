@@ -65,16 +65,15 @@ class Profile extends Component {
         }   
       });
       const listOfForms = [];
-      const self = this;
       for(let i of getIdNotifs){
         await axios.post(`${urlAPI}kyc/form/${i._id}`)
-        .then(function (response) {
+        .then((response) => {
           const form = JSON.parse(response.data);
           listOfForms.push({'new' : i.new, 'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
-          self.setState({listOfForms})               
+          this.setState({listOfForms})               
         })
-        .catch(function (error) {
-          self.setState({err:true});
+        .catch((error) => {
+          this.setState({err:true});
         });
       }
       
