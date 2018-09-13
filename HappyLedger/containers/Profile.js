@@ -4,13 +4,9 @@ import { StyleSheet } from 'react-native';
 import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {addForms} from '../actions/AddForms';
 
 import { Alert, AsyncStorage } from "react-native";
-import urlAPI from '../urlAPI';
 
 class Profile extends Component {
   constructor(props){
@@ -26,61 +22,17 @@ class Profile extends Component {
   }
 
   async componentDidMount() { 
-    await this._loadJsonsElementsAsync();
-    await this._saveStrorageAsync();
+    await this._checkNotifs();
+    AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
     this.setState({isReady:true});
   }
   
-  async componentWillReceiveProps(){
-    if(this.state.mount){
-      this.setState({isReady:false});
-      await this._loadJsonsElementsAsync();
-      await this._saveStrorageAsync();
-      this.setState({isReady:true});
-    } else {
-      this.setState({mount:true});
-    }
-  } 
 
-// sauvegarde les formulaires dans le stockage du téléphone
-  async _saveStrorageAsync(){
-     try{ 
-      await AsyncStorage.setItem('listOfForms', JSON.stringify(this.state.listOfForms));
-        this.props.addForms(this.state.listOfForms);
-    } catch(error){
-      this.setState({err:false});
+  _checkNotifs(){
+    if(this.props.notifications.length !== 0){
+      this.setState({listOfForms = this.props.notifications});
     }
   }
-
-
-  async _loadJsonsElementsAsync() {
-    
-      // Received Notifications (Future : via async storage)
-      const notificationsRedux = [...this.props.notifications];
-      
-      const getIdNotifs = notificationsRedux.map( (obj) => {
-        return {
-          '_id' : obj._id,
-          'new' : obj.new
-        }   
-      });
-      const listOfForms = [];
-      for(let i of getIdNotifs){
-        await axios.post(`${urlAPI}kyc/form/${i._id}`)
-        .then((response) => {
-          const form = JSON.parse(response.data);
-          listOfForms.push({'new' : i.new, 'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
-          this.setState({listOfForms})               
-        })
-        .catch((error) => {
-          this.setState({err:true});
-        });
-      }
-      
-      
-  }
-
-  
 
   render() {
     
@@ -94,10 +46,10 @@ class Profile extends Component {
     } 
     else {
 
-      rendering = this.state.listOfForms.map(form =>
+      rendering = this.props.notifications.map(form =>
       <ListItem
-      key={form.id}
-      onPress={() => Actions.Forms({company:form.title, nameform: form.name, numberquestion: 0})}
+      key={form._id}
+      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
     >
     <Body>
       <Text
@@ -143,12 +95,8 @@ const mstp = state => ({
   notifications: state.notifications
 });
 
-const mdtp = dispatch => {
-  return bindActionCreators({addForms}, dispatch);
-}
 
-
-export default connect(mstp, mdtp)(Profile);
+export default connect(mstp)(Profile);
 
 const styles = StyleSheet.create({
   separator: {

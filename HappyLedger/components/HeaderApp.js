@@ -4,7 +4,9 @@ import { Header, Title, Button, Icon } from 'native-base';
 import { StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo';
 
-import { addNotifs } from '../actions/notification';
+import { notifElement, notifsUpdate } from '../actions/notification';
+import { addingForms } from '../actions/AddForms';
+
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import urlAPI from '../urlAPI';
@@ -17,37 +19,37 @@ class HeaderApp extends Component {
   }
 
   componentDidMount(){
-    this._verifyNotifs();
+ 
+      this._verifyNotifs();
+      this._MAJNotifandForms();
   }
 
-  // requete asynchrone vérifie les nouvelles notifications auprès du backend 
   _verifyNotifs() {
-    const self = this;
+    
     axios.post(`${urlAPI}notification/get_received`)
-      .then(function (response) {
-        const notificationsJsons = JSON.parse(response.data).items;
-        const notificationsRedux = [...self.props.notifications]; 
-        const notificationsStorage = [];
-        let numberNewNotifs = 0;
-        for(let valeurJsons of notificationsJsons){
-          let temoin = true;
-          for(let valeurRedux of notificationsRedux){
-            if(valeurRedux._id === valeurJsons._id && valeurRedux.new != true){
-                temoin = false; 
-            } 
-          }
-          if(temoin){
-            numberNewNotifs++;
-          };
-          valeurJsons['new'] = temoin;
-          notificationsStorage.push(valeurJsons); 
-        } 
-        self.props.addNotifs(notificationsStorage);
-        AsyncStorage.setItem('notifications', JSON.stringify(notificationsStorage));
+      .then((response) => {
+        const notificationsJsons = JSON.parse(response.data).items; 
+        this.props.notifsUpdate(notificationsJsons);
       })
-      .catch(function (error) {
-        self.setState({err:true});
+      .catch((error) => {
+        this.setState({err:true});
       });
+  }
+  _MAJNotifandForms(){
+    for(let i of this.props.notifications){
+      axios.post(`${urlAPI}kyc/form/${i._id}`)
+      .then( (response) => {
+        const form = JSON.parse(response.data);
+        let notif = {'_id':form._id, 'name':form.name, 'title':form.company}
+        this.props.notifElement(notif);
+        let questions = {'name':form.name, list:form.items}  
+        this.props.addingForms(questions);             
+      })
+      .catch((error) => {
+        this.setState({err:true});
+      });
+    }
+
   }
 
   render() {
@@ -89,7 +91,7 @@ class HeaderApp extends Component {
 }
 
 const mdtp = (dispatch) => {
-  return bindActionCreators({addNotifs}, dispatch);
+  return bindActionCreators({notifsUpdate, notifElement, addingForms}, dispatch);
 };
 
 const mstp = state => ({

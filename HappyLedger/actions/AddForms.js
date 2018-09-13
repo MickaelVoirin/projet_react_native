@@ -1,4 +1,5 @@
-export const addForms = (elements) => ({
-  type: 'ADD_FORM',
-  elements,
+
+export const addingForms = (element) => ({
+  type: 'ADDING_FORM',
+  element,
 })
