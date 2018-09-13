@@ -72,14 +72,13 @@ class Launch extends React.Component {
 
 // chargement des notifications depuis le backend
   async _loadNotifJsons() {
-    const self = this;
     await axios.post(`${urlAPI}notification/get_received`)
-      .then(function (response) {
+      .then( (response) => {
         const notificationsJsons = JSON.parse(response.data).items;
-        self.setState({notificationsJsons});
+        this.setState({notificationsJsons});
       })
-      .catch(function (error) {
-        self.setState({err:true});
+      .catch((error) => {
+        this.setState({err:true});
       });
   }
 
