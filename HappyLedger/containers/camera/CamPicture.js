@@ -9,10 +9,6 @@ import {bindActionCreators} from 'redux';
 import {getMedia} from '../../actions'
 
 class CamPicture extends React.Component{
-  
-  constructor(props){
-    super(props);
-  }
 
 // validation de la photo, renvoi vers le formulaire
   validPicture(){

@@ -34,10 +34,6 @@ import { bindActionCreators } from 'redux';
 
 class Launch extends React.Component {
 
-  constructor(props){
-    super(props);
-  }
-
   state = {
     isReady: false,
     notificationsStorage : [],

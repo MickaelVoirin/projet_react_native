@@ -30,11 +30,9 @@ class Profile extends Component {
 
   _checkNotifs(){
     if(this.props.notifications.length !== 0){
-      this.state.listOfForms = this.props.notifications;
+      this.setState({listOfForms = this.props.notifications});
     }
   }
-
- 
 
   render() {
     
