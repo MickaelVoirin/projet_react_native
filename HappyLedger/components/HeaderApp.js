@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
     marginTop: 14,
     fontSize: 30,
     fontFamily:'raleway',
-    width: 260,
-    marginLeft: 50,
+    width: 250,
+    marginLeft: 60,
   },
   buttonSettingsPos: {
     position: 'absolute',
