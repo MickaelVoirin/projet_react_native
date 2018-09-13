@@ -11,7 +11,6 @@ router.post('/send', (req, res) => {
       _id: 'notif_4',
       company: 'BNP Paribas'
     });
-    console.log(contentObject);
     fs.writeFileSync('./json_test/notification/notification_get_received.json', JSON.stringify(contentObject), 'UTF-8');
     res.send('success');
   } else {
