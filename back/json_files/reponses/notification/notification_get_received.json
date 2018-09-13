@@ -7,18 +7,6 @@
     {
       "_id":"troncommun",
       "company":"Tronc Commun"
-    },
-    {
-      "_id":"notif_1",
-      "company":"SG's Company"
-    },
-    {
-      "_id":"notif_2",
-      "company":"BNP's Company"
-    },
-    {
-      "_id":"notif_3",
-      "company":"Flander's Company"
     }
   ],
   "__v" : 0

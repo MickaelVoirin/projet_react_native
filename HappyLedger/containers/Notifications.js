@@ -19,15 +19,12 @@ class Notifications extends React.Component {
     count:0
   }
 
-  
-
   async componentDidMount() { 
       await this._checkNotifs();
-      
-      await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
       if(this.state.listOfForms){
         await this.props.notifsNotNew(this.props.notifications);
       }
+      await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
       this.setState({isReady:true,mount:true});
     
   }
@@ -38,14 +35,18 @@ async componentWillReceiveProps(nextProps){
     if(this.state.mount && this.props.update != nextProps.update){
         this.setState({isReady:false});
         await this._checkNotifs();
-        await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
         
         if(this.state.listOfForms){
           await this.props.notifsNotNew(this.props.notifications);
-        } 
+        }
+        await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications)); 
         this.setState({isReady:true});
+      
+                
     } 
 } 
+
+
 
   _checkNotifs(){
       
@@ -54,13 +55,16 @@ async componentWillReceiveProps(nextProps){
       });
       if(listOfForms.length == 0){
         listOfForms = false;
+      } 
+      if(listOfForms.length == 0){
+        listOfForms = false;
       }
       
     this.setState({listOfForms,count:this.props.notifications.length});
   }
-  
 
   render() {
+    
     return (
         <Container>
             <HeaderApp title={this.props.title}/>
@@ -78,6 +82,7 @@ async componentWillReceiveProps(nextProps){
               !this.state.listOfForms ? (
                 <Text>Pas de nouveaux formulaires</Text>
               ) : (
+                
                 this.state.listOfForms.map(form => {
                   return <ListItem
                     key={form._id}

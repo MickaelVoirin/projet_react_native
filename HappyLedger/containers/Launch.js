@@ -50,7 +50,6 @@ class Launch extends React.Component {
     StatusBar.setHidden(true);
     await this._loadAssetsAsync();
     await this._loadNotifStorage();
-    // alert(JSON.stringify(this.props.notifications)); 
     this.setState({ isReady: true });  
   }
 
@@ -66,15 +65,13 @@ class Launch extends React.Component {
   async _loadNotifStorage(){
     let notificationsStorage = await AsyncStorage.getItem('notifications');
     notificationsStorage = (notificationsStorage == null) ? [] : JSON.parse(notificationsStorage);
-    // this.setState({notificationsStorage});
-    const self = this;
     await axios.post(`${urlAPI}notification/get_received`)
-      .then(function (response) {
+      .then((response) => {
         const notificationsJsons = JSON.parse(response.data).items;
-        self.props.notifsLaunch(notificationsJsons, notificationsStorage);
+        this.props.notifsLaunch(notificationsJsons, notificationsStorage);
       })
-      .catch(function (error) {
-        self.setState({err:true});
+      .catch((error) => {
+        this.setState({err:true});
       });
   }
   
