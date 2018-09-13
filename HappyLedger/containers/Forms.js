@@ -61,8 +61,7 @@ async _receivedProps(numberquestion) {
           :
           <View>  
             <Card style={styles.card}>
-                <H2 style={styles.H2}>{name}</H2>
-                <Text style={styles.question}>"{label}"</Text>
+                <H2 style={styles.H2}>{label}</H2>
                 <View style={styles.field}>
                 {( () => {
                   switch(type) {
@@ -88,7 +87,7 @@ async _receivedProps(numberquestion) {
             </Card>
             <View style={styles.viewButtons}>
             {this.props.numberquestion > 0 &&
-               <Button style={styles.buttonLeft} rounded onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
+               <Button style={styles.buttonLeft} rounded bordered onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion -1})}>
                 <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Précédent</Text>
               </Button>
             }
@@ -96,7 +95,7 @@ async _receivedProps(numberquestion) {
              ? <Button style={styles.buttonRight} rounded bordered onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion +1})}>
                <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Suivant</Text>
                </Button>
-            : <Button style={styles.buttonRight} rounded onPress={() => Actions.Profile()}>
+            : <Button style={styles.buttonRight} rounded bordered onPress={() => Actions.Profile()}>
                <Text uppercase={false} style={{color:'black', fontFamily:'raleway'}}>Valider</Text>
               </Button>
             }
@@ -135,7 +134,6 @@ const styles = StyleSheet.create({
     marginTop:1,
   },
   buttonLeft:{
-    backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
     left:0,
@@ -147,7 +145,6 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   buttonRight:{
-    // backgroundColor: '#FFFFFF',
     position:'absolute', 
     top:20,
     right:0,
@@ -177,7 +174,10 @@ const styles = StyleSheet.create({
   },
   H2 : {
     textAlign: 'center',
-    marginTop: 20
+    marginTop: 20,
+    marginLeft:10,
+    marginRight:10,
+    marginBottom:20,
   },
   reponse : {
    marginBottom: 15,
