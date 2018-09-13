@@ -23,7 +23,7 @@ export default class DatePickers extends Component {
             modalTransparent={false}
             animationType={"fade"}
             androidMode={"default"}
-            placeHolderText="Select date"
+            placeHolderText="Choisir une date"
             textStyle={{ color: "green" }}
             placeHolderTextStyle={{ color: "#d3d3d3" }}
             onDateChange={this.setDate}

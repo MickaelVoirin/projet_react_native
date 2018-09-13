@@ -70,7 +70,7 @@ class HeaderApp extends Component {
             <Icon name='arrow-back' style={styles.buttonBack} />
           </Button>
 
-          <Title style={styles.title}>{this.props.title}</Title>
+          <Title numberOfLines={1} ellipsizeMode='tail' style={styles.title}>{this.props.title}</Title>
 
           <Button
             transparent
@@ -108,10 +108,13 @@ const styles = StyleSheet.create({
     height: 64,
   },
   title: {
+    position: 'absolute',
     color: 'white',
-    marginTop: 10,
+    marginTop: 14,
     fontSize: 30,
     fontFamily:'raleway',
+    width: 260,
+    marginLeft: 50,
   },
   buttonSettingsPos: {
     position: 'absolute',
