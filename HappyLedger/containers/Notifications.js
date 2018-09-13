@@ -50,19 +50,17 @@ class Notifications extends React.Component {
   }
 
   async _loadJsonsElementsAsync() {
-    
-    const self = this;
     this.setState({listOfForms:false});
     const listOfForms = [];
     for(let i of this.state.newNotifs){
       await axios.post(`${urlAPI}kyc/form/${i}`)
-      .then(function (response) {
+      .then((response) => {        
         const form = JSON.parse(response.data);
         listOfForms.push({'id':form['_id'],'name':form['name'],'title':form['company'], 'elements':form['items']});
-        self.setState({listOfForms})               
+        this.setState({listOfForms})               
       })
-      .catch(function (error) {
-        self.setState({err:true});
+      .catch((error) => {
+        this.setState({err:true});
       });
     }
     
