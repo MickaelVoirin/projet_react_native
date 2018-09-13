@@ -13,10 +13,6 @@ import {connect} from 'react-redux';
 
 class Forms extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-  
   state = {
     questions: undefined,
   }

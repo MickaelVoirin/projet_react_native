@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Text, Body, ListItem, Radio } from 'native-base';
 
 export default class CheckBoxToList extends Component {
-  constructor(props){
-    super(props);
-  }
-
 
   render() {
     return (

@@ -110,13 +110,11 @@ class FooterApp extends Component {
   }
 }
 
-
-
 const mstp = state => ({
   notifications: state.notifications
 });
 
-export default connect(mstp, null)(FooterApp);
+export default connect(mstp)(FooterApp);
 
 const styles = StyleSheet.create({
   text: {

@@ -29,7 +29,6 @@ class SendPartnAuth extends Component {
     let rendering;
 
     if (error) {
-      console.log(error);
       rendering = <Text style={styles.sendingError}>{error.response.data.message}</Text>
     } else if (sending) {
       rendering = <Spinner color='#b330c5' />;
