@@ -168,7 +168,7 @@ class Launch extends React.Component {
             <Scene
               key="SendPartnAuth"
               component={SendPartnAuth}
-              title="SendPartnAuth"
+              title="Envoi de Formulaire"
               hideNavBar={true}
             />
             <Scene
