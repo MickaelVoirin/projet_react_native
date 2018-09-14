@@ -6,7 +6,6 @@ import { LinearGradient } from 'expo';
 
 import { notifElement, notifsUpdate } from '../actions/notification';
 import { addingForms } from '../actions/AddForms';
-import { Alert, AsyncStorage } from "react-native"
 
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
@@ -19,40 +18,35 @@ class HeaderApp extends Component {
     super(props);
   }
 
-  async componentDidMount(){
-    if(this.props.title === 'Notifications' || this.props.title === 'Profil'){
-      await this._verifyNotifs();
-      await this._MAJNotifandForms();
-    } else {
+  componentDidMount(){
+ 
       this._verifyNotifs();
       this._MAJNotifandForms();
-    }
   }
 
-  async _verifyNotifs() {
-    const self = this;
-    await axios.post(`${urlAPI}notification/get_received`)
-      .then(async function (response) {
+  _verifyNotifs() {
+    
+    axios.post(`${urlAPI}notification/get_received`)
+      .then((response) => {
         const notificationsJsons = JSON.parse(response.data).items; 
-        await self.props.notifsUpdate(notificationsJsons);
+        this.props.notifsUpdate(notificationsJsons);
       })
-      .catch(function (error) {
-        self.setState({err:true});
+      .catch((error) => {
+        this.setState({err:true});
       });
   }
-  async _MAJNotifandForms(){
-    const self = this;
+  _MAJNotifandForms(){
     for(let i of this.props.notifications){
-      await axios.post(`${urlAPI}kyc/form/${i._id}`)
-      .then( async function (response) {
+      axios.post(`${urlAPI}kyc/form/${i._id}`)
+      .then( (response) => {
         const form = JSON.parse(response.data);
         let notif = {'_id':form._id, 'name':form.name, 'title':form.company}
-        await self.props.notifElement(notif);
+        this.props.notifElement(notif);
         let questions = {'name':form.name, list:form.items}  
-        await self.props.addingForms(questions);             
+        this.props.addingForms(questions);             
       })
-      .catch(function (error) {
-        self.setState({err:true});
+      .catch((error) => {
+        this.setState({err:true});
       });
     }
 
@@ -78,7 +72,7 @@ class HeaderApp extends Component {
             <Icon name='arrow-back' style={styles.buttonBack} />
           </Button>
 
-          <Title style={styles.title}>{this.props.title}</Title>
+          <Title numberOfLines={1} ellipsizeMode='tail' style={styles.title}>{this.props.title}</Title>
 
           <Button
             transparent
@@ -116,10 +110,13 @@ const styles = StyleSheet.create({
     height: 64,
   },
   title: {
+    position: 'absolute',
     color: 'white',
-    marginTop: 10,
+    marginTop: 14,
     fontSize: 30,
     fontFamily:'raleway',
+    width: 250,
+    marginLeft: 60,
   },
   buttonSettingsPos: {
     position: 'absolute',

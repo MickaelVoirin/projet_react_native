@@ -4,13 +4,9 @@ import { StyleSheet } from 'react-native';
 import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {addForms} from '../actions/AddForms';
 
 import { Alert, AsyncStorage } from "react-native";
-import urlAPI from '../urlAPI';
 
 class Profile extends Component {
   constructor(props){
@@ -27,17 +23,16 @@ class Profile extends Component {
 
   async componentDidMount() { 
     await this._checkNotifs();
-    this.setState({isReady:true});
     AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
+    this.setState({isReady:true});
   }
-   
+  
+
   _checkNotifs(){
     if(this.props.notifications.length !== 0){
-      this.state.listOfForms = this.props.notifications;
+      this.setState({listOfForms = this.props.notifications});
     }
   }
-
- 
 
   render() {
     
@@ -51,7 +46,7 @@ class Profile extends Component {
     } 
     else {
 
-      rendering = this.state.listOfForms.map(form =>
+      rendering = this.props.notifications.map(form =>
       <ListItem
       key={form._id}
       onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}

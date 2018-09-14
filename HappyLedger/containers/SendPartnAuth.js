@@ -29,7 +29,6 @@ class SendPartnAuth extends Component {
     let rendering;
 
     if (error) {
-      console.log(error);
       rendering = <Text style={styles.sendingError}>{error.response.data.message}</Text>
     } else if (sending) {
       rendering = <Spinner color='#b330c5' />;
@@ -61,9 +60,9 @@ class SendPartnAuth extends Component {
                 selectedValue={this.state.selected2}
                 onValueChange={this.onValueChange2.bind(this)}
               >
-                <Picker.Item label="Formulaire 1" value="key0" />
-                <Picker.Item label="Formulaire 2" value="key1" />
-                <Picker.Item label="Formulaire 3" value="key2" />
+                <Picker.Item label="Form. de prêt" value="key0" />
+                <Picker.Item label="Form. d'investissement" value="key1" />
+                <Picker.Item label="Form. d'assurance vie" value="key2" />
               </Picker>
             </Item>
         </Form>

@@ -10,10 +10,6 @@ import { bindActionCreators } from 'redux';
 import { getMedia } from '../../actions';
 
 class TakePicture extends Component {
-  
-  constructor(props){
-    super(props);
-  }
 
   state = {
     permissionsGranted: false,
