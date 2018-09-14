@@ -86,7 +86,7 @@ async componentWillReceiveProps(nextProps){
                 this.state.listOfForms.map(form => {
                   return <ListItem
                     key={form._id}
-                    onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
+                    onPress={() => Actions.Forms({company:form.title, nameform: form.name, numberquestion: 0})}
                   >
                   <Body>
                     <Text
