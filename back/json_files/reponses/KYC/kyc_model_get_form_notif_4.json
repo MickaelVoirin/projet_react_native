@@ -19,7 +19,7 @@
         "common_core": true,
         "__v": 0
       },
-      "label" : "Quel est le montant du capital de vos crédits restants dûs à titre personnel ?",
+      "label" : "Avez vous déjà un ou plusieurs crédits en cours et à titre personnel ?",
       "answer" : ""
     },
     {
