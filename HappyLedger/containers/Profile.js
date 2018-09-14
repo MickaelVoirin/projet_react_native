@@ -49,7 +49,7 @@ class Profile extends Component {
       rendering = this.props.notifications.map(form =>
       <ListItem
       key={form._id}
-      onPress={() => Actions.Forms({nameform: form.name, numberquestion: 0})}
+      onPress={() => Actions.Forms({company:form.title, nameform: form.name, numberquestion: 0})}
     >
     <Body>
       <Text
