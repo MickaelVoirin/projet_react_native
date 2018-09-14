@@ -7,6 +7,45 @@
     {
       "question" : {
         "choices": [
+          "Oui",
+          "Non"
+        ],
+        "_id": "ps_question0",
+        "category": "property_status",
+        "subcategory": "charges",
+        "name": "crédits",
+        "type": "radio",
+        "default_label": "Avez vous déjà un ou plusieurs crédits en cours et à titre personnel ?",
+        "common_core": true,
+        "__v": 0
+      },
+      "label" : "Quel est le montant du capital de vos crédits restants dûs à titre personnel ?",
+      "answer" : ""
+    },
+    {
+      "question" : {
+        "choices": [
+          "absence de crédit",
+          "inférieur à 50 000 €",
+          "compris entre 50 000 € et 200 000 €",
+          "compris entre 200 000 € et 500 000 €",
+          "supérieur à 500 000 €"
+        ],
+        "_id": "ps_question1",
+        "category": "property_status",
+        "subcategory": "charges",
+        "name": "crédits",
+        "type": "radio",
+        "default_label": "Quel est le montant du capital de vos crédits restants dûs à titre personnel ?",
+        "common_core": true,
+        "__v": 0
+      },
+      "label" : "Quel est le montant du capital de vos crédits restants dûs à titre personnel ?",
+      "answer" : ""
+    },
+    {
+      "question" : {
+        "choices": [
           "célibataire",
           "marié(e)",
           "pacsé(e)",
@@ -114,7 +153,7 @@
           "category": "property_status",
           "subcategory": "revenus",
           "name": "revenu global",
-          "type": "range",
+          "type": "radio",
           "default_label": "Quel est le montant global des revenus de votre foyer ?",
           "common_core": true,
           "__v": 0
@@ -254,7 +293,7 @@
           "category": "property_status",
           "subcategory": "charges",
           "name": "crédits",
-          "type": "range",
+          "type": "radio",
           "default_label": "Quel est le montant du capital de vos crédits restants dûs à titre personnel ?",
           "common_core": true,
           "__v": 0
