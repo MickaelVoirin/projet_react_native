@@ -24,7 +24,7 @@ export default class Range extends Component {
       <View>
         <Text>{String(value)}</Text>
         <Slider
-          step={5000}
+          step={1}
           minimumValue={this.props.minmax[0]}
           maximumValue={this.props.minmax[1]}
           onValueChange={this.change.bind(this)}
