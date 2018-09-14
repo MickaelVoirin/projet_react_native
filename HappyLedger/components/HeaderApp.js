@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 14,
     fontSize: 30,
     fontFamily:'raleway',
-    width: 250,
+    width: 247,
     marginLeft: 60,
   },
   buttonSettingsPos: {
