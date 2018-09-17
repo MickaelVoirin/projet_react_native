@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from "react-redux";
 import { StyleSheet } from 'react-native';
 
-// Footer (chaque vue sauf connexion)
+// Header (chaque vue sauf connexion)
 
 class FooterApp extends Component {
 
@@ -20,7 +20,6 @@ class FooterApp extends Component {
     this.getNotifs();
   }
   
-  // Connaitre le nombre de nouvelles notifications pour afficher l'icone correspondante
   getNotifs(){
     let numberNewNotifs = 0;
       for(let valeur of this.props.notifications){
@@ -38,6 +37,7 @@ class FooterApp extends Component {
             style={{backgroundColor:'#f2f2f2'}}
             tabBarTextColor='white'
           >
+
             <Button
               onPress={() => Actions.Home()}
             >
@@ -52,8 +52,10 @@ class FooterApp extends Component {
               >Home</Text>
             </Button>
 
+
             <Button
               style={{position:'relative'}}
+              // style={{backgroundColor:'#a936c9'}}
               onPress={() => Actions.Notifications({update:Math.random(1000)})}
             >
               <Icon
@@ -72,6 +74,7 @@ class FooterApp extends Component {
               >Notifications</Text>
             </Button>
 
+
             <Button
               vertical
               onPress={() => Actions.ExchangeSurvey()}
@@ -85,7 +88,8 @@ class FooterApp extends Component {
                 uppercase={false}
                 style={styles.text}
               >Autorisations</Text>
-            </Button>}
+            </Button>
+
             <Button
               vertical
               onPress={() => Actions.Profile()}
