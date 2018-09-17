@@ -4,6 +4,8 @@ import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 
+// Vue future : Gestion de compte (Depuis HeaderApp)
+
 export default class Account extends React.Component {
   render() {
     return (

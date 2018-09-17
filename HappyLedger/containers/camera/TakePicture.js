@@ -9,6 +9,8 @@ import { DocumentPicker, ImagePicker, Permissions } from 'expo';
 import { bindActionCreators } from 'redux'; 
 import { getMedia } from '../../actions';
 
+// Récupération d'un document depuis le téléphone
+
 class TakePicture extends Component {
 
   state = {

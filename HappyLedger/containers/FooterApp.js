@@ -4,6 +4,8 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from "react-redux";
 import { StyleSheet } from 'react-native';
 
+// Header (chaque vue sauf connexion)
+
 class FooterApp extends Component {
 
   state = {
@@ -36,7 +38,6 @@ class FooterApp extends Component {
             tabBarTextColor='white'
           >
 
- {/* Bouton home */}
             <Button
               onPress={() => Actions.Home()}
             >
@@ -51,7 +52,6 @@ class FooterApp extends Component {
               >Home</Text>
             </Button>
 
-{/* bouton notifications */}
 
             <Button
               style={{position:'relative'}}
@@ -74,7 +74,6 @@ class FooterApp extends Component {
               >Notifications</Text>
             </Button>
 
-{/* Bouton autorisations */}
 
             <Button
               vertical
@@ -90,7 +89,7 @@ class FooterApp extends Component {
                 style={styles.text}
               >Autorisations</Text>
             </Button>
-{/* Bouton profile */}
+
             <Button
               vertical
               onPress={() => Actions.Profile()}

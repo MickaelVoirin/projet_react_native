@@ -7,7 +7,9 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { notifsNotNew } from '../actions/notification';
-import { Alert, AsyncStorage } from "react-native";
+import { AsyncStorage } from "react-native";
+
+// Vue notifications (depuis le footerApp)
 
 class Notifications extends React.Component {
   
@@ -19,6 +21,8 @@ class Notifications extends React.Component {
     count:0
   }
 
+  // Recupere toutes les notifications en les filtrant pour le state
+  // Enregistre dans la mémoire téléphone toutes les notifications
   async componentDidMount() { 
       await this._checkNotifs();
       if(this.state.listOfForms){
@@ -26,28 +30,25 @@ class Notifications extends React.Component {
       }
       await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications));
       this.setState({isReady:true,mount:true});
-    
   }
 
-
-async componentWillReceiveProps(nextProps){
+  // Recupere toutes les notifications en les filtrant pour le state
+  // Enregistre dans la mémoire téléphone toutes les notifications
+  async componentWillReceiveProps(nextProps){
      
     if(this.state.mount && this.props.update != nextProps.update){
         this.setState({isReady:false});
         await this._checkNotifs();
-        
         if(this.state.listOfForms){
           await this.props.notifsNotNew(this.props.notifications);
         }
         await AsyncStorage.setItem('notifications', JSON.stringify(this.props.notifications)); 
         this.setState({isReady:true});
-      
-                
     } 
 } 
 
 
-
+  // Vérifie les nouvelles notifications depuis la liste redux
   _checkNotifs(){
       
       let listOfForms = this.props.notifications.filter( (obj) => {
@@ -55,11 +56,7 @@ async componentWillReceiveProps(nextProps){
       });
       if(listOfForms.length == 0){
         listOfForms = false;
-      } 
-      if(listOfForms.length == 0){
-        listOfForms = false;
-      }
-      
+      }       
     this.setState({listOfForms,count:this.props.notifications.length});
   }
 

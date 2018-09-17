@@ -4,6 +4,8 @@ import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 import { StyleSheet } from 'react-native';
 
+// Vue : Autorisations de partage (Depuis FooterApp)
+
 class ExchangeSurvey extends Component {
   constructor(props){
     super(props);

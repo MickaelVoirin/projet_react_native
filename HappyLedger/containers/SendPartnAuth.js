@@ -6,6 +6,8 @@ import FooterApp from './FooterApp';
 import { sendNotification } from '../actions/SendNotificationActions';
 import { connect } from "react-redux";
 
+// Vue envoie de formulaire (depuis home - utilisateur type entreprise)
+
 class SendPartnAuth extends Component {
 
   constructor(props) {
@@ -53,7 +55,6 @@ class SendPartnAuth extends Component {
               <Picker
                 mode="dropdown"
                 iosIcon={<Icon name="ios-arrow-down-outline" />}
-                //style={{ width: undefined }}
                 placeholder="Choisissez votre formulaire"
                 placeholderStyle={{ color: "#bfc6ea" }}
                 placeholderIconColor="#007aff"

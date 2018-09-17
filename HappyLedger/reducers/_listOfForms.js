@@ -1,3 +1,6 @@
+// Non utilisé dans l'application pour le moment 
+// Pour utilisation avec reduc thunk
+
 import {
     GET_LIST_OF_FORMS_BEGIN,
     GET_LIST_OF_FORMS_SUCCESS,

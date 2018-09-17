@@ -4,6 +4,8 @@ import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 
+// Vue future : Portefeuille (Depuis Home)
+
 export default class Portefeuille extends React.Component {
   render() {
     return (

@@ -1,12 +1,8 @@
 import React from 'react';
-
-// import Redux et middleware redux-thunk
 import { createStore , applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-
 import allReducers from './reducers';
-
 import Launch from './containers/Launch';
 
 const store = createStore(allReducers, applyMiddleware(thunk));

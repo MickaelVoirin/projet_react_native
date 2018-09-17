@@ -1,11 +1,13 @@
 const notifications = (state = [], action) => {
   switch (action.type) {
+      // Update toutes les notifications comme non nouvelles
       case 'UPDATE_NOTIFS_NOT_NEW':
           const copyState = [...state];
           return copyState.map( (x) => {
             x.new = false;
             return x;
           });
+      // Liste les notifications au lancement de l'application
       case 'NOTIF_LAUNCH':
         const notificationsStorage = [];
         for(let valeurJsons of action.notificationsJSON){
@@ -20,7 +22,8 @@ const notifications = (state = [], action) => {
           notificationsStorage.push(valeurJsons); 
         }
         return notificationsStorage;
-        
+
+      // Récupère les nouvelles notifications selon le back   
       case 'NOTIF_UPDATE':
         const notificationsupdate = [];
         for(let valeurJsons of action.notificationsJSON){
@@ -35,6 +38,8 @@ const notifications = (state = [], action) => {
           notificationsupdate.push(valeurJsons); 
         }
         return notificationsupdate;
+
+      // Permet de formater la liste des notifications (name + title)  
       case 'NOTIF_ELEMENT':
         const copy = [...state];
         return copy.map( x => {

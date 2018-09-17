@@ -3,6 +3,8 @@ import { View, Text, Content } from 'native-base';
 import Range from './Range.js';
 import { StyleSheet} from 'react-native';
 
+// Formulaire : permet de lister un ensemble de champs range pour 2 réponses attendues
+
 export default class RangeList extends Component {
   
   render() {

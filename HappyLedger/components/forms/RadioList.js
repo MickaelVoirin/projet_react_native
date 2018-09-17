@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Content } from 'native-base';
 import RadioToList from './RadioToList';
 
+// Formulaire : permet de lister un ensemble de champs radio selon le nombre de réponse attendues
+
 export default class RadioList extends Component {
  
   constructor(props){

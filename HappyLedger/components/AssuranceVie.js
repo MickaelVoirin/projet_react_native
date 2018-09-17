@@ -4,6 +4,8 @@ import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 
+// Vue future : Assurance Vie  (Depuis Home)
+
 export default class AssuranceVie extends React.Component {
   render() {
     return (

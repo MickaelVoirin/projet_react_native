@@ -11,17 +11,21 @@ import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import {connect} from 'react-redux';
 
+// Formulaires : meme composant pour chaque question de formulaire
+// La question est reconnue grace aux paramètres envoyés dans la vue
+// Vue lancée depuis les vues profile et notifications
+
 class Forms extends Component {
 
   state = {
     questions: undefined,
   }
 
-async _receivedProps(numberquestion) {
-  const questions = this.props.listOfQuestions[this.props.nameform][numberquestion];
-  
-  this.setState({questions});
-}
+  // Récuperer la question en cours visualisation depuis redux
+  async _receivedProps(numberquestion) {
+    const questions = this.props.listOfQuestions[this.props.nameform][numberquestion];
+    this.setState({questions});
+  }
 
   async componentDidMount(){
     await this._receivedProps(this.props.numberquestion);
@@ -63,7 +67,10 @@ async _receivedProps(numberquestion) {
             <Card style={styles.card}>
                 <H2 style={styles.H2}>{label}</H2>
                 <View style={styles.field}>
-                {( () => {
+                
+                {
+                  // Composant affiché selon le type de la question
+                  ( () => {
                   switch(type) {
                       case 'string':
                         return <Item><Input value={answer} /></Item>;

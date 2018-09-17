@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import listOfFormsReducer from './listOfForms';
 import mediaLoaderReducer from './mediaLoader';
 import userLoginReducer from './userLogin';
 import notificationsReducer from './notifications';
@@ -8,7 +7,6 @@ import sendNotificationReducer from './sendNotification'
 
 
 const allReducers = combineReducers({
-  listOfForms: listOfFormsReducer,
   userLogin:userLoginReducer,
   notifications:notificationsReducer,
   addForms: addFormsReducer,
