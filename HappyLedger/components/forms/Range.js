@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Slider } from 'react-native';
 import { View, Text } from 'native-base';
 
+// Formulaire : permet d'afficher les champs range appelés depuis rangeList
+
 export default class Range extends Component {
   constructor(props) {
     super(props);

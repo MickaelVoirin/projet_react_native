@@ -4,6 +4,8 @@ import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 
+// Vue future : Demande de prêt  (Depuis Home)
+
 export default class DemandePret extends React.Component {
   render() {
     return (

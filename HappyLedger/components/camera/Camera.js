@@ -1,3 +1,5 @@
+// Utilisation de la camera d'un smartphone uniquement pour prendre une photo
+
 import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import React from 'react';
 import {

@@ -5,8 +5,9 @@ import FooterApp from './FooterApp';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from '../components/HeaderApp';
 import { connect } from 'react-redux';
+import { AsyncStorage } from "react-native";
 
-import { Alert, AsyncStorage } from "react-native";
+// Vue profile (depuis le footerApp)
 
 class Profile extends Component {
   constructor(props){
@@ -27,7 +28,7 @@ class Profile extends Component {
     this.setState({isReady:true});
   }
   
-
+  // Récupère les notifications dans le state
   _checkNotifs(){
     if(this.props.notifications.length !== 0){
       this.setState({listOfForms : this.props.notifications});

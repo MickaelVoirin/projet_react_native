@@ -12,6 +12,8 @@ import axios from 'axios';
 import urlAPI from '../urlAPI';
 import { connect } from "react-redux";
 
+// Header (chaque vue sauf connexion)
+
 class HeaderApp extends Component {
 
   constructor(props) {
@@ -23,7 +25,8 @@ class HeaderApp extends Component {
       this._verifyNotifs();
       this._MAJNotifandForms();
   }
-
+ 
+  // Permet de vérifier si de nouvelles notifications sont arrivées en back (JSON)
   _verifyNotifs() {
     
     axios.post(`${urlAPI}notification/get_received`)
@@ -35,13 +38,17 @@ class HeaderApp extends Component {
         this.setState({err:true});
       });
   }
+
+  // Récupère les éléments (name, title, questions) des formulaires
   _MAJNotifandForms(){
     for(let i of this.props.notifications){
       axios.post(`${urlAPI}kyc/form/${i._id}`)
       .then( (response) => {
         const form = JSON.parse(response.data);
+        // Liste des notifications à jour
         let notif = {'_id':form._id, 'name':form.name, 'title':form.company}
         this.props.notifElement(notif);
+        // Liste des questions pour chaque formulaire
         let questions = {'name':form.name, list:form.items}  
         this.props.addingForms(questions);             
       })

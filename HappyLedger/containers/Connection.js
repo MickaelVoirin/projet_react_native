@@ -7,6 +7,8 @@ import { LinearGradient } from 'expo';
 import { getUserLogin } from '../actions/UserLoginActions';
 import { connect } from "react-redux";
 
+// Vue connexion utilisateur : (lancement de l'application)
+
 class Connection extends React.Component {
 
   constructor(props) {

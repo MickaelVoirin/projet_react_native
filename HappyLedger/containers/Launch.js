@@ -32,6 +32,8 @@ import { addNotifs, notifsLaunch } from '../actions/notification';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
+// Launch : Permet de lancer la navigation de l'application + parametrages de bases (police de caractères + notifications)
+
 class Launch extends React.Component {
 
   state = {

@@ -4,6 +4,8 @@ import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 
+// Vue future : Inscription (Depuis Connexion)
+
 export default class Registration extends React.Component {
   render() {
     return (

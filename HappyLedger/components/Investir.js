@@ -4,6 +4,8 @@ import { Container, Content } from 'native-base'
 import HeaderApp from './HeaderApp';
 import FooterApp from '../containers/FooterApp';
 
+// Vue future : Investir (Depuis Home)
+
 export default class Investir extends React.Component {
   render() {
     return (

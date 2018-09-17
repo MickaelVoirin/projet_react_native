@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { DatePicker, Text, Content } from 'native-base';
 import { StyleSheet} from 'react-native';
 
+// Formulaire : permet d'afficher un calendrier (Iphone) ou la fonctionnalité de selection de date (Android)
+
 export default class DatePickers extends Component {
  
   constructor(props) {

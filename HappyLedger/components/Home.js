@@ -6,6 +6,8 @@ import { StyleSheet, AsyncStorage } from 'react-native';
 import HeaderApp from './HeaderApp';
 import Connection from '../containers/Connection';
 
+// Home et connexion selon l'authentification (Première vue de l'application)
+
 class Home extends React.Component {
 
   constructor() {
@@ -25,7 +27,6 @@ class Home extends React.Component {
       }
     } catch (error) {
       console.log(error);
-
     }
   }
 
@@ -54,8 +55,10 @@ class Home extends React.Component {
   render() {
 
     let rendering
+    // Si pas d'autorisations, affichage de la vue connexion 
     if (!this.state.auth) {
       rendering = <Container><Connection /></Container>
+    // Sinon affichage de la page de la vue home
     } else {
       let render_userStatus
       if (this.state.status == 'entreprise') {

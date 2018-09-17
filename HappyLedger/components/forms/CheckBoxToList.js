@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {  Text, Body, ListItem, CheckBox } from 'native-base';
 
+// Formulaire : permet d'afficher les champs checkbox appelés depuis checkboxList
+
 export default class CheckBoxToList extends Component {
  
   constructor(props){

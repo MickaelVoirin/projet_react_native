@@ -1,6 +1,6 @@
-import { AsyncStorage } from "react-native"
+// Non utilisé mais pourra servir - Pour utiliser redux thunk sur la liste des formulaires
 
-// HACK => temporisation pour la rétro 
+import { AsyncStorage } from "react-native"
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

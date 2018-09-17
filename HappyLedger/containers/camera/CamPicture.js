@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, View, Text, Header, Left, Right, Button, Icon, Title, Body } from 'native-base';
+import { Container, View, Text, Button } from 'native-base';
 import { Image } from 'react-native';
 import HeaderApp from '../../components/HeaderApp';
 import FooterApp from '../FooterApp';
@@ -7,6 +7,8 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 import {getMedia} from '../../actions'
+
+// Visualisation et validation de la photo après l'avoir prise depuis la camera
 
 class CamPicture extends React.Component{
 
@@ -26,14 +28,14 @@ class CamPicture extends React.Component{
             <View style={{flexDirection: 'row', marginBottom:20}}>
               <Button
                 transparent
-                title="Non"
+                title="Oui"
                 onPress={() => this.validPicture()}
               >
                 <Text style={{color:'black'}}>OUI</Text>
               </Button>
               <Button
                 transparent
-                title="Oui"
+                title="Non"
                 onPress={() => Actions.Forms({nameform: this.props.nameform, numberquestion: this.props.numberquestion})}
               >
                 <Text style={{color:'black'}}>NON</Text>
